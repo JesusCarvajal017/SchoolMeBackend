@@ -1,14 +1,12 @@
-﻿
-
-using Entity.Model.Log;
+﻿using Entity.Model.Auditoria;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Entity.ConfigModels.Auditoria
+namespace Entity.ConfigModels.Logs
 {
-    public class LogConfig : IEntityTypeConfiguration<Log>
+    public class LogConfig : IEntityTypeConfiguration<Auditoria>
     {
-        public void Configure(EntityTypeBuilder<Log> builder)
+        public void Configure(EntityTypeBuilder<Auditoria> builder)
         {
             builder.ToTable("auditoria", schema: "main");
 

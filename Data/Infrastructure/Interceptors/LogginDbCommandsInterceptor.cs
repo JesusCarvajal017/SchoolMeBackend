@@ -1,5 +1,5 @@
 ﻿using Entity.Context.Log;
-using Entity.Model.Log;
+using Entity.Model.Auditoria;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
 using System.Data.Common;
@@ -139,7 +139,7 @@ namespace Data.Infrastructure.Interceptors
                         p.IsNullable
                 }));
 
-                var entry = new Log
+                var entry = new Auditoria
                 {
                     Timestamp = DateTime.UtcNow,
                     OperationType = operationType,
