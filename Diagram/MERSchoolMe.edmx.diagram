@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="495906861bfe416dbfae3fdadd6f5b7d" Name="Diagram1" ZoomLevel="48" >
+        <EntityTypeShape EntityType="Model1.Person" Width="2.125" PointX="19.5" PointY="3.625" FillColor="0, 0, 192" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.User" Width="1.5" PointX="11.75" PointY="3.125" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="Model1.UserRol" Width="1.5" PointX="10" PointY="0.875" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="Model1.Rol" Width="1.5" PointX="7.75" PointY="0.5" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="Model1.RolFormPermision" Width="1.5" PointX="6.75" PointY="3" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="Model1.Form" Width="1.5" PointX="4.625" PointY="2.75" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="Model1.ModuleForm" Width="1.625" PointX="5.625" PointY="0.5" FillColor="255, 128, 0" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Module" Width="1.5" PointX="3.75" PointY="0.5" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="Model1.Permision" Width="1.5" PointX="9.375" PointY="3.25" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="Model1.DataBasic" Width="1.75" PointX="22.25" PointY="3.75" FillColor="MediumBlue" />
+        <AssociationConnector Association="Model1.PersonDataBasic" />
+        <EntityTypeShape EntityType="Model1.MatirialStatus" Width="1.5" PointX="22.375" PointY="1.5" FillColor="128, 255, 128" />
+        <EntityTypeShape EntityType="Model1.Eps" Width="1.5" PointX="24.875" PointY="3.125" FillColor="128, 255, 128" />
+        <EntityTypeShape EntityType="Model1.Rh" Width="1.5" PointX="23.625" PointY="8.125" IsExpanded="true" FillColor="128, 255, 128" />
+        <EntityTypeShape EntityType="Model1.Munisipality" Width="1.5" PointX="24.625" PointY="5.375" FillColor="128, 255, 128" />
+        <AssociationConnector Association="Model1.DataBasicRh" />
+        <AssociationConnector Association="Model1.EpsDataBasic" />
+        <AssociationConnector Association="Model1.MunisipalityDataBasic" />
+        <EntityTypeShape EntityType="Model1.DocumentType" Width="1.5" PointX="17" PointY="4.375" FillColor="128, 255, 128" />
+        <EntityTypeShape EntityType="Model1.Teacher" Width="1.5" PointX="17.375" PointY="6.75" FillColor="255, 128, 128" />
+        <AssociationConnector Association="Model1.PersonDocumentType" />
+        <AssociationConnector Association="Model1.PersonTeacher" />
+        <EntityTypeShape EntityType="Model1.GroupDirector" Width="1.5" PointX="17.75" PointY="12.5" />
+        <AssociationConnector Association="Model1.TeacherGroupDirector" />
+        <EntityTypeShape EntityType="Model1.Group" Width="1.5" PointX="19.625" PointY="8.5" />
+        <AssociationConnector Association="Model1.GroupGroupDirector" />
+        <EntityTypeShape EntityType="Model1.Grade" Width="1.5" PointX="21" PointY="11.375" IsExpanded="true" />
+        <AssociationConnector Association="Model1.GradeGroup" />
+        <EntityTypeShape EntityType="Model1.FamilyRelation" Width="1.5" PointX="23.375" PointY="11.25" />
+        <EntityTypeShape EntityType="Model1.Students" Width="1.5" PointX="21.625" PointY="8.125" />
+        <AssociationConnector Association="Model1.PersonStudents" ></AssociationConnector>
+        <AssociationConnector Association="Model1.UserRolUser" />
+        <AssociationConnector Association="Model1.UserPerson" />
+        <AssociationConnector Association="Model1.ModuleFormModule" />
+        <AssociationConnector Association="Model1.ModuleFormForm" />
+        <AssociationConnector Association="Model1.RolFormPermisionPermision" />
+        <AssociationConnector Association="Model1.RolFormPermisionForm" />
+        <AssociationConnector Association="Model1.RolFormPermisionRol" />
+        <AssociationConnector Association="Model1.UserRolRol" />
+        <EntityTypeShape EntityType="Model1.AcademicLoad" Width="1.5" PointX="15" PointY="8.375" />
+        <AssociationConnector Association="Model1.AcademicLoadTeacher" />
+        <EntityTypeShape EntityType="Model1.Subject" Width="1.5" PointX="15.125" PointY="12.25" />
+        <AssociationConnector Association="Model1.AcademicLoadSubject" />
+        <AssociationConnector Association="Model1.AcademicLoadGroup" />
+        <AssociationConnector Association="Model1.FamilyRelationStudents" />
+        <AssociationConnector Association="Model1.StudentsGroup" />
+        <EntityTypeShape EntityType="Model1.Agenda" Width="1.5" PointX="26.125" PointY="11.375" />
+        <EntityTypeShape EntityType="Model1.compositionAgenda" Width="1.5" PointX="28.25" PointY="11.5" />
+        <EntityTypeShape EntityType="Model1.TypeAswer" Width="1.5" PointX="30.5" PointY="8.875" />
+        <EntityTypeShape EntityType="Model1.Question" Width="1.5" PointX="30.625" PointY="11.375" />
+        <AssociationConnector Association="Model1.QuestionTypeAswer" />
+        <EntityTypeShape EntityType="Model1.QuestionOption" Width="1.5" PointX="32.875" PointY="11.625" />
+        <AssociationConnector Association="Model1.QuestionOptionQuestion" />
+        <AssociationConnector Association="Model1.compositionAgendaAgenda" />
+        <AssociationConnector Association="Model1.compositionAgendaQuestion" />
+        <EntityTypeShape EntityType="Model1.AssignedAgenda" Width="1.5" PointX="26.625" PointY="13.75" />
+        <AssociationConnector Association="Model1.DataBasicMatirialStatus" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
