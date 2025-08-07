@@ -1,10 +1,10 @@
-﻿using System.Data.Common;
-using System.Text.Json;
-using System.Text.RegularExpressions;
-using Entity.Context.log;
+﻿using Entity.Context.Log;
 using Entity.Model.Log;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
+using System.Data.Common;
+using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace Data.Infrastructure.Interceptors
 {

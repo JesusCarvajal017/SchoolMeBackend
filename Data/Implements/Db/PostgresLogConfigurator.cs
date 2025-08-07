@@ -1,5 +1,5 @@
 ﻿using Data.Interfaces.Factory;
-using Entity.Context.log;
+using Entity.Context.Log;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
