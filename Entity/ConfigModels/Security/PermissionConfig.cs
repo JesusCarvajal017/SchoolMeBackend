@@ -31,8 +31,20 @@ namespace Entity.ConfigModels.Security
                 new Permission
                 {
                     Id = 1,
-                    Name = "system complete",
+                    Name = "Todo",
                     Description = "Formulario de inicio"
+                },
+                new Permission
+                {
+                    Id = 2,
+                    Name = "Editor",
+                    Description = "Todos los permisos excepto eliminar persistentemente"
+                },
+                new Permission
+                {
+                    Id = 3,
+                    Name = "Lectura",
+                    Description = "Solo puede ver"
                 }
             );
         }

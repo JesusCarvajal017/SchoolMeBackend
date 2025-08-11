@@ -1,5 +1,8 @@
-﻿using Entity.ConfigModels.global;
+﻿
+using Entity.ConfigModels.global;
+using Entity.Enum;
 using Entity.Model.Business;
+using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -80,7 +83,71 @@ namespace Entity.ConfigModels.Business
 
             builder.MapBaseModel();
 
-      
+            
+            builder.HasData(
+                new DataBasic
+                {
+                    Id = 1,
+                    PersonId = 1,
+                    RhId = 1,
+                    Adress = "Calle 10 #15-20",
+                    BrithDate = new DateTime(1993, 5, 12),
+                    StratumStatus = 3,
+                    MaterialStatusId = 1,
+                    EpsId = 1,
+                    MunisipalityId = 200
+                },
+                new DataBasic
+                {
+                    Id = 2,
+                    PersonId = 2,
+                    RhId = 2,
+                    Adress = "Carrera 25 #8-30",
+                    BrithDate = new DateTime(2000, 11, 3),
+                    StratumStatus = 4,
+                    MaterialStatusId = 2,
+                    EpsId = 1,
+                    MunisipalityId = 200
+                },
+                new DataBasic
+                {
+                    Id = 3,
+                    PersonId = 3,
+                    RhId = 3,
+                    Adress = "Diagonal 45 #20-15",
+                    BrithDate = new DateTime(2007, 2, 21),
+                    StratumStatus = 2,
+                    MaterialStatusId = 2,
+                    EpsId = 1,
+                    MunisipalityId = 200
+                },
+                new DataBasic
+                {
+                    Id = 4,
+                    PersonId = 4,
+                    RhId = 1,
+                    Adress = "Avenida 7 #12-45",
+                    BrithDate = new DateTime(1996, 7, 19),
+                    StratumStatus = 5,
+                    MaterialStatusId = 1,
+                    EpsId = 1,
+                    MunisipalityId = 200
+                },
+                new DataBasic
+                {
+                    Id = 5,
+                    PersonId = 5,
+                    RhId = 2,
+                    Adress = "Calle 50 #25-18",
+                    BrithDate = new DateTime(2004, 9, 8),
+                    StratumStatus = 3,
+                    MaterialStatusId = 2,
+                    EpsId = 1,
+                    MunisipalityId = 200
+                }
+            );
+
+
         }
     }
 }

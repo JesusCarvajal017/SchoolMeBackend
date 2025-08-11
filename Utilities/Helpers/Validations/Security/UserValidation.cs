@@ -7,8 +7,8 @@ namespace Utilities.Helpers.Validations.Security
     {
         public UserValidation() 
         {
-            RuleFor(x => x.UserName)
-           .NotEmpty().WithMessage("El nombre de usuario es obligatorio");
+            RuleFor(x => x.PersonId)
+           .NotEmpty().WithMessage("El id de la persona es obligatorio");
 
             RuleFor(x => x.Email)
                 .NotEmpty().WithMessage("El correo es obligatorio")

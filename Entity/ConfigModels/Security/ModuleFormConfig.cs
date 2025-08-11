@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Entity.ConfigModels.Security
 {
-    internal class ModuleFormConfig : IEntityTypeConfiguration<ModuleForm>
+    public class ModuleFormConfig : IEntityTypeConfiguration<ModuleForm>
     {
         public void Configure(EntityTypeBuilder<ModuleForm> builder)
         {
@@ -36,14 +36,44 @@ namespace Entity.ConfigModels.Security
 
             builder.MapBaseModel();
 
-            //builder.HasData(
-            //    new ModuleForm
-            //    {
-            //        Id = 1,
-            //        ModuleId = 1,
-            //        FormId = 1
-            //    }
-            //);
+            builder.HasData(
+                // ADMINISTRACIÓN
+                new ModuleForm { Id = 1, ModuleId = 2, FormId = 1 },
+                new ModuleForm { Id = 2, ModuleId = 2, FormId = 2 },
+                new ModuleForm { Id = 3, ModuleId = 2, FormId = 3 },
+                new ModuleForm { Id = 4, ModuleId = 2, FormId = 4 },
+                new ModuleForm { Id = 5, ModuleId = 2, FormId = 5 },
+
+                // ACADÉMICO
+                new ModuleForm { Id = 6, ModuleId = 3, FormId = 6 },
+                new ModuleForm { Id = 7, ModuleId = 3, FormId = 7 },
+                new ModuleForm { Id = 8, ModuleId = 3, FormId = 8 },
+                new ModuleForm { Id = 9, ModuleId = 3, FormId = 9 },
+
+                // AGENDA
+                new ModuleForm { Id = 10, ModuleId = 4, FormId = 10 },
+                new ModuleForm { Id = 11, ModuleId = 4, FormId = 11 },
+                new ModuleForm { Id = 12, ModuleId = 4, FormId = 12 },
+
+                // CONFIGURACIÓN
+                new ModuleForm { Id = 13, ModuleId = 5, FormId = 13 },
+                new ModuleForm { Id = 14, ModuleId = 5, FormId = 14 },
+                new ModuleForm { Id = 15, ModuleId = 5, FormId = 15 },
+                new ModuleForm { Id = 16, ModuleId = 5, FormId = 16 },
+                new ModuleForm { Id = 17, ModuleId = 5, FormId = 17 },
+                new ModuleForm { Id = 18, ModuleId = 5, FormId = 18 },
+
+                // SEGURIDAD
+                new ModuleForm { Id = 19, ModuleId = 6, FormId = 19 },
+                new ModuleForm { Id = 20, ModuleId = 6, FormId = 20 },
+                new ModuleForm { Id = 21, ModuleId = 6, FormId = 21 },
+                new ModuleForm { Id = 22, ModuleId = 6, FormId = 22 },
+                new ModuleForm { Id = 23, ModuleId = 6, FormId = 23 },
+                new ModuleForm { Id = 24, ModuleId = 6, FormId = 24 },
+                new ModuleForm { Id = 25, ModuleId = 6, FormId = 25 },
+                new ModuleForm { Id = 26, ModuleId = 6, FormId = 26 }
+            );
+
 
         }
     }

@@ -1,5 +1,7 @@
 ﻿using Entity.ConfigModels.global;
+using Entity.Enum;
 using Entity.Model.Paramters;
+using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -20,33 +22,38 @@ namespace Entity.ConfigModels.Parameters
                 .HasColumnName("name")
                 .IsRequired()
                 .HasMaxLength(100);
-
+            builder.Property(p => p.Acronym)
+                .IsRequired()
+                .HasMaxLength(5);
 
             builder.MapBaseModel();
 
-            builder.HasData(
-                new DocumentType
-                {
-                    Id = 1,
-                    Name = "Cedula Ciudadana",
-                    Acronym = "C.C"
-                    
-                },
-                 new DocumentType
-                 {
-                     Id = 2,
-                     Name = "Targeta de identidad",
-                     Acronym = "T.I"
+            builder.HasData
+            (
+               new DocumentType
+               {
+                   Id = 1,
+                   Name = "Cedula Ciudadana",
+                   Acronym = "C.C"
 
-                 },
-                  new DocumentType
-                  {
-                      Id = 3,
-                      Name = "Registro civil",
-                      Acronym = "R.C"
+               },
+              new DocumentType
+              {
+                  Id = 2,
+                  Name = "Targeta de identidad",
+                  Acronym = "T.I"
 
-                  }
+              },
+               new DocumentType
+               {
+                   Id = 3,
+                   Name = "Registro civil",
+                   Acronym = "R.C"
+
+               }
+
             );
+
         }
     }
 }

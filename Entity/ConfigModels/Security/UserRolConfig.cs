@@ -36,6 +36,38 @@ namespace Entity.ConfigModels.Security
 
             builder.MapBaseModel();
 
+            builder.HasData(
+                new UserRol
+                {
+                    Id = 1,
+                    UserId = 1,
+                    RolId = 1
+                },
+                new UserRol
+                {
+                    Id = 2,
+                    UserId = 2,
+                    RolId = 2
+                },
+                new UserRol
+                {
+                    Id = 3,
+                    UserId = 3,
+                    RolId = 3
+                },
+                new UserRol
+                {
+                    Id = 4,
+                    UserId = 4,
+                    RolId = 2
+                },
+                new UserRol
+                {
+                    Id = 5,
+                    UserId = 5,
+                    RolId = 4
+                }
+            );
 
         }
     }

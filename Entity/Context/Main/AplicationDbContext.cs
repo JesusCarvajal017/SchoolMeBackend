@@ -44,25 +44,27 @@ namespace Entity.Context.Main
             // Aplica tu configuración que implementen IEntityTypeConfiguration<T>
 
             //Modulo de seguridad
+            modelBuilder.ApplyConfiguration(new DepartamentConfig());
+            modelBuilder.ApplyConfiguration(new MunisipalityConfig());
+            modelBuilder.ApplyConfiguration(new RhConfig());
+            modelBuilder.ApplyConfiguration(new EpsConfig());
+            modelBuilder.ApplyConfiguration(new DocumentTypeConfig());
+            modelBuilder.ApplyConfiguration(new MaterialStatusConfig());
 
-            modelBuilder.ApplyConfiguration(new PersonConfig());
-            modelBuilder.ApplyConfiguration(new UserConfig());
+            modelBuilder.ApplyConfiguration(new ModuleConfig());
+            modelBuilder.ApplyConfiguration(new FormConfig());
             modelBuilder.ApplyConfiguration(new RolConfig());
             modelBuilder.ApplyConfiguration(new PermissionConfig());
-            modelBuilder.ApplyConfiguration(new ModuleConfig());
-
-            modelBuilder.ApplyConfiguration(new UserRolConfig());
+            
             modelBuilder.ApplyConfiguration(new ModuleFormConfig());
             modelBuilder.ApplyConfiguration(new RolFormPermissionConfig());
 
             // Modulo de parametros
 
-            modelBuilder.ApplyConfiguration(new MunisipalityConfig());
-            modelBuilder.ApplyConfiguration(new RhConfig());
-            modelBuilder.ApplyConfiguration(new DocumentTypeConfig());
-            modelBuilder.ApplyConfiguration(new EpsConfig());
-            modelBuilder.ApplyConfiguration(new MaterialStatusConfig());
-            modelBuilder.ApplyConfiguration(new DepartamentConfig());
+            modelBuilder.ApplyConfiguration(new PersonConfig());
+
+            modelBuilder.ApplyConfiguration(new UserConfig());
+            modelBuilder.ApplyConfiguration(new UserRolConfig());
 
             //Modulo de negocio
             modelBuilder.ApplyConfiguration(new DataBasicConfig());

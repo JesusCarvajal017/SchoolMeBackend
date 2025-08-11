@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Entity.ConfigModels.Security
 {
-    internal class RolConfig : IEntityTypeConfiguration<Rol>
+    public class RolConfig : IEntityTypeConfiguration<Rol>
     {
         public void Configure(EntityTypeBuilder<Rol> builder)
         {
@@ -24,16 +24,35 @@ namespace Entity.ConfigModels.Security
                 .HasColumnName("description")
                 .HasColumnType("text")
                 .IsRequired();
-
             builder.MapBaseModel();
-
 
             builder.HasData(
                 new Rol
                 {
                     Id = 1,
-                    Name = "Admin",
+                    Name = "Administrador",
                     Description = "Control sobre todo",
+                    Status = 1
+                },
+                new Rol
+                {
+                    Id = 2,
+                    Name = "Administrativo",
+                    Description = "Permisos al 90%",
+                    Status = 1
+                },
+                new Rol
+                {
+                    Id = 3,
+                    Name = "Docente",
+                    Description = "Permisos al 30%",
+                    Status = 1
+                },
+                new Rol
+                {
+                    Id = 4,
+                    Name = "Acudiente",
+                    Description = "Solo interactura de forma base",
                     Status = 1
                 }
             );

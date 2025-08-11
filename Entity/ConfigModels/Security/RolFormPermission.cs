@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Entity.ConfigModels.Security
 {
-    internal class RolFormPermissionConfig : IEntityTypeConfiguration<RolFormPermission>
+    public class RolFormPermissionConfig : IEntityTypeConfiguration<RolFormPermission>
     {
         public void Configure(EntityTypeBuilder<RolFormPermission> builder)
         {
