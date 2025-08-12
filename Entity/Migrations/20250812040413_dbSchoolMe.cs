@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Entity.Migrations
 {
     /// <inheritdoc />
-    public partial class SchoolMeDb : Migration
+    public partial class dbSchoolMe : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -396,7 +396,7 @@ namespace Entity.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    phono = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    photo = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     email = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     password = table.Column<string>(type: "text", nullable: false),
                     person_id = table.Column<int>(type: "integer", nullable: false),
@@ -857,6 +857,32 @@ namespace Entity.Migrations
                     { 3, "Diagonal 45 #20-15", new DateTime(2007, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, 1, 2, 200, 3, 3, 0, 2, null },
                     { 4, "Avenida 7 #12-45", new DateTime(1996, 7, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, 1, 1, 200, 4, 1, 0, 5, null },
                     { 5, "Calle 50 #25-18", new DateTime(2004, 9, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, 1, 2, 200, 5, 2, 0, 3, null }
+                });
+
+            migrationBuilder.InsertData(
+                schema: "security",
+                table: "user",
+                columns: new[] { "id", "created_at", "deleted_at", "email", "password", "person_id", "photo", "status", "updated_at" },
+                values: new object[,]
+                {
+                    { 1, null, null, "ejemplo1@gmail.com", "$2a$11$6LpgqG3XuJ3xbpRp4gcJXeL/pQT79cDv6Vt063Tk5c2klWRpNgR0.", 1, "defaul.jpg", 0, null },
+                    { 2, null, null, "ejemplo2@gmail.com", "$2a$11$6LpgqG3XuJ3xbpRp4gcJXeL/pQT79cDv6Vt063Tk5c2klWRpNgR0.", 2, "defaul.jpg", 0, null },
+                    { 3, null, null, "ejemplo3@gmail.com", "$2a$11$6LpgqG3XuJ3xbpRp4gcJXeL/pQT79cDv6Vt063Tk5c2klWRpNgR0.", 3, "defaul.jpg", 0, null },
+                    { 4, null, null, "ejemplo4@gmail.com", "$2a$11$6LpgqG3XuJ3xbpRp4gcJXeL/pQT79cDv6Vt063Tk5c2klWRpNgR0.", 4, "defaul.jpg", 0, null },
+                    { 5, null, null, "ejemplo5@gmail.com", "$2a$11$6LpgqG3XuJ3xbpRp4gcJXeL/pQT79cDv6Vt063Tk5c2klWRpNgR0.", 5, "defaul.jpg", 0, null }
+                });
+
+            migrationBuilder.InsertData(
+                schema: "security",
+                table: "userRol",
+                columns: new[] { "id", "created_at", "deleted_at", "rol_id", "status", "updated_at", "user_id" },
+                values: new object[,]
+                {
+                    { 1, null, null, 1, 0, null, 1 },
+                    { 2, null, null, 2, 0, null, 2 },
+                    { 3, null, null, 3, 0, null, 3 },
+                    { 4, null, null, 2, 0, null, 4 },
+                    { 5, null, null, 4, 0, null, 5 }
                 });
 
             migrationBuilder.CreateIndex(

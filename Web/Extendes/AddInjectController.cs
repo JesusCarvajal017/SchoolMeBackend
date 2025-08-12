@@ -6,6 +6,7 @@ using Data.Implements.Auth;
 using Data.Implements.Commands;
 using Data.Implements.Querys;
 using Data.Implements.Security;
+using Data.Implements.View;
 using Data.Infrastructure.Interceptors;
 using Data.Interfaces.Group.Commands;
 using Data.Interfaces.Group.Querys;
@@ -75,6 +76,7 @@ namespace Web.Extendes
             services.AddScoped<IGenericHerlpers, GenericHelpers>();
   
             services.AddScoped<LogginDbCommandsInterceptor>();
+            services.AddScoped<ViewData>();
 
 
 

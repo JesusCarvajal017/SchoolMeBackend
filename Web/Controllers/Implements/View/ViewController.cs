@@ -4,7 +4,7 @@ using Entity.Dtos.Security.Auth;
 using Microsoft.AspNetCore.Mvc;
 using Utilities.Exceptions;
 
-namespace Web.Controllers.Implements.Auth
+namespace Web.Controllers.Implements.View
 {
     //[Route("api/[controller]")]
     [ApiController]

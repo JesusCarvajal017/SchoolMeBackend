@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Entity.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    [Migration("20250811012948_SchoolMeDb")]
-    partial class SchoolMeDb
+    [Migration("20250812040413_dbSchoolMe")]
+    partial class dbSchoolMe
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -3005,7 +3005,7 @@ namespace Entity.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)")
-                        .HasColumnName("phono");
+                        .HasColumnName("photo");
 
                     b.Property<int>("Status")
                         .HasColumnType("integer")
@@ -3021,6 +3021,53 @@ namespace Entity.Migrations
                         .IsUnique();
 
                     b.ToTable("user", "security");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "ejemplo1@gmail.com",
+                            Password = "$2a$11$6LpgqG3XuJ3xbpRp4gcJXeL/pQT79cDv6Vt063Tk5c2klWRpNgR0.",
+                            PersonId = 1,
+                            Photo = "defaul.jpg",
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "ejemplo2@gmail.com",
+                            Password = "$2a$11$6LpgqG3XuJ3xbpRp4gcJXeL/pQT79cDv6Vt063Tk5c2klWRpNgR0.",
+                            PersonId = 2,
+                            Photo = "defaul.jpg",
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "ejemplo3@gmail.com",
+                            Password = "$2a$11$6LpgqG3XuJ3xbpRp4gcJXeL/pQT79cDv6Vt063Tk5c2klWRpNgR0.",
+                            PersonId = 3,
+                            Photo = "defaul.jpg",
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Email = "ejemplo4@gmail.com",
+                            Password = "$2a$11$6LpgqG3XuJ3xbpRp4gcJXeL/pQT79cDv6Vt063Tk5c2klWRpNgR0.",
+                            PersonId = 4,
+                            Photo = "defaul.jpg",
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Email = "ejemplo5@gmail.com",
+                            Password = "$2a$11$6LpgqG3XuJ3xbpRp4gcJXeL/pQT79cDv6Vt063Tk5c2klWRpNgR0.",
+                            PersonId = 5,
+                            Photo = "defaul.jpg",
+                            Status = 0
+                        });
                 });
 
             modelBuilder.Entity("Entity.Model.Security.UserRol", b =>
@@ -3063,6 +3110,43 @@ namespace Entity.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("userRol", "security");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            RolId = 1,
+                            Status = 0,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            RolId = 2,
+                            Status = 0,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            RolId = 3,
+                            Status = 0,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            RolId = 2,
+                            Status = 0,
+                            UserId = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            RolId = 4,
+                            Status = 0,
+                            UserId = 5
+                        });
                 });
 
             modelBuilder.Entity("Entity.Model.Business.DataBasic", b =>

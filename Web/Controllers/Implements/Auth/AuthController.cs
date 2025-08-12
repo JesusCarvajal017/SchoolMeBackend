@@ -7,7 +7,7 @@ namespace Web.Controllers.Implements.Auth
 {
     //[Route("api/[controller]")]
     [ApiController]
-    [Route("application/json")]
+    [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
 
