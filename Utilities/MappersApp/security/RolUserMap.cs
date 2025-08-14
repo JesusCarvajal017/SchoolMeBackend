@@ -8,7 +8,13 @@ namespace Utilities.MappersApp.security
     {
         public RolUserMap()
         {
-            CreateMap <UserRol, UserRolDto>().ReverseMap();
+            CreateMap <UserRol, UserRolDto>()
+                .ForMember(dest =>dest.NameUser , opt => opt.MapFrom(ur => ur.User.Person.FisrtName))
+                .ForMember(dest => dest.RolName, opt => opt.MapFrom(ur => ur.Rol.Name))
+                .ReverseMap();
+
+
+
             CreateMap<UserRol, UserRolCreateDtos>().ReverseMap();
         } 
    

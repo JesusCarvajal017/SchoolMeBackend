@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Entity.ConfigModels.Security
 {
-    internal class UserRolConfig : IEntityTypeConfiguration<UserRol>
+    public class UserRolConfig : IEntityTypeConfiguration<UserRol>
     {
         public void Configure(EntityTypeBuilder<UserRol> builder)
         {
@@ -41,31 +41,36 @@ namespace Entity.ConfigModels.Security
                 {
                     Id = 1,
                     UserId = 1,
-                    RolId = 1
+                    RolId = 1,
+                    Status = 1,
                 },
                 new UserRol
                 {
                     Id = 2,
                     UserId = 2,
-                    RolId = 2
+                    RolId = 2,
+                    Status = 1,
                 },
                 new UserRol
                 {
                     Id = 3,
                     UserId = 3,
-                    RolId = 3
+                    RolId = 3,
+                    Status = 1,
                 },
                 new UserRol
                 {
                     Id = 4,
                     UserId = 4,
-                    RolId = 2
+                    RolId = 2,
+                    Status = 1,
                 },
                 new UserRol
                 {
                     Id = 5,
                     UserId = 5,
-                    RolId = 4
+                    RolId = 4,
+                    Status = 1,
                 }
             );
 

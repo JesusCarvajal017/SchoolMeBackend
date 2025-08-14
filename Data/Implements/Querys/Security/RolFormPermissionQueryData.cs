@@ -4,15 +4,15 @@ using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace Data.Implements.Security
+namespace Data.Implements.Querys.Security
 {
-    public class RolFormPermissionData : BaseGenericQuerysData<RolFormPermission> 
+    public class RolFormPermissionQueryData : BaseGenericQuerysData<RolFormPermission> 
     {
 
-        protected readonly ILogger<RolFormPermissionData> _logger;
+        protected readonly ILogger<RolFormPermissionQueryData> _logger;
         protected readonly AplicationDbContext _context;
 
-        public RolFormPermissionData(AplicationDbContext context, ILogger<RolFormPermissionData> logger) : base(context, logger)
+        public RolFormPermissionQueryData(AplicationDbContext context, ILogger<RolFormPermissionQueryData> logger) : base(context, logger)
         {
             _context = context;
             _logger = logger;

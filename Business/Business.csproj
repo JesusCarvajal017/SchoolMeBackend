@@ -7,14 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Data\Data.csproj" />
-    <ProjectReference Include="..\Entity\Entity.csproj" />
-    <ProjectReference Include="..\Utilities\Utilities.csproj" />
+    <Compile Remove="Implements\CQRS\**" />
+    <Compile Remove="Implements\Security\**" />
+    <EmbeddedResource Remove="Implements\CQRS\**" />
+    <EmbeddedResource Remove="Implements\Security\**" />
+    <None Remove="Implements\CQRS\**" />
+    <None Remove="Implements\Security\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Implements\CQRS\Security\" />
-    <Folder Include="Implements\Security\" />
+    <ProjectReference Include="..\Data\Data.csproj" />
+    <ProjectReference Include="..\Entity\Entity.csproj" />
+    <ProjectReference Include="..\Utilities\Utilities.csproj" />
   </ItemGroup>
 
 </Project>

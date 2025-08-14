@@ -8,7 +8,7 @@ namespace Web.Controllers.Implements.View
 {
     //[Route("api/[controller]")]
     [ApiController]
-    [Route("application/json")]
+    [Route("api/Menu")]
     public class ViewController : ControllerBase
     {
         // no deberia conectarse directamente con la data

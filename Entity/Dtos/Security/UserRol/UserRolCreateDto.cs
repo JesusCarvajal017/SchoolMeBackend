@@ -1,8 +1,9 @@
-﻿namespace Entity.Dtos.Security.UserRol
+﻿using Entity.Dtos.Global;
+
+namespace Entity.Dtos.Security.UserRol
 {
-    public class UserRolCreateDtos
+    public class UserRolCreateDtos : ABaseDto
     {
-        public int Id { get; set; }
         public int UserId { get; set; }
         public int RolId { get; set; }
     }

@@ -4,15 +4,15 @@ using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace Data.Implements.Security
+namespace Data.Implements.Querys.Security
 {
-    public class ModuleFormData : BaseGenericQuerysData<ModuleForm> 
+    public class ModuleFormQueryData : BaseGenericQuerysData<ModuleForm> 
     {
 
-        protected readonly ILogger<ModuleFormData> _logger;
+        protected readonly ILogger<ModuleFormQueryData> _logger;
         protected readonly AplicationDbContext _context;
 
-        public ModuleFormData(AplicationDbContext context, ILogger<ModuleFormData> logger) : base(context, logger)
+        public ModuleFormQueryData(AplicationDbContext context, ILogger<ModuleFormQueryData> logger) : base(context, logger)
         {
             _context = context;
             _logger = logger;

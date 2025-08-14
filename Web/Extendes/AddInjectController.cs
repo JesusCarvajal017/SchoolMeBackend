@@ -1,15 +1,18 @@
 ﻿using Business.Implements.Auth;
 using Business.Implements.Bases;
+using Business.Implements.Querys.Security;
 using Business.Interfaces.Commands;
 using Business.Interfaces.Querys;
 using Data.Implements.Auth;
 using Data.Implements.Commands;
+using Data.Implements.Commands.Security;
 using Data.Implements.Querys;
-using Data.Implements.Security;
+using Data.Implements.Querys.Security;
 using Data.Implements.View;
 using Data.Infrastructure.Interceptors;
 using Data.Interfaces.Group.Commands;
 using Data.Interfaces.Group.Querys;
+using Entity.Dtos.Security.UserRol;
 using Entity.Model.Security;
 using Utilities.Helpers.Validations;
 using Utilities.Helpers.Validations.implemets;
@@ -46,23 +49,39 @@ namespace Web.Extendes
 
             // ============================  inyecciones concretas ============================ 
 
-            // ======== QUERYS ========
+            // ================ QUERYS ================
 
+            // QUERY DATA 
             services.AddScoped(
                 typeof(IQuerys<RolFormPermission>),
-                typeof(RolFormPermissionData)
+                typeof(RolFormPermissionQueryData)
             );
 
             services.AddScoped(
                 typeof(IQuerys<ModuleForm>),
-                typeof(ModuleFormData)
+                typeof(ModuleFormQueryData)
             );
 
+            services.AddScoped<IQuerysUserRol, UserRolQueryData>();
+            //services.AddScoped(
+            //    typeof(IQuerys<UserRol>),
+            //    typeof(UserRolQueryData)
+            //);
 
-            // ======== COMMANDS ========
+
+            // QUERY BUSINESS
+            //services.AddScoped(
+            //    typeof(IQueryServices<UserRol, UserRolDto>),
+            //    typeof(UserRolQueryBusiness)
+            //);
+
+            services.AddScoped<IQueryUserRolServices, UserRolQueryBusiness>();
+
+
+            // ================ COMMANDS ================
             services.AddScoped(
                 typeof(ICommands<User>),
-                typeof(UserData)
+                typeof(UserCommandData)
             );
 
             //services.AddScoped();

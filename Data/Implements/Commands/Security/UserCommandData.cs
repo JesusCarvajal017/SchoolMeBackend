@@ -4,15 +4,15 @@ using Entity.Model.Security;
 using Microsoft.Extensions.Logging;
 using Utilities.helpers;
 
-namespace Data.Implements.Security
+namespace Data.Implements.Commands.Security
 {
-    public class UserData : BaseGenericCommandsData<User> 
+    public class UserCommandData : BaseGenericCommandsData<User> 
     {
 
-        protected readonly ILogger<UserData> _logger;
+        protected readonly ILogger<UserCommandData> _logger;
         protected readonly AplicationDbContext _context;
 
-        public UserData(AplicationDbContext context, ILogger<UserData> logger) : base(context, logger)
+        public UserCommandData(AplicationDbContext context, ILogger<UserCommandData> logger) : base(context, logger)
         {
             _context = context;
             _logger = logger;

@@ -1,7 +1,6 @@
 ﻿using Business.Interfaces.Commands;
 using Business.Interfaces.Querys;
 using Entity.Dtos.Security.Module;
-using Entity.Dtos.Security.Rol;
 using Entity.Model.Security;
 using Web.Controllers.Implements.Abstract;
 
