@@ -3,6 +3,7 @@ using Business.Interfaces.Querys;
 using Entity.Dtos.Global;
 using Entity.Model.Global;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 
 namespace Web.Controllers.Implements.Abstract
 {
@@ -29,7 +30,8 @@ namespace Web.Controllers.Implements.Abstract
         }
 
         [HttpGet]
-        public virtual async Task<IActionResult> GetAll() => Ok(await _querySvc.GetAllServices());
+        [OutputCache]
+        public virtual async Task<IActionResult> GetAll(int? status) => Ok(await _querySvc.GetAllServices(status));
 
         [HttpGet("{id}")]
         public virtual async Task<IActionResult> GetById(int id) => Ok(await _querySvc.GetByIdServices(id));

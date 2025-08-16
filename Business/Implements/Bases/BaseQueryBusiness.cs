@@ -100,11 +100,11 @@ namespace Business.Implements.Bases
         /// 3. Registra la operación en el log
         /// 4. Maneja y registra cualquier error que pueda ocurrir
         /// </remarks>
-        public override async Task<IEnumerable<D>> GetAllServices()
+        public override async Task<IEnumerable<D>> GetAllServices(int? status)
         {
             try
             {
-                var entities = await _data.QueryAllAsyn();
+                var entities = await _data.QueryAllAsyn(status);
                 _logger.LogInformation($"Obteniendo todos los registros de {typeof(T).Name}");
                 return _mapper.Map<IEnumerable<D>>(entities);
             }

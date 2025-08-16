@@ -20,7 +20,7 @@ namespace Data.Implements.Base
         }
 
         // Métodos abstractos que deben ser implementados por las clases derivadas
-        public abstract Task<IEnumerable<T>> QueryAllAsyn();
+        public abstract Task<IEnumerable<T>> QueryAllAsyn(int? status);
         public abstract Task<T> QueryById(int id);
     }
 }

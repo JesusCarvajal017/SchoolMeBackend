@@ -4,6 +4,7 @@ using Entity.Dtos.Security.UserRol;
 using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Data.Implements.Querys.Security
 {
@@ -19,32 +20,37 @@ namespace Data.Implements.Querys.Security
         }
 
 
-        public override async Task<IEnumerable<UserRol>> QueryAllAsyn()
+        public override async Task<IEnumerable<UserRol>> QueryAllAsyn(int? status)
         {
             try
             {
-                var model = await _context.UserRol
-                .Select(ur => new UserRol
-                {
-                    Id = ur.Id,
-                    UserId = ur.UserId,
-                    RolId = ur.RolId,
-                    Status = ur.Status,
-                    User = new User
-                    {
-                        Person = new Person
-                        {
-                            FisrtName = ur.User.Person.FisrtName,
-                            //SecondName = ur.User.Person.SecondName
-                        }
-                    },
-                    Rol = new Rol
-                    {
-                        Name = ur.Rol.Name
-                    }
-                })
-                .ToListAsync();
+                IQueryable<UserRol> query = _context.UserRol
+                    .AsNoTracking();
 
+                if (status.HasValue)
+                    query = query.Where(x => x.Status == status.Value);
+
+                var model = await query
+                    .Select(ur => new UserRol
+                    {
+                        Id = ur.Id,
+                        UserId = ur.UserId,
+                        RolId = ur.RolId,
+                        Status = ur.Status,
+                        User = new User
+                        {
+                            Person = new Person
+                            {
+                                FisrtName = ur.User.Person.FisrtName,
+                                //SecondName = ur.User.Person.SecondName
+                            }
+                        },
+                        Rol = new Rol
+                        {
+                            Name = ur.Rol.Name
+                        }
+                    })
+                    .ToListAsync();
 
                 //ToListAsync();
                 _logger.LogInformation("Consulta de la enidad {Entity} se realizo exitosamente", typeof(UserRol).Name);

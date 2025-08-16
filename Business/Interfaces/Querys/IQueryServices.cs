@@ -2,7 +2,7 @@
 {
     public interface IQueryServices<TEntity,TReadDto>
     {
-        Task<IEnumerable<TReadDto>> GetAllServices();
+        Task<IEnumerable<TReadDto>> GetAllServices(int? status);
         Task<TReadDto> GetByIdServices(int id);
     }
 }

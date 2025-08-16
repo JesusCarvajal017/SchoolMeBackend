@@ -3,6 +3,7 @@ using Entity.Context.Main;
 using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Org.BouncyCastle.Tls;
 
 namespace Data.Implements.Querys.Security
 {
@@ -18,14 +19,20 @@ namespace Data.Implements.Querys.Security
             _logger = logger;
         }
 
-        public override async Task<IEnumerable<ModuleForm>> QueryAllAsyn()
+        public override async Task<IEnumerable<ModuleForm>> QueryAllAsyn(int? status)
         {
             try
             {
-                var model = await _context.ModuleForm
-                                .Include(ur => ur.Form)
-                                .Include(ur => ur.Module)
-                                .ToListAsync();
+                IQueryable<ModuleForm> query = _dbSet
+                    .Include(ur => ur.Form)
+                    .Include(ur => ur.Module);
+
+                // Filtro opcional de si traer por status
+                if (status.HasValue)
+                    query = query.Where(x => x.Status == status.Value);
+                   
+                var model = await query.ToListAsync();
+                      
 
                 _logger.LogInformation("Consulta de la enidad {Entity} se realizo exitosamente", typeof(ModuleForm).Name);
                 return model;

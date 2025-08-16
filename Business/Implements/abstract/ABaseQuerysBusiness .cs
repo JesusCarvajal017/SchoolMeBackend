@@ -15,7 +15,7 @@ namespace Business.Implements.abastract
         /// Tarea asincrona que representa la operaci?n y contiene una colecci?n de entidades 
         /// cuando se completa correctamente.
         /// </returns>
-        public abstract Task<IEnumerable<D>> GetAllServices();
+        public abstract Task<IEnumerable<D>> GetAllServices(int? status);
 
         /// <summary>
         /// Recupera una entidad espec?fica por su identificador ?nico.

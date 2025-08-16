@@ -2,6 +2,6 @@
 { 
     public interface IQueryAll<T>
     {
-        Task<IEnumerable<T>> QueryAllAsyn(); 
+        Task<IEnumerable<T>> QueryAllAsyn(int? status); 
     }
 }

@@ -23,6 +23,15 @@ builder.Services.AddViewAuthApi();
 builder.Services.AddHelpersValidation();
 builder.Services.AddCustomCors(builder.Configuration);
 
+
+// CACHE
+builder.Services.AddOutputCache((options) =>
+{
+
+    // se puede configurar para minutos, horas dias ..
+    options.DefaultExpirationTimeSpan = TimeSpan.FromSeconds(10);
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -38,6 +47,9 @@ if (app.Environment.IsDevelopment())
         c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
     });
 }
+
+// Middleware del cache
+app.UseOutputCache();
 
 app.UseHttpsRedirection();
 app.UseCors();
