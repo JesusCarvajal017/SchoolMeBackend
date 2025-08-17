@@ -55,5 +55,8 @@ namespace Web.Controllers.Implements.Abstract
 
         [HttpDelete("{id}")]
         public virtual async Task<IActionResult> Delete(int id) => Ok(await _cmdSvc.DeleteServices(id));
+
+        [HttpDelete("{id:int}/{status:int}")]
+        public virtual async Task<IActionResult> DeleteLogica(int id, int status) => Ok(await _cmdSvc.DeleteLogicalServices(id, status));
     }
 }

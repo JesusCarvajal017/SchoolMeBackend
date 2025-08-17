@@ -36,5 +36,8 @@ namespace Business.Implements.abastract
         /// si la eliminaci?n fue exitosa (true) o si la entidad no exist?a (false).
         /// </returns>
         public abstract Task<bool> DeleteServices(int id);
+
+
+        public abstract Task<bool> DeleteLogicalServices(int id, int status);
     }
 }

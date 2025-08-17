@@ -7,7 +7,7 @@ namespace Data.Interfaces.Group.Commands
     /// Define lo metodos comunes de comandos comunes
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface ICommands<T> : IInsert<T>, IUpdate<T>, IDelete, IUpdatePartial<T> where T : ABaseEntity
+    public interface ICommands<T> : IInsert<T>, IUpdate<T>, IDelete, IUpdatePartial<T>, IDeleteLogical<T> where T : ABaseEntity
     {
     }
 }

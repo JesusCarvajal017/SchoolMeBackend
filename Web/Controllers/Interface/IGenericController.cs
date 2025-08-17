@@ -9,5 +9,6 @@ namespace Web.Controllers.Interface
         Task<IActionResult> Create(TDto dto);
         Task<IActionResult> Update(TDto dto);
         Task<IActionResult> Delete(int id);
+        Task<IActionResult> DeleteLogical(int id, int status);
     }
 }

@@ -2,7 +2,6 @@
 {
     public interface IDeleteLogical<T>
     {
-        Task<bool> DeleteLogicalAsyn(int id, T Entity);
-
+        Task<bool> DeleteLogicalAsyn(int id, int status);
     }
 }

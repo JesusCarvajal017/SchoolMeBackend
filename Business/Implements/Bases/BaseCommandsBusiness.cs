@@ -176,5 +176,35 @@ namespace Business.Implements.Bases
             }
         }
 
+
+        /// <summary>
+        /// Elimina logico de una entidad del sistema por su identificador.
+        /// </summary>
+        /// <param name="id">El identificador único de la entidad a eliminar</param>
+        /// /// <param name="status">El identificador único de la entidad a eliminar</param>
+        /// <returns>
+        /// true si la entidad fue eliminada exitosamente; false en caso contrario
+        /// </returns>
+        /// <exception cref="Exception">
+        /// Se relanza cualquier excepción que ocurra durante la operación de eliminación
+        /// </exception>
+        /// <remarks>
+        /// Esta operación es irreversible y elimina permanentemente la entidad de la base de datos.
+        /// Se recomienda verificar la existencia de la entidad antes de intentar eliminarla.
+        /// </remarks>
+        public override async Task<bool> DeleteLogicalServices(int id, int status)
+        {
+            try
+            {
+                _logger.LogInformation($"Cambiando de estado {typeof(T).Name} con ID: {id}");
+                return await _data.DeleteLogicalAsyn(id, status);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error al cambiar el estado {typeof(T).Name} con ID {id}: {ex.Message}");
+                throw;
+            }
+        }
+
     }
 }
