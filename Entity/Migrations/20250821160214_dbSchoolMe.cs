@@ -513,32 +513,32 @@ namespace Entity.Migrations
                 columns: new[] { "id", "created_at", "deleted_at", "description", "name", "order", "path", "status", "updated_at" },
                 values: new object[,]
                 {
-                    { 1, null, null, "Vista de todos los registros administrativos", "Todos", 1, "", 0, null },
-                    { 2, null, null, "Gestión de personal administrativo", "Administrativos", 2, "", 0, null },
-                    { 3, null, null, "Gestión de docentes", "Docentes", 3, "", 0, null },
-                    { 4, null, null, "Gestión de estudiantes", "Niños", 4, "", 0, null },
-                    { 5, null, null, "Gestión de acudientes", "Acudientes", 5, "", 0, null },
-                    { 6, null, null, "Gestión de aulas", "Aulas", 1, "", 0, null },
-                    { 7, null, null, "Gestión de agrupaciones", "Agrupación", 2, "", 0, null },
-                    { 8, null, null, "Asignación de directores de grupo", "Director de Grupo", 3, "", 0, null },
-                    { 9, null, null, "Gestión de carga académica", "Carga Académica", 4, "", 0, null },
-                    { 10, null, null, "Gestión de composiciones", "Composición", 1, "", 0, null },
-                    { 11, null, null, "Gestión de agendas", "Agendas", 2, "", 0, null },
-                    { 12, null, null, "Asignación de agendas", "Asignación", 3, "", 0, null },
-                    { 13, null, null, "Gestión de grados", "Grados", 1, "", 0, null },
-                    { 14, null, null, "Gestión de grupos", "Grupos", 2, "", 0, null },
-                    { 15, null, null, "Gestión de tipos de identificación", "Tipo Identificación", 3, "", 0, null },
-                    { 16, null, null, "Gestión de EPS", "EPS", 4, "", 0, null },
-                    { 17, null, null, "Gestión de municipios", "Municipios", 5, "", 0, null },
-                    { 18, null, null, "Gestión de tipos de sangre", "RH", 6, "", 0, null },
-                    { 19, null, null, "Gestión de roles de usuario", "Roles", 1, "", 0, null },
-                    { 20, null, null, "Gestión de permisos", "Permisos", 2, "", 0, null },
-                    { 21, null, null, "Gestión de módulos", "Módulos", 3, "", 0, null },
-                    { 22, null, null, "Gestión de formularios", "Formularios", 4, "", 0, null },
-                    { 23, null, null, "Asignación de roles a usuarios", "Asignación Roles", 5, "", 0, null },
-                    { 24, null, null, "Asignación de módulos a roles", "Asignación Módulos", 6, "", 0, null },
-                    { 25, null, null, "Asignación de permisos a roles", "Asignación de Permisos", 7, "", 0, null },
-                    { 26, null, null, "Gestión de usuarios", "Usuarios", 8, "", 0, null }
+                    { 1, null, null, "Vista de todos los registros administrativos", "Todos", 1, "todos", 0, null },
+                    { 2, null, null, "Gestión de personal administrativo", "Administrativos", 2, "administrativos", 0, null },
+                    { 3, null, null, "Gestión de docentes", "Docentes", 3, "docentes", 0, null },
+                    { 4, null, null, "Gestión de estudiantes", "Niños", 4, "ninos", 0, null },
+                    { 5, null, null, "Gestión de acudientes", "Acudientes", 5, "acudientes", 0, null },
+                    { 6, null, null, "Gestión de aulas", "Aulas", 1, "aulas", 0, null },
+                    { 7, null, null, "Gestión de agrupaciones", "Agrupación", 2, "agrupación", 0, null },
+                    { 8, null, null, "Asignación de directores de grupo", "Director de Grupo", 3, "directorGrupo", 0, null },
+                    { 9, null, null, "Gestión de carga académica", "Carga Académica", 4, "cargaAcademica", 0, null },
+                    { 10, null, null, "Gestión de composiciones", "Composición", 1, "composicion", 0, null },
+                    { 11, null, null, "Gestión de agendas", "Agendas", 2, "agendas", 0, null },
+                    { 12, null, null, "Asignación de agendas", "Asignación", 3, "asignacion", 0, null },
+                    { 13, null, null, "Gestión de grados", "Grados", 1, "grados", 0, null },
+                    { 14, null, null, "Gestión de grupos", "Grupos", 2, "grupos", 0, null },
+                    { 15, null, null, "Gestión de tipos de identificación", "Tipo Identificación", 3, "tipoIdentificacion", 0, null },
+                    { 16, null, null, "Gestión de EPS", "EPS", 4, "eps", 0, null },
+                    { 17, null, null, "Gestión de municipios", "Municipios", 5, "municipio", 0, null },
+                    { 18, null, null, "Gestión de tipos de sangre", "RH", 6, "rh", 0, null },
+                    { 19, null, null, "Gestión de roles de usuario", "Roles", 1, "roles", 0, null },
+                    { 20, null, null, "Gestión de permisos", "Permisos", 2, "permisos", 0, null },
+                    { 21, null, null, "Gestión de módulos", "Módulos", 3, "modulos", 0, null },
+                    { 22, null, null, "Gestión de formularios", "Formularios", 4, "formularios", 0, null },
+                    { 23, null, null, "Asignación de roles a usuarios", "Asignación Roles", 5, "asignacionRoles", 0, null },
+                    { 24, null, null, "Asignación de módulos a roles", "Asignación Módulos", 6, "asiganacionModulos", 0, null },
+                    { 25, null, null, "Asignación de permisos a roles", "Asignación de Permisos", 7, "asignacionPermisos", 0, null },
+                    { 26, null, null, "Gestión de usuarios", "Usuarios", 8, "usuarios", 0, null }
                 });
 
             migrationBuilder.InsertData(
@@ -847,6 +847,40 @@ namespace Entity.Migrations
                 });
 
             migrationBuilder.InsertData(
+                schema: "security",
+                table: "rolFormPermission",
+                columns: new[] { "id", "created_at", "deleted_at", "form_id", "permission_id", "rol_id", "status", "updated_at" },
+                values: new object[,]
+                {
+                    { 1, null, null, 1, 1, 1, 1, null },
+                    { 2, null, null, 2, 1, 1, 1, null },
+                    { 3, null, null, 3, 1, 1, 1, null },
+                    { 4, null, null, 4, 1, 1, 1, null },
+                    { 5, null, null, 5, 1, 1, 1, null },
+                    { 6, null, null, 6, 1, 1, 1, null },
+                    { 7, null, null, 7, 1, 1, 1, null },
+                    { 8, null, null, 8, 1, 1, 1, null },
+                    { 9, null, null, 9, 1, 1, 1, null },
+                    { 10, null, null, 10, 1, 1, 1, null },
+                    { 11, null, null, 11, 1, 1, 1, null },
+                    { 12, null, null, 12, 1, 1, 1, null },
+                    { 13, null, null, 13, 1, 1, 1, null },
+                    { 14, null, null, 14, 1, 1, 1, null },
+                    { 15, null, null, 15, 1, 1, 1, null },
+                    { 16, null, null, 16, 1, 1, 1, null },
+                    { 17, null, null, 17, 1, 1, 1, null },
+                    { 18, null, null, 18, 1, 1, 1, null },
+                    { 19, null, null, 19, 1, 1, 1, null },
+                    { 20, null, null, 20, 1, 1, 1, null },
+                    { 21, null, null, 21, 1, 1, 1, null },
+                    { 22, null, null, 22, 1, 1, 1, null },
+                    { 23, null, null, 23, 1, 1, 1, null },
+                    { 24, null, null, 24, 1, 1, 1, null },
+                    { 25, null, null, 25, 1, 1, 1, null },
+                    { 26, null, null, 26, 1, 1, 1, null }
+                });
+
+            migrationBuilder.InsertData(
                 schema: "business",
                 table: "dataBasic",
                 columns: new[] { "id", "adress", "birthDate", "created_at", "deleted_at", "epsId", "materialStatusId", "munisipalityId", "personaId", "rhId", "status", "stratumStatus", "updated_at" },
@@ -878,11 +912,11 @@ namespace Entity.Migrations
                 columns: new[] { "id", "created_at", "deleted_at", "rol_id", "status", "updated_at", "user_id" },
                 values: new object[,]
                 {
-                    { 1, null, null, 1, 0, null, 1 },
-                    { 2, null, null, 2, 0, null, 2 },
-                    { 3, null, null, 3, 0, null, 3 },
-                    { 4, null, null, 2, 0, null, 4 },
-                    { 5, null, null, 4, 0, null, 5 }
+                    { 1, null, null, 1, 1, null, 1 },
+                    { 2, null, null, 2, 1, null, 2 },
+                    { 3, null, null, 3, 1, null, 3 },
+                    { 4, null, null, 2, 1, null, 4 },
+                    { 5, null, null, 4, 1, null, 5 }
                 });
 
             migrationBuilder.CreateIndex(

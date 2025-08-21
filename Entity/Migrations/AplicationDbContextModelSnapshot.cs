@@ -2051,7 +2051,7 @@ namespace Entity.Migrations
                             Description = "Vista de todos los registros administrativos",
                             Name = "Todos",
                             Order = 1,
-                            Path = "",
+                            Path = "todos",
                             Status = 0
                         },
                         new
@@ -2060,7 +2060,7 @@ namespace Entity.Migrations
                             Description = "Gestión de personal administrativo",
                             Name = "Administrativos",
                             Order = 2,
-                            Path = "",
+                            Path = "administrativos",
                             Status = 0
                         },
                         new
@@ -2069,7 +2069,7 @@ namespace Entity.Migrations
                             Description = "Gestión de docentes",
                             Name = "Docentes",
                             Order = 3,
-                            Path = "",
+                            Path = "docentes",
                             Status = 0
                         },
                         new
@@ -2078,7 +2078,7 @@ namespace Entity.Migrations
                             Description = "Gestión de estudiantes",
                             Name = "Niños",
                             Order = 4,
-                            Path = "",
+                            Path = "ninos",
                             Status = 0
                         },
                         new
@@ -2087,7 +2087,7 @@ namespace Entity.Migrations
                             Description = "Gestión de acudientes",
                             Name = "Acudientes",
                             Order = 5,
-                            Path = "",
+                            Path = "acudientes",
                             Status = 0
                         },
                         new
@@ -2096,7 +2096,7 @@ namespace Entity.Migrations
                             Description = "Gestión de aulas",
                             Name = "Aulas",
                             Order = 1,
-                            Path = "",
+                            Path = "aulas",
                             Status = 0
                         },
                         new
@@ -2105,7 +2105,7 @@ namespace Entity.Migrations
                             Description = "Gestión de agrupaciones",
                             Name = "Agrupación",
                             Order = 2,
-                            Path = "",
+                            Path = "agrupación",
                             Status = 0
                         },
                         new
@@ -2114,7 +2114,7 @@ namespace Entity.Migrations
                             Description = "Asignación de directores de grupo",
                             Name = "Director de Grupo",
                             Order = 3,
-                            Path = "",
+                            Path = "directorGrupo",
                             Status = 0
                         },
                         new
@@ -2123,7 +2123,7 @@ namespace Entity.Migrations
                             Description = "Gestión de carga académica",
                             Name = "Carga Académica",
                             Order = 4,
-                            Path = "",
+                            Path = "cargaAcademica",
                             Status = 0
                         },
                         new
@@ -2132,7 +2132,7 @@ namespace Entity.Migrations
                             Description = "Gestión de composiciones",
                             Name = "Composición",
                             Order = 1,
-                            Path = "",
+                            Path = "composicion",
                             Status = 0
                         },
                         new
@@ -2141,7 +2141,7 @@ namespace Entity.Migrations
                             Description = "Gestión de agendas",
                             Name = "Agendas",
                             Order = 2,
-                            Path = "",
+                            Path = "agendas",
                             Status = 0
                         },
                         new
@@ -2150,7 +2150,7 @@ namespace Entity.Migrations
                             Description = "Asignación de agendas",
                             Name = "Asignación",
                             Order = 3,
-                            Path = "",
+                            Path = "asignacion",
                             Status = 0
                         },
                         new
@@ -2159,7 +2159,7 @@ namespace Entity.Migrations
                             Description = "Gestión de grados",
                             Name = "Grados",
                             Order = 1,
-                            Path = "",
+                            Path = "grados",
                             Status = 0
                         },
                         new
@@ -2168,7 +2168,7 @@ namespace Entity.Migrations
                             Description = "Gestión de grupos",
                             Name = "Grupos",
                             Order = 2,
-                            Path = "",
+                            Path = "grupos",
                             Status = 0
                         },
                         new
@@ -2177,7 +2177,7 @@ namespace Entity.Migrations
                             Description = "Gestión de tipos de identificación",
                             Name = "Tipo Identificación",
                             Order = 3,
-                            Path = "",
+                            Path = "tipoIdentificacion",
                             Status = 0
                         },
                         new
@@ -2186,7 +2186,7 @@ namespace Entity.Migrations
                             Description = "Gestión de EPS",
                             Name = "EPS",
                             Order = 4,
-                            Path = "",
+                            Path = "eps",
                             Status = 0
                         },
                         new
@@ -2195,7 +2195,7 @@ namespace Entity.Migrations
                             Description = "Gestión de municipios",
                             Name = "Municipios",
                             Order = 5,
-                            Path = "",
+                            Path = "municipio",
                             Status = 0
                         },
                         new
@@ -2204,7 +2204,7 @@ namespace Entity.Migrations
                             Description = "Gestión de tipos de sangre",
                             Name = "RH",
                             Order = 6,
-                            Path = "",
+                            Path = "rh",
                             Status = 0
                         },
                         new
@@ -2213,7 +2213,7 @@ namespace Entity.Migrations
                             Description = "Gestión de roles de usuario",
                             Name = "Roles",
                             Order = 1,
-                            Path = "",
+                            Path = "roles",
                             Status = 0
                         },
                         new
@@ -2222,7 +2222,7 @@ namespace Entity.Migrations
                             Description = "Gestión de permisos",
                             Name = "Permisos",
                             Order = 2,
-                            Path = "",
+                            Path = "permisos",
                             Status = 0
                         },
                         new
@@ -2231,7 +2231,7 @@ namespace Entity.Migrations
                             Description = "Gestión de módulos",
                             Name = "Módulos",
                             Order = 3,
-                            Path = "",
+                            Path = "modulos",
                             Status = 0
                         },
                         new
@@ -2240,7 +2240,7 @@ namespace Entity.Migrations
                             Description = "Gestión de formularios",
                             Name = "Formularios",
                             Order = 4,
-                            Path = "",
+                            Path = "formularios",
                             Status = 0
                         },
                         new
@@ -2249,7 +2249,7 @@ namespace Entity.Migrations
                             Description = "Asignación de roles a usuarios",
                             Name = "Asignación Roles",
                             Order = 5,
-                            Path = "",
+                            Path = "asignacionRoles",
                             Status = 0
                         },
                         new
@@ -2258,7 +2258,7 @@ namespace Entity.Migrations
                             Description = "Asignación de módulos a roles",
                             Name = "Asignación Módulos",
                             Order = 6,
-                            Path = "",
+                            Path = "asiganacionModulos",
                             Status = 0
                         },
                         new
@@ -2267,7 +2267,7 @@ namespace Entity.Migrations
                             Description = "Asignación de permisos a roles",
                             Name = "Asignación de Permisos",
                             Order = 7,
-                            Path = "",
+                            Path = "asignacionPermisos",
                             Status = 0
                         },
                         new
@@ -2276,7 +2276,7 @@ namespace Entity.Migrations
                             Description = "Gestión de usuarios",
                             Name = "Usuarios",
                             Order = 8,
-                            Path = "",
+                            Path = "usuarios",
                             Status = 0
                         });
                 });
@@ -2963,6 +2963,216 @@ namespace Entity.Migrations
                     b.HasIndex("RolId");
 
                     b.ToTable("rolFormPermission", "security");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FormId = 1,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            FormId = 2,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            FormId = 3,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            FormId = 4,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            FormId = 5,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            FormId = 6,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            FormId = 7,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            FormId = 8,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 9,
+                            FormId = 9,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            FormId = 10,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 11,
+                            FormId = 11,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 12,
+                            FormId = 12,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 13,
+                            FormId = 13,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 14,
+                            FormId = 14,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 15,
+                            FormId = 15,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 16,
+                            FormId = 16,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 17,
+                            FormId = 17,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 18,
+                            FormId = 18,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 19,
+                            FormId = 19,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 20,
+                            FormId = 20,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 21,
+                            FormId = 21,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 22,
+                            FormId = 22,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 23,
+                            FormId = 23,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 24,
+                            FormId = 24,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 25,
+                            FormId = 25,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 26,
+                            FormId = 26,
+                            PermissionId = 1,
+                            RolId = 1,
+                            Status = 1
+                        });
                 });
 
             modelBuilder.Entity("Entity.Model.Security.User", b =>
@@ -3113,35 +3323,35 @@ namespace Entity.Migrations
                         {
                             Id = 1,
                             RolId = 1,
-                            Status = 0,
+                            Status = 1,
                             UserId = 1
                         },
                         new
                         {
                             Id = 2,
                             RolId = 2,
-                            Status = 0,
+                            Status = 1,
                             UserId = 2
                         },
                         new
                         {
                             Id = 3,
                             RolId = 3,
-                            Status = 0,
+                            Status = 1,
                             UserId = 3
                         },
                         new
                         {
                             Id = 4,
                             RolId = 2,
-                            Status = 0,
+                            Status = 1,
                             UserId = 4
                         },
                         new
                         {
                             Id = 5,
                             RolId = 4,
-                            Status = 0,
+                            Status = 1,
                             UserId = 5
                         });
                 });
