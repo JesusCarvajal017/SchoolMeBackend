@@ -76,6 +76,7 @@ namespace Data.Implements.View
                         best.FormId,
                         best.FormName,
                         best.FormOrd,
+                        best.FormPath,
 
                         best.Permission
                     };
@@ -96,7 +97,8 @@ namespace Data.Implements.View
                         {
                             Name = x.FormName,
                             Permission = x.Permission,
-                            Orden = x.FormOrd
+                            Orden = x.FormOrd,
+                            Path = x.FormPath
                         })
                         .ToList()
                 })
