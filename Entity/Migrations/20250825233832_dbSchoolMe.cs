@@ -235,7 +235,7 @@ namespace Entity.Migrations
                     lastName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     secondLastName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     nation = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    phone = table.Column<int>(type: "integer", nullable: false),
+                    phone = table.Column<long>(type: "bigint", nullable: false),
                     gender = table.Column<int>(type: "integer", nullable: false),
                     age = table.Column<int>(type: "integer", nullable: false),
                     status = table.Column<int>(type: "integer", nullable: false),
@@ -839,11 +839,11 @@ namespace Entity.Migrations
                 columns: new[] { "id", "age", "created_at", "deleted_at", "DocumentTypeId", "fisrtName", "gender", "identification", "lastName", "nation", "phone", "secondLastName", "secondName", "status", "updated_at" },
                 values: new object[,]
                 {
-                    { 1, 32, null, null, 1, "Carlos", 0, 100200300, "Pérez", "Colombia", 300123456, "García", "Andrés", 0, null },
-                    { 2, 25, null, null, 2, "María", 1, 500600700, "López", "Colombia", 310987654, "Martínez", "Fernanda", 0, null },
-                    { 3, 18, null, null, 3, "Juan", 0, 800900100, "Rodríguez", "Colombia", 320456789, "Hernández", "Camilo", 0, null },
-                    { 4, 29, null, null, 1, "Laura", 1, 111222333, "Moreno", "Colombia", 301654987, "Castro", "Isabel", 0, null },
-                    { 5, 21, null, null, 2, "Santiago", 2, 444555666, "Ramírez", "Colombia", 312789654, "Torres", "Esteban", 0, null }
+                    { 1, 32, null, null, 1, "Carlos", 0, 100200300, "Pérez", "Colombia", 300123456L, "García", "Andrés", 0, null },
+                    { 2, 25, null, null, 2, "María", 1, 500600700, "López", "Colombia", 310987654L, "Martínez", "Fernanda", 0, null },
+                    { 3, 18, null, null, 3, "Juan", 0, 800900100, "Rodríguez", "Colombia", 320456789L, "Hernández", "Camilo", 0, null },
+                    { 4, 29, null, null, 1, "Laura", 1, 111222333, "Moreno", "Colombia", 301654987L, "Castro", "Isabel", 0, null },
+                    { 5, 21, null, null, 2, "Santiago", 2, 444555666, "Ramírez", "Colombia", 312789654L, "Torres", "Esteban", 0, null }
                 });
 
             migrationBuilder.InsertData(

@@ -13,6 +13,7 @@ namespace Utilities.Helpers.Validations.Security
             RuleFor(x => x.Identification)
                 .NotEmpty().WithMessage("La identificacion es obligatoria");
      
+
         }
     }
 }

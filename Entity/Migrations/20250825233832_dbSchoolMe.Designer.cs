@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Entity.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    [Migration("20250821160214_dbSchoolMe")]
+    [Migration("20250825233832_dbSchoolMe")]
     partial class dbSchoolMe
     {
         /// <inheritdoc />
@@ -2741,8 +2741,8 @@ namespace Entity.Migrations
                         .HasColumnType("character varying(100)")
                         .HasColumnName("nation");
 
-                    b.Property<int>("Phone")
-                        .HasColumnType("integer")
+                    b.Property<long>("Phone")
+                        .HasColumnType("bigint")
                         .HasColumnName("phone");
 
                     b.Property<string>("SecondLastName")
@@ -2782,7 +2782,7 @@ namespace Entity.Migrations
                             Identification = 100200300,
                             LastName = "Pérez",
                             Nation = "Colombia",
-                            Phone = 300123456,
+                            Phone = 300123456L,
                             SecondLastName = "García",
                             SecondName = "Andrés",
                             Status = 0
@@ -2797,7 +2797,7 @@ namespace Entity.Migrations
                             Identification = 500600700,
                             LastName = "López",
                             Nation = "Colombia",
-                            Phone = 310987654,
+                            Phone = 310987654L,
                             SecondLastName = "Martínez",
                             SecondName = "Fernanda",
                             Status = 0
@@ -2812,7 +2812,7 @@ namespace Entity.Migrations
                             Identification = 800900100,
                             LastName = "Rodríguez",
                             Nation = "Colombia",
-                            Phone = 320456789,
+                            Phone = 320456789L,
                             SecondLastName = "Hernández",
                             SecondName = "Camilo",
                             Status = 0
@@ -2827,7 +2827,7 @@ namespace Entity.Migrations
                             Identification = 111222333,
                             LastName = "Moreno",
                             Nation = "Colombia",
-                            Phone = 301654987,
+                            Phone = 301654987L,
                             SecondLastName = "Castro",
                             SecondName = "Isabel",
                             Status = 0
@@ -2842,7 +2842,7 @@ namespace Entity.Migrations
                             Identification = 444555666,
                             LastName = "Ramírez",
                             Nation = "Colombia",
-                            Phone = 312789654,
+                            Phone = 312789654L,
                             SecondLastName = "Torres",
                             SecondName = "Esteban",
                             Status = 0

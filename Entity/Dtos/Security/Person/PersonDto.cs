@@ -12,7 +12,7 @@ namespace Entity.Dtos.Security.Person
         public string LastName { get; set; }
         public string SecondLastName { get; set; }
         public string Nation { get; set; }
-        public int Phone { get; set; }
+        public long Phone { get; set; }
         public GenderEmun Gender { get; set; }
     }
 }
