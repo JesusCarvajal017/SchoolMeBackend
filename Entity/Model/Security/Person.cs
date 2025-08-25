@@ -18,6 +18,6 @@ namespace Entity.Model.Security
         public GenderEmun Gender { get; set; }
         public int Age { get; set; }
         public DocumentType DocumentType { get; set; }
-        public DataBasic DataBasic { get; set; }
+        public Estudent DataBasic { get; set; }
     }
 }

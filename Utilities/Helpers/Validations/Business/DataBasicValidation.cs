@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace Utilities.Helpers.Business
 {
-    public class DataBasicValidation : AbstractValidator<DataBasic>
+    public class DataBasicValidation : AbstractValidator<Estudent>
     {
         public DataBasicValidation()
         {

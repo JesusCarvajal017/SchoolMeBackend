@@ -3,10 +3,8 @@ using Entity.Model.Global;
 
 namespace Entity.Model.Paramters
 {
-    public class Rh : ABaseEntity
+    public class Grade : ABaseEntity
     {
         public string Name { get; set; }
-
-        public IEnumerable<Estudent> DataBasics { get; set; }
     }
 }

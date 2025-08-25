@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Entity.ConfigModels.Business
 {
-    public class DataBasicConfig : IEntityTypeConfiguration<DataBasic>
+    public class DataBasicConfig : IEntityTypeConfiguration<Estudent>
     {
-        public void Configure(EntityTypeBuilder<DataBasic> builder)
+        public void Configure(EntityTypeBuilder<Estudent> builder)
         {
             builder.ToTable("dataBasic", schema: "business");
 
@@ -57,7 +57,7 @@ namespace Entity.ConfigModels.Business
             // Llaves foraenas
             builder.HasOne(db => db.Person)       
              .WithOne(p => p.DataBasic)     
-             .HasForeignKey<DataBasic>(db => db.PersonId)  
+             .HasForeignKey<Estudent>(db => db.PersonId)  
              .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(ur => ur.Rh)
@@ -85,7 +85,7 @@ namespace Entity.ConfigModels.Business
 
             
             builder.HasData(
-                new DataBasic
+                new Estudent
                 {
                     Id = 1,
                     PersonId = 1,
@@ -97,7 +97,7 @@ namespace Entity.ConfigModels.Business
                     EpsId = 1,
                     MunisipalityId = 200
                 },
-                new DataBasic
+                new Estudent
                 {
                     Id = 2,
                     PersonId = 2,
@@ -109,7 +109,7 @@ namespace Entity.ConfigModels.Business
                     EpsId = 1,
                     MunisipalityId = 200
                 },
-                new DataBasic
+                new Estudent
                 {
                     Id = 3,
                     PersonId = 3,
@@ -121,7 +121,7 @@ namespace Entity.ConfigModels.Business
                     EpsId = 1,
                     MunisipalityId = 200
                 },
-                new DataBasic
+                new Estudent
                 {
                     Id = 4,
                     PersonId = 4,
@@ -133,7 +133,7 @@ namespace Entity.ConfigModels.Business
                     EpsId = 1,
                     MunisipalityId = 200
                 },
-                new DataBasic
+                new Estudent
                 {
                     Id = 5,
                     PersonId = 5,

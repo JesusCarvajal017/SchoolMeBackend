@@ -6,6 +6,6 @@ namespace Entity.Model.Paramters
     public class Eps : ABaseEntity
     {
         public string Name { get; set; }
-        public IEnumerable<DataBasic> DataBasics { get; set; }
+        public IEnumerable<Estudent> DataBasics { get; set; }
     }
 }

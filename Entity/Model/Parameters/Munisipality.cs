@@ -8,6 +8,6 @@ namespace Entity.Model.Paramters
         public string Name { get; set; }
         public int DepartamentId { get; set; }
         public Departament Departament { get; set; }
-        public IEnumerable<DataBasic> DataBasics { get; set; }
+        public IEnumerable<Estudent> DataBasics { get; set; }
     }
 }

@@ -35,7 +35,7 @@ namespace Entity.Context.Main
 
         //Modulo de parametros
 
-        public DbSet<DataBasic> DataBasic { get; set; }
+        public DbSet<Estudent> DataBasic { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

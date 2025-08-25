@@ -8,13 +8,13 @@ namespace Web.Controllers.Implements.Business
 {
     public class DataBasicController
        : GenericController<
-       DataBasic,
+       Estudent,
        DataBasicDto,
        DataBasicDto>
     {
         public DataBasicController(
-            IQueryServices<DataBasic, DataBasicDto> q,
-            ICommandService<DataBasic, DataBasicDto> c)
+            IQueryServices<Estudent, DataBasicDto> q,
+            ICommandService<Estudent, DataBasicDto> c)
           : base(q, c) { }
     }
 

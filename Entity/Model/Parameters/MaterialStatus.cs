@@ -6,6 +6,6 @@ namespace Entity.Model.Paramters
     public class MaterialStatus : ABaseEntity
     {
         public string Name { get; set; }
-        public IEnumerable<DataBasic>  DataBasic { get; set; }
+        public IEnumerable<Estudent>  DataBasic { get; set; }
     }
 }
