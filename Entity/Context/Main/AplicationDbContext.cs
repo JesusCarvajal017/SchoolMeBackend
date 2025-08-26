@@ -5,7 +5,6 @@ using Entity.Model.Business;
 using Entity.Model.Paramters;
 using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
-using System.Numerics;
 
 namespace Entity.Context.Main
 {
@@ -15,6 +14,8 @@ namespace Entity.Context.Main
         {
                     
         }
+
+        // Modulo de seguridad
         public DbSet<Person> Person { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<Rol> Rol { get; set; }
@@ -25,6 +26,7 @@ namespace Entity.Context.Main
         public DbSet<ModuleForm> ModuleForm { get; set; }
         public DbSet<RolFormPermission> RolFormPermission { get; set; }
 
+
         //Modulo de parametros
         public DbSet<Departament> Departament { get; set; }
         public DbSet<Munisipality> Munisipality { get; set; }
@@ -32,9 +34,12 @@ namespace Entity.Context.Main
         public DbSet<Eps> Eps { get; set; }
         public DbSet<MaterialStatus> MaterialStatus { get; set; }
         public DbSet<Rh> Rh { get; set; }
+        public DbSet<Grade> Grade { get; set; }
+        public DbSet<Subject> Subject { get; set; }
+        public DbSet<TypeAnsware> TypeAnsware { get; set; }
 
-        //Modulo de parametros
 
+        //Modulo de negocio
         public DbSet<DataBasic> DataBasic { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -43,13 +48,17 @@ namespace Entity.Context.Main
 
             // Aplica tu configuración que implementen IEntityTypeConfiguration<T>
 
-            //Modulo de seguridad
+            // Prioridad de crecion 1
             modelBuilder.ApplyConfiguration(new DepartamentConfig());
             modelBuilder.ApplyConfiguration(new MunisipalityConfig());
             modelBuilder.ApplyConfiguration(new RhConfig());
             modelBuilder.ApplyConfiguration(new EpsConfig());
             modelBuilder.ApplyConfiguration(new DocumentTypeConfig());
             modelBuilder.ApplyConfiguration(new MaterialStatusConfig());
+            modelBuilder.ApplyConfiguration(new GradeConfig());
+            modelBuilder.ApplyConfiguration(new SubjectConfig());
+            modelBuilder.ApplyConfiguration(new TypeAnswareConfig());
+
 
             modelBuilder.ApplyConfiguration(new ModuleConfig());
             modelBuilder.ApplyConfiguration(new FormConfig());
@@ -65,6 +74,8 @@ namespace Entity.Context.Main
 
             modelBuilder.ApplyConfiguration(new UserConfig());
             modelBuilder.ApplyConfiguration(new UserRolConfig());
+            
+
 
             //Modulo de negocio
             modelBuilder.ApplyConfiguration(new DataBasicConfig());

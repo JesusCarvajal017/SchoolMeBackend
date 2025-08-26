@@ -1,8 +1,6 @@
 ﻿
 using Entity.ConfigModels.global;
-using Entity.Enum;
 using Entity.Model.Business;
-using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -35,7 +33,7 @@ namespace Entity.ConfigModels.Business
 
             builder.Property(p => p.BrithDate)
                 .HasColumnName("birthDate")
-                .HasColumnType("timestamp")
+                .HasColumnType("date")
                 .IsRequired();
 
             builder.Property(p => p.StratumStatus)
@@ -91,7 +89,7 @@ namespace Entity.ConfigModels.Business
                     PersonId = 1,
                     RhId = 1,
                     Adress = "Calle 10 #15-20",
-                    BrithDate = new DateTime(1993, 5, 12),
+                    BrithDate = new DateTime(1993, 05, 12),
                     StratumStatus = 3,
                     MaterialStatusId = 1,
                     EpsId = 1,
@@ -103,7 +101,7 @@ namespace Entity.ConfigModels.Business
                     PersonId = 2,
                     RhId = 2,
                     Adress = "Carrera 25 #8-30",
-                    BrithDate = new DateTime(2000, 11, 3),
+                    BrithDate = new DateTime(2000, 11, 03),
                     StratumStatus = 4,
                     MaterialStatusId = 2,
                     EpsId = 1,
@@ -115,7 +113,7 @@ namespace Entity.ConfigModels.Business
                     PersonId = 3,
                     RhId = 3,
                     Adress = "Diagonal 45 #20-15",
-                    BrithDate = new DateTime(2007, 2, 21),
+                    BrithDate = new DateTime(1993, 05, 12),
                     StratumStatus = 2,
                     MaterialStatusId = 2,
                     EpsId = 1,
@@ -127,7 +125,7 @@ namespace Entity.ConfigModels.Business
                     PersonId = 4,
                     RhId = 1,
                     Adress = "Avenida 7 #12-45",
-                    BrithDate = new DateTime(1996, 7, 19),
+                    BrithDate = new DateTime(1993, 05, 12),
                     StratumStatus = 5,
                     MaterialStatusId = 1,
                     EpsId = 1,
@@ -139,7 +137,7 @@ namespace Entity.ConfigModels.Business
                     PersonId = 5,
                     RhId = 2,
                     Adress = "Calle 50 #25-18",
-                    BrithDate = new DateTime(2004, 9, 8),
+                    BrithDate = new DateTime(1993, 05, 12),
                     StratumStatus = 3,
                     MaterialStatusId = 2,
                     EpsId = 1,

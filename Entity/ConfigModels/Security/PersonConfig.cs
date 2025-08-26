@@ -41,10 +41,10 @@ namespace Entity.ConfigModels.Security
                .HasColumnName("identification")
                .IsRequired();
 
-            builder.Property(p => p.Nation)
-            .HasColumnName("nation")
-            .IsRequired()
-            .HasMaxLength(100);
+            //builder.Property(p => p.Nation)
+            //.HasColumnName("nation")
+            //.IsRequired()
+            //.HasMaxLength(100);
 
             builder.Property(p => p.Phone)
                .HasColumnName("phone")
@@ -75,7 +75,7 @@ namespace Entity.ConfigModels.Security
                     SecondName = "Andrés",
                     LastName = "Pérez",
                     SecondLastName = "García",
-                    Nation = "Colombia",
+                    //Nation = "Colombia",
                     Phone = 300123456,
                     Gender = GenderEmun.Masculino,
                     Age = 32
@@ -89,7 +89,7 @@ namespace Entity.ConfigModels.Security
                     SecondName = "Fernanda",
                     LastName = "López",
                     SecondLastName = "Martínez",
-                    Nation = "Colombia",
+                    //Nation = "Colombia",
                     Phone = 310987654,
                     Gender = GenderEmun.Femenino,
                     Age = 25
@@ -103,7 +103,7 @@ namespace Entity.ConfigModels.Security
                     SecondName = "Camilo",
                     LastName = "Rodríguez",
                     SecondLastName = "Hernández",
-                    Nation = "Colombia",
+                    //Nation = "Colombia",
                     Phone = 320456789,
                     Gender = GenderEmun.Masculino,
                     Age = 18
@@ -117,7 +117,7 @@ namespace Entity.ConfigModels.Security
                     SecondName = "Isabel",
                     LastName = "Moreno",
                     SecondLastName = "Castro",
-                    Nation = "Colombia",
+                    //Nation = "Colombia",
                     Phone = 301654987,
                     Gender = GenderEmun.Femenino,
                     Age = 29
@@ -131,7 +131,7 @@ namespace Entity.ConfigModels.Security
                     SecondName = "Esteban",
                     LastName = "Ramírez",
                     SecondLastName = "Torres",
-                    Nation = "Colombia",
+                    //Nation = "Colombia",
                     Phone = 312789654,
                     Gender = GenderEmun.otro,
                     Age = 21

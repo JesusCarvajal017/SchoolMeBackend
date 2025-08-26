@@ -7,7 +7,7 @@ namespace Entity.Dtos.Business.DataBasic
         public int PersonId { get; set; }
         public int RhId { get; set; }
         public string Adress { get; set; }
-        public DateTime BrithDate { get; set; }
+        public string BrithDate { get; set; }
         public int StratumStatus { get; set; }
 
         public int MaterialStatusId { get; set; }

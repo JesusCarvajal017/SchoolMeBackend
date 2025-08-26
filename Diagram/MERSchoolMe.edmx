@@ -68,7 +68,6 @@
             <End Role="Grade" EntitySet="GradeSet" />
             <End Role="Group" EntitySet="GroupSet" />
           </AssociationSet>
-          <EntitySet Name="FamilyRelationSet" EntityType="Model1.FamilyRelation" />
           <EntitySet Name="StudentsSet" EntityType="Model1.Students" />
           <AssociationSet Name="PersonStudents" Association="Model1.PersonStudents">
             <End EntitySet="PersonSet" Role="Person" />
@@ -120,10 +119,6 @@
             <End Role="AcademicLoad" EntitySet="AcademicLoadSet" />
             <End Role="Group" EntitySet="GroupSet" />
           </AssociationSet>
-          <AssociationSet Name="FamilyRelationStudents" Association="Model1.FamilyRelationStudents">
-            <End Role="FamilyRelation" EntitySet="FamilyRelationSet" />
-            <End Role="Students" EntitySet="StudentsSet" />
-          </AssociationSet>
           <AssociationSet Name="StudentsGroup" Association="Model1.StudentsGroup">
             <End Role="Students" EntitySet="StudentsSet" />
             <End Role="Group" EntitySet="GroupSet" />
@@ -154,6 +149,59 @@
             <End Role="DataBasic" EntitySet="DataBasicSet" />
             <End Role="MatirialStatus" EntitySet="MatirialStatusSet" />
           </AssociationSet>
+          <AssociationSet Name="AssignedAgendaGroup" Association="Model1.AssignedAgendaGroup">
+            <End Role="AssignedAgenda" EntitySet="AssignedAgendaSet" />
+            <End Role="Group" EntitySet="GroupSet" />
+          </AssociationSet>
+          <AssociationSet Name="GroupAgenda" Association="Model1.GroupAgenda">
+            <End Role="Group" EntitySet="GroupSet" />
+            <End Role="Agenda" EntitySet="AgendaSet" />
+          </AssociationSet>
+          <EntitySet Name="AgendaDaySet" EntityType="Model1.AgendaDay" />
+          <AssociationSet Name="GroupAgendaDay" Association="Model1.GroupAgendaDay">
+            <End Role="AgendaDay" EntitySet="AgendaDaySet" />
+            <End Role="Group" EntitySet="GroupSet" />
+          </AssociationSet>
+          <AssociationSet Name="AgendaDayAgenda" Association="Model1.AgendaDayAgenda">
+            <End Role="AgendaDay" EntitySet="AgendaDaySet" />
+            <End Role="Agenda" EntitySet="AgendaSet" />
+          </AssociationSet>
+          <EntitySet Name="AgendaDayStudentSet" EntityType="Model1.AgendaDayStudent" />
+          <AssociationSet Name="AgendaDayStudentAgendaDay" Association="Model1.AgendaDayStudentAgendaDay">
+            <End Role="AgendaDayStudent" EntitySet="AgendaDayStudentSet" />
+            <End Role="AgendaDay" EntitySet="AgendaDaySet" />
+          </AssociationSet>
+          <AssociationSet Name="AgendaDayStudentStudents" Association="Model1.AgendaDayStudentStudents">
+            <End Role="AgendaDayStudent" EntitySet="AgendaDayStudentSet" />
+            <End Role="Students" EntitySet="StudentsSet" />
+          </AssociationSet>
+          <EntitySet Name="StudentAnswerSet" EntityType="Model1.StudentAnswer" />
+          <AssociationSet Name="StudentAnswerAgendaDayStudent" Association="Model1.StudentAnswerAgendaDayStudent">
+            <End Role="StudentAnswer" EntitySet="StudentAnswerSet" />
+            <End Role="AgendaDayStudent" EntitySet="AgendaDayStudentSet" />
+          </AssociationSet>
+          <AssociationSet Name="QuestionStudentAnswer" Association="Model1.QuestionStudentAnswer">
+            <End Role="StudentAnswer" EntitySet="StudentAnswerSet" />
+            <End Role="Question" EntitySet="QuestionSet" />
+          </AssociationSet>
+          <EntitySet Name="StudentAnswareOptionsSet" EntityType="Model1.StudentAnswareOptions" />
+          <AssociationSet Name="StudentAnswareOptionsStudentAnswer" Association="Model1.StudentAnswareOptionsStudentAnswer">
+            <End Role="StudentAnswareOptions" EntitySet="StudentAnswareOptionsSet" />
+            <End Role="StudentAnswer" EntitySet="StudentAnswerSet" />
+          </AssociationSet>
+          <AssociationSet Name="StudentAnswareOptionsQuestionOption" Association="Model1.StudentAnswareOptionsQuestionOption">
+            <End Role="StudentAnswareOptions" EntitySet="StudentAnswareOptionsSet" />
+            <End Role="QuestionOption" EntitySet="QuestionOptionSet" />
+          </AssociationSet>
+          <EntitySet Name="attendantsSet" EntityType="Model1.attendants" />
+          <AssociationSet Name="attendantsPerson1" Association="Model1.attendantsPerson1">
+            <End Role="attendants" EntitySet="attendantsSet" />
+            <End Role="Person" EntitySet="PersonSet" />
+          </AssociationSet>
+          <AssociationSet Name="attendantsStudents" Association="Model1.attendantsStudents">
+            <End Role="attendants" EntitySet="attendantsSet" />
+            <End Role="Students" EntitySet="StudentsSet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Person">
           <Key>
@@ -175,6 +223,7 @@
           <NavigationProperty Name="Students" Relationship="Model1.PersonStudents" FromRole="Person" ToRole="Students" />
           <NavigationProperty Name="User" Relationship="Model1.UserPerson" FromRole="Person" ToRole="User" />
           <Property Name="Gender" Type="Model1.Gender" Nullable="false" />
+          <NavigationProperty Name="attendants1" Relationship="Model1.attendantsPerson1" FromRole="Person" ToRole="attendants" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -391,6 +440,8 @@
           <Property Name="AmountStudents" Type="String" Nullable="false" />
           <NavigationProperty Name="AcademicLoad" Relationship="Model1.AcademicLoadGroup" FromRole="Group" ToRole="AcademicLoad" />
           <NavigationProperty Name="Students" Relationship="Model1.StudentsGroup" FromRole="Group" ToRole="Students" />
+          <NavigationProperty Name="Agenda" Relationship="Model1.GroupAgenda" FromRole="Group" ToRole="Agenda" />
+          <NavigationProperty Name="AgendaDay" Relationship="Model1.GroupAgendaDay" FromRole="Group" ToRole="AgendaDay" />
         </EntityType>
         <Association Name="GroupGroupDirector">
           <End Type="Model1.Group" Role="Group" Multiplicity="1" />
@@ -417,28 +468,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="FamilyRelation">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RelationShipType" Type="Model1.RelacionFamiliar" Nullable="false" />
-          <Property Name="Status" Type="Int16" Nullable="false" />
-          <NavigationProperty Name="Students" Relationship="Model1.FamilyRelationStudents" FromRole="FamilyRelation" ToRole="Students" />
-          <Property Name="StudentsId" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="Students">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Person" Relationship="Model1.PersonStudents" FromRole="Students" ToRole="Person" />
-          <Property Name="InscriptionId" Type="String" Nullable="false" />
           <Property Name="TutionId" Type="String" Nullable="false" />
           <Property Name="PersonId" Type="String" Nullable="false" />
-          <NavigationProperty Name="FamilyRelation" Relationship="Model1.FamilyRelationStudents" FromRole="Students" ToRole="FamilyRelation" />
           <NavigationProperty Name="Group" Relationship="Model1.StudentsGroup" FromRole="Students" ToRole="Group" />
           <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AgendaDayStudent" Relationship="Model1.AgendaDayStudentStudents" FromRole="Students" ToRole="AgendaDayStudent" />
+          <NavigationProperty Name="attendants" Relationship="Model1.attendantsStudents" FromRole="Students" ToRole="attendants" />
         </EntityType>
         <Association Name="PersonStudents">
           <End Type="Model1.Person" Multiplicity="1" Role="Person" />
@@ -554,18 +595,6 @@
           <Member Name="Hermana" />
           <Member Name="Hermano" />
         </EnumType>
-        <Association Name="FamilyRelationStudents">
-          <End Type="Model1.FamilyRelation" Role="FamilyRelation" Multiplicity="*" />
-          <End Type="Model1.Students" Role="Students" Multiplicity="1" />
-          <ReferentialConstraint>
-            <Principal Role="Students">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="FamilyRelation">
-              <PropertyRef Name="StudentsId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="StudentsGroup">
           <End Type="Model1.Students" Role="Students" Multiplicity="*" />
           <End Type="Model1.Group" Role="Group" Multiplicity="1" />
@@ -584,8 +613,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CreationDate" Type="Time" Nullable="false" />
-          <Property Name="ByCreation" Type="Int32" Nullable="false" />
           <NavigationProperty Name="compositionAgenda" Relationship="Model1.compositionAgendaAgenda" FromRole="Agenda" ToRole="compositionAgenda" />
+          <NavigationProperty Name="Group" Relationship="Model1.GroupAgenda" FromRole="Agenda" ToRole="Group" />
+          <NavigationProperty Name="AgendaDay" Relationship="Model1.AgendaDayAgenda" FromRole="Agenda" ToRole="AgendaDay" />
         </EntityType>
         <EntityType Name="compositionAgenda">
           <Key>
@@ -596,6 +626,7 @@
           <Property Name="AgendaId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Question" Relationship="Model1.compositionAgendaQuestion" FromRole="compositionAgenda" ToRole="Question" />
           <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int16" Nullable="false" />
         </EntityType>
         <EntityType Name="TypeAswer">
           <Key>
@@ -618,6 +649,7 @@
           <Property Name="Status" Type="String" Nullable="false" />
           <NavigationProperty Name="QuestionOption" Relationship="Model1.QuestionOptionQuestion" FromRole="Question" ToRole="QuestionOption" />
           <NavigationProperty Name="compositionAgenda" Relationship="Model1.compositionAgendaQuestion" FromRole="Question" ToRole="compositionAgenda" />
+          <NavigationProperty Name="StudentAnswer" Relationship="Model1.QuestionStudentAnswer" FromRole="Question" ToRole="StudentAnswer" />
         </EntityType>
         <Association Name="QuestionTypeAswer">
           <End Type="Model1.Question" Role="Question" Multiplicity="*" />
@@ -641,6 +673,7 @@
           <Property Name="Text" Type="String" Nullable="false" />
           <Property Name="Order" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="String" Nullable="false" />
+          <NavigationProperty Name="StudentAnswareOptions" Relationship="Model1.StudentAnswareOptionsQuestionOption" FromRole="QuestionOption" ToRole="StudentAnswareOptions" />
         </EntityType>
         <Association Name="QuestionOptionQuestion">
           <End Type="Model1.QuestionOption" Role="QuestionOption" Multiplicity="*" />
@@ -683,6 +716,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Group" Relationship="Model1.AssignedAgendaGroup" FromRole="AssignedAgenda" ToRole="Group" />
         </EntityType>
         <Association Name="DataBasicMatirialStatus">
           <End Type="Model1.DataBasic" Role="DataBasic" Multiplicity="*" />
@@ -693,6 +727,195 @@
             </Principal>
             <Dependent Role="DataBasic">
               <PropertyRef Name="MatirialStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AssignedAgendaGroup">
+          <End Type="Model1.AssignedAgenda" Role="AssignedAgenda" Multiplicity="1" />
+          <End Type="Model1.Group" Role="Group" Multiplicity="1" />
+        </Association>
+        <Association Name="GroupAgenda">
+          <End Type="Model1.Group" Role="Group" Multiplicity="*" />
+          <End Type="Model1.Agenda" Role="Agenda" Multiplicity="1" />
+        </Association>
+        <EntityType Name="AgendaDay">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Group" Relationship="Model1.GroupAgendaDay" FromRole="AgendaDay" ToRole="Group" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Agenda" Relationship="Model1.AgendaDayAgenda" FromRole="AgendaDay" ToRole="Agenda" />
+          <Property Name="AgendaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AgendaDayStudent" Relationship="Model1.AgendaDayStudentAgendaDay" FromRole="AgendaDay" ToRole="AgendaDayStudent" />
+        </EntityType>
+        <Association Name="GroupAgendaDay">
+          <End Type="Model1.AgendaDay" Role="AgendaDay" Multiplicity="*" />
+          <End Type="Model1.Group" Role="Group" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AgendaDay">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AgendaDayAgenda">
+          <End Type="Model1.AgendaDay" Role="AgendaDay" Multiplicity="*" />
+          <End Type="Model1.Agenda" Role="Agenda" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Agenda">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AgendaDay">
+              <PropertyRef Name="AgendaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AgendaDayStudent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="AgendaDay" Relationship="Model1.AgendaDayStudentAgendaDay" FromRole="AgendaDayStudent" ToRole="AgendaDay" />
+          <Property Name="AgendaDayId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="Model1.AgendaDayStudentStudents" FromRole="AgendaDayStudent" ToRole="Students" />
+          <Property Name="StudentsId" Type="Int32" Nullable="false" />
+          <Property Name="State" Type="Int16" Nullable="false" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="StudentAnswer" Relationship="Model1.StudentAnswerAgendaDayStudent" FromRole="AgendaDayStudent" ToRole="StudentAnswer" />
+        </EntityType>
+        <Association Name="AgendaDayStudentAgendaDay">
+          <End Type="Model1.AgendaDayStudent" Role="AgendaDayStudent" Multiplicity="*" />
+          <End Type="Model1.AgendaDay" Role="AgendaDay" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="AgendaDay">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AgendaDayStudent">
+              <PropertyRef Name="AgendaDayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AgendaDayStudentStudents">
+          <End Type="Model1.AgendaDayStudent" Role="AgendaDayStudent" Multiplicity="*" />
+          <End Type="Model1.Students" Role="Students" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AgendaDayStudent">
+              <PropertyRef Name="StudentsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="StudentAnswer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="AgendaDayStudent" Relationship="Model1.StudentAnswerAgendaDayStudent" FromRole="StudentAnswer" ToRole="AgendaDayStudent" />
+          <Property Name="AgendaDayStudentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Question" Relationship="Model1.QuestionStudentAnswer" FromRole="StudentAnswer" ToRole="Question" />
+          <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <Property Name="ValueText" Type="String" Nullable="false" />
+          <Property Name="ValueBool" Type="String" Nullable="false" />
+          <Property Name="ValueNumber" Type="String" Nullable="false" />
+          <Property Name="ValueDate" Type="String" Nullable="false" />
+          <Property Name="SelectOption" Type="String" Nullable="false" />
+          <NavigationProperty Name="StudentAnswareOptions" Relationship="Model1.StudentAnswareOptionsStudentAnswer" FromRole="StudentAnswer" ToRole="StudentAnswareOptions" />
+        </EntityType>
+        <Association Name="StudentAnswerAgendaDayStudent">
+          <End Type="Model1.StudentAnswer" Role="StudentAnswer" Multiplicity="*" />
+          <End Type="Model1.AgendaDayStudent" Role="AgendaDayStudent" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="AgendaDayStudent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAnswer">
+              <PropertyRef Name="AgendaDayStudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="QuestionStudentAnswer">
+          <End Type="Model1.StudentAnswer" Role="StudentAnswer" Multiplicity="*" />
+          <End Type="Model1.Question" Role="Question" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAnswer">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="StudentAnswareOptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="StudentAnswer" Relationship="Model1.StudentAnswareOptionsStudentAnswer" FromRole="StudentAnswareOptions" ToRole="StudentAnswer" />
+          <Property Name="StudentAnswerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="QuestionOption" Relationship="Model1.StudentAnswareOptionsQuestionOption" FromRole="StudentAnswareOptions" ToRole="QuestionOption" />
+          <Property Name="QuestionOptionId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="StudentAnswareOptionsStudentAnswer">
+          <End Type="Model1.StudentAnswareOptions" Role="StudentAnswareOptions" Multiplicity="*" />
+          <End Type="Model1.StudentAnswer" Role="StudentAnswer" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="StudentAnswer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAnswareOptions">
+              <PropertyRef Name="StudentAnswerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StudentAnswareOptionsQuestionOption">
+          <End Type="Model1.StudentAnswareOptions" Role="StudentAnswareOptions" Multiplicity="*" />
+          <End Type="Model1.QuestionOption" Role="QuestionOption" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionOption">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAnswareOptions">
+              <PropertyRef Name="QuestionOptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="attendants">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Person1" Relationship="Model1.attendantsPerson1" FromRole="attendants" ToRole="Person" />
+          <Property Name="PersonId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="Model1.attendantsStudents" FromRole="attendants" ToRole="Students" />
+          <Property Name="StudentsId" Type="Int32" Nullable="false" />
+          <Property Name="RelationShipType" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="attendantsPerson1">
+          <End Type="Model1.attendants" Role="attendants" Multiplicity="*" />
+          <End Type="Model1.Person" Role="Person" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="attendants">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="attendantsStudents">
+          <End Type="Model1.attendants" Role="attendants" Multiplicity="*" />
+          <End Type="Model1.Students" Role="Students" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="attendants">
+              <PropertyRef Name="StudentsId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
