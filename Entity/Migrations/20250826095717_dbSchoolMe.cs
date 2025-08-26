@@ -100,6 +100,24 @@ namespace Entity.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "grade",
+                schema: "parameters",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    status = table.Column<int>(type: "integer", nullable: false),
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    deleted_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_grade", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "materialStatus",
                 schema: "parameters",
                 columns: table => new
@@ -196,6 +214,43 @@ namespace Entity.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "subject",
+                schema: "parameters",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    status = table.Column<int>(type: "integer", nullable: false),
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    deleted_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_subject", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "type_answare",
+                schema: "parameters",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    name = table.Column<string>(type: "character varying(80)", maxLength: 80, nullable: false),
+                    description = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: true),
+                    status = table.Column<int>(type: "integer", nullable: false),
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    deleted_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_type_answare", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "munisipality",
                 schema: "parameters",
                 columns: table => new
@@ -234,7 +289,6 @@ namespace Entity.Migrations
                     secondName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     lastName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     secondLastName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    nation = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     phone = table.Column<int>(type: "integer", nullable: false),
                     gender = table.Column<int>(type: "integer", nullable: false),
                     age = table.Column<int>(type: "integer", nullable: false),
@@ -339,7 +393,7 @@ namespace Entity.Migrations
                     personaId = table.Column<int>(type: "integer", nullable: false),
                     rhId = table.Column<int>(type: "integer", nullable: false),
                     adress = table.Column<string>(type: "varchar", maxLength: 100, nullable: false),
-                    birthDate = table.Column<DateTime>(type: "timestamp", nullable: false),
+                    birthDate = table.Column<DateTime>(type: "date", nullable: false),
                     stratumStatus = table.Column<int>(type: "integer", nullable: false),
                     materialStatusId = table.Column<int>(type: "integer", nullable: false),
                     epsId = table.Column<int>(type: "integer", nullable: false),
@@ -505,7 +559,13 @@ namespace Entity.Migrations
                 schema: "parameters",
                 table: "eps",
                 columns: new[] { "id", "created_at", "deleted_at", "name", "status", "updated_at" },
-                values: new object[] { 1, null, null, "Nueva eps", 0, null });
+                values: new object[,]
+                {
+                    { 1, null, null, "Nueva eps", 1, null },
+                    { 2, null, null, "Sanitas", 1, null },
+                    { 3, null, null, "Coperacion indigena", 1, null },
+                    { 4, null, null, "Estocolmo", 1, null }
+                });
 
             migrationBuilder.InsertData(
                 schema: "security",
@@ -539,6 +599,20 @@ namespace Entity.Migrations
                     { 24, null, null, "Asignación de módulos a roles", "Asignación Módulos", 6, "asiganacionModulos", 0, null },
                     { 25, null, null, "Asignación de permisos a roles", "Asignación de Permisos", 7, "asignacionPermisos", 0, null },
                     { 26, null, null, "Gestión de usuarios", "Usuarios", 8, "usuarios", 0, null }
+                });
+
+            migrationBuilder.InsertData(
+                schema: "parameters",
+                table: "grade",
+                columns: new[] { "id", "created_at", "deleted_at", "name", "status", "updated_at" },
+                values: new object[,]
+                {
+                    { 1, null, null, "Grado", 1, null },
+                    { 2, null, null, "Primero", 1, null },
+                    { 3, null, null, "Segundo", 1, null },
+                    { 4, null, null, "Tercero", 1, null },
+                    { 5, null, null, "Cuarto", 1, null },
+                    { 6, null, null, "Quinto", 1, null }
                 });
 
             migrationBuilder.InsertData(
@@ -597,6 +671,38 @@ namespace Entity.Migrations
                     { 2, null, null, "Permisos al 90%", "Administrativo", 1, null },
                     { 3, null, null, "Permisos al 30%", "Docente", 1, null },
                     { 4, null, null, "Solo interactura de forma base", "Acudiente", 1, null }
+                });
+
+            migrationBuilder.InsertData(
+                schema: "parameters",
+                table: "subject",
+                columns: new[] { "id", "created_at", "deleted_at", "name", "status", "updated_at" },
+                values: new object[,]
+                {
+                    { 1, null, null, "Lengua Castellana", 1, null },
+                    { 2, null, null, "Matemáticas", 1, null },
+                    { 3, null, null, "Ciencias Naturales", 1, null },
+                    { 4, null, null, "Ciencias Sociales", 1, null },
+                    { 5, null, null, "Inglés", 1, null },
+                    { 6, null, null, "Educación Artística", 1, null },
+                    { 7, null, null, "Educación Física", 1, null },
+                    { 8, null, null, "Tecnología e Informática", 1, null },
+                    { 9, null, null, "Ética y Valores", 1, null },
+                    { 10, null, null, "Religión", 1, null }
+                });
+
+            migrationBuilder.InsertData(
+                schema: "parameters",
+                table: "type_answare",
+                columns: new[] { "id", "created_at", "deleted_at", "description", "name", "status", "updated_at" },
+                values: new object[,]
+                {
+                    { 1, null, null, "Respuesta de texto libre", "Text", 1, null },
+                    { 2, null, null, "Sí / No", "Bool", 1, null },
+                    { 3, null, null, "Numérica", "Number", 1, null },
+                    { 4, null, null, "Fecha", "Date", 1, null },
+                    { 5, null, null, "Selección de opción única", "OptionSingle", 1, null },
+                    { 6, null, null, "Selección múltiple", "OptionMulti", 1, null }
                 });
 
             migrationBuilder.InsertData(
@@ -836,14 +942,14 @@ namespace Entity.Migrations
             migrationBuilder.InsertData(
                 schema: "security",
                 table: "person",
-                columns: new[] { "id", "age", "created_at", "deleted_at", "DocumentTypeId", "fisrtName", "gender", "identification", "lastName", "nation", "phone", "secondLastName", "secondName", "status", "updated_at" },
+                columns: new[] { "id", "age", "created_at", "deleted_at", "DocumentTypeId", "fisrtName", "gender", "identification", "lastName", "phone", "secondLastName", "secondName", "status", "updated_at" },
                 values: new object[,]
                 {
-                    { 1, 32, null, null, 1, "Carlos", 0, 100200300, "Pérez", "Colombia", 300123456, "García", "Andrés", 0, null },
-                    { 2, 25, null, null, 2, "María", 1, 500600700, "López", "Colombia", 310987654, "Martínez", "Fernanda", 0, null },
-                    { 3, 18, null, null, 3, "Juan", 0, 800900100, "Rodríguez", "Colombia", 320456789, "Hernández", "Camilo", 0, null },
-                    { 4, 29, null, null, 1, "Laura", 1, 111222333, "Moreno", "Colombia", 301654987, "Castro", "Isabel", 0, null },
-                    { 5, 21, null, null, 2, "Santiago", 2, 444555666, "Ramírez", "Colombia", 312789654, "Torres", "Esteban", 0, null }
+                    { 1, 32, null, null, 1, "Carlos", 0, 100200300, "Pérez", 300123456, "García", "Andrés", 0, null },
+                    { 2, 25, null, null, 2, "María", 1, 500600700, "López", 310987654, "Martínez", "Fernanda", 0, null },
+                    { 3, 18, null, null, 3, "Juan", 0, 800900100, "Rodríguez", 320456789, "Hernández", "Camilo", 0, null },
+                    { 4, 29, null, null, 1, "Laura", 1, 111222333, "Moreno", 301654987, "Castro", "Isabel", 0, null },
+                    { 5, 21, null, null, 2, "Santiago", 2, 444555666, "Ramírez", 312789654, "Torres", "Esteban", 0, null }
                 });
 
             migrationBuilder.InsertData(
@@ -888,9 +994,9 @@ namespace Entity.Migrations
                 {
                     { 1, "Calle 10 #15-20", new DateTime(1993, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, 1, 1, 200, 1, 1, 0, 3, null },
                     { 2, "Carrera 25 #8-30", new DateTime(2000, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, 1, 2, 200, 2, 2, 0, 4, null },
-                    { 3, "Diagonal 45 #20-15", new DateTime(2007, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, 1, 2, 200, 3, 3, 0, 2, null },
-                    { 4, "Avenida 7 #12-45", new DateTime(1996, 7, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, 1, 1, 200, 4, 1, 0, 5, null },
-                    { 5, "Calle 50 #25-18", new DateTime(2004, 9, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, 1, 2, 200, 5, 2, 0, 3, null }
+                    { 3, "Diagonal 45 #20-15", new DateTime(1993, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, 1, 2, 200, 3, 3, 0, 2, null },
+                    { 4, "Avenida 7 #12-45", new DateTime(1993, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, 1, 1, 200, 4, 1, 0, 5, null },
+                    { 5, "Calle 50 #25-18", new DateTime(1993, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, 1, 2, 200, 5, 2, 0, 3, null }
                 });
 
             migrationBuilder.InsertData(
@@ -1020,12 +1126,24 @@ namespace Entity.Migrations
                 schema: "business");
 
             migrationBuilder.DropTable(
+                name: "grade",
+                schema: "parameters");
+
+            migrationBuilder.DropTable(
                 name: "moduleForm",
                 schema: "security");
 
             migrationBuilder.DropTable(
                 name: "rolFormPermission",
                 schema: "security");
+
+            migrationBuilder.DropTable(
+                name: "subject",
+                schema: "parameters");
+
+            migrationBuilder.DropTable(
+                name: "type_answare",
+                schema: "parameters");
 
             migrationBuilder.DropTable(
                 name: "userRol",

@@ -27,8 +27,27 @@ namespace Entity.ConfigModels.Parameters
                new Eps
                {
                    Id = 1,
-                   Name = "Nueva eps"
-               }
+                   Name = "Nueva eps",
+                   Status = 1
+               },
+                new Eps
+                {
+                    Id = 2,
+                    Name = "Sanitas",
+                    Status = 1
+                },
+                new Eps
+                {
+                    Id = 3,
+                    Name = "Coperacion indigena",
+                    Status = 1
+                },
+                new Eps
+                {
+                    Id = 4,
+                    Name = "Estocolmo",
+                    Status = 1
+                }
             );
 
         }

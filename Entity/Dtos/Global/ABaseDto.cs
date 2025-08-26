@@ -5,7 +5,7 @@ namespace Entity.Dtos.Global
     /// </summary>
     public abstract class ABaseDto
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public int Status { get; set; }
     }
 }

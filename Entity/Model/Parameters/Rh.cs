@@ -7,6 +7,6 @@ namespace Entity.Model.Paramters
     {
         public string Name { get; set; }
 
-        public IEnumerable<Estudent> DataBasics { get; set; }
+        public IEnumerable<DataBasic> DataBasics { get; set; }
     }
 }

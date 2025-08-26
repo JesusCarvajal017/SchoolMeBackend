@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Entity.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    [Migration("20250821160214_dbSchoolMe")]
+    [Migration("20250826095717_dbSchoolMe")]
     partial class dbSchoolMe
     {
         /// <inheritdoc />
@@ -41,7 +41,7 @@ namespace Entity.Migrations
                         .HasColumnName("adress");
 
                     b.Property<DateTime>("BrithDate")
-                        .HasColumnType("timestamp")
+                        .HasColumnType("date")
                         .HasColumnName("birthDate");
 
                     b.Property<DateTime?>("CreatedAt")
@@ -130,7 +130,7 @@ namespace Entity.Migrations
                         {
                             Id = 3,
                             Adress = "Diagonal 45 #20-15",
-                            BrithDate = new DateTime(2007, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BrithDate = new DateTime(1993, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EpsId = 1,
                             MaterialStatusId = 2,
                             MunisipalityId = 200,
@@ -143,7 +143,7 @@ namespace Entity.Migrations
                         {
                             Id = 4,
                             Adress = "Avenida 7 #12-45",
-                            BrithDate = new DateTime(1996, 7, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BrithDate = new DateTime(1993, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EpsId = 1,
                             MaterialStatusId = 1,
                             MunisipalityId = 200,
@@ -156,7 +156,7 @@ namespace Entity.Migrations
                         {
                             Id = 5,
                             Adress = "Calle 50 #25-18",
-                            BrithDate = new DateTime(2004, 9, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BrithDate = new DateTime(1993, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EpsId = 1,
                             MaterialStatusId = 2,
                             MunisipalityId = 200,
@@ -501,7 +501,99 @@ namespace Entity.Migrations
                         {
                             Id = 1,
                             Name = "Nueva eps",
-                            Status = 0
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Sanitas",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Coperacion indigena",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Estocolmo",
+                            Status = 1
+                        });
+                });
+
+            modelBuilder.Entity("Entity.Model.Paramters.Grade", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<DateTime?>("DeleteAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("deleted_at");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("name");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer")
+                        .HasColumnName("status");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("grade", "parameters");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Grado",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Primero",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Segundo",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Tercero",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Cuarto",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Quinto",
+                            Status = 1
                         });
                 });
 
@@ -1999,6 +2091,190 @@ namespace Entity.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Entity.Model.Paramters.Subject", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<DateTime?>("DeleteAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("deleted_at");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .IsUnicode(true)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("name");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer")
+                        .HasColumnName("status");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("subject", "parameters");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Lengua Castellana",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Matemáticas",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Ciencias Naturales",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Ciencias Sociales",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Inglés",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Educación Artística",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Educación Física",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Tecnología e Informática",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Ética y Valores",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Religión",
+                            Status = 1
+                        });
+                });
+
+            modelBuilder.Entity("Entity.Model.Paramters.TypeAnsware", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<DateTime?>("DeleteAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("deleted_at");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)")
+                        .HasColumnName("description");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("character varying(80)")
+                        .HasColumnName("name");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer")
+                        .HasColumnName("status");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("type_answare", "parameters");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Respuesta de texto libre",
+                            Name = "Text",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Sí / No",
+                            Name = "Bool",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Numérica",
+                            Name = "Number",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Fecha",
+                            Name = "Date",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "Selección de opción única",
+                            Name = "OptionSingle",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Description = "Selección múltiple",
+                            Name = "OptionMulti",
+                            Status = 1
+                        });
+                });
+
             modelBuilder.Entity("Entity.Model.Security.Form", b =>
                 {
                     b.Property<int>("Id")
@@ -2735,12 +3011,6 @@ namespace Entity.Migrations
                         .HasColumnType("character varying(100)")
                         .HasColumnName("lastName");
 
-                    b.Property<string>("Nation")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)")
-                        .HasColumnName("nation");
-
                     b.Property<int>("Phone")
                         .HasColumnType("integer")
                         .HasColumnName("phone");
@@ -2781,7 +3051,6 @@ namespace Entity.Migrations
                             Gender = 0,
                             Identification = 100200300,
                             LastName = "Pérez",
-                            Nation = "Colombia",
                             Phone = 300123456,
                             SecondLastName = "García",
                             SecondName = "Andrés",
@@ -2796,7 +3065,6 @@ namespace Entity.Migrations
                             Gender = 1,
                             Identification = 500600700,
                             LastName = "López",
-                            Nation = "Colombia",
                             Phone = 310987654,
                             SecondLastName = "Martínez",
                             SecondName = "Fernanda",
@@ -2811,7 +3079,6 @@ namespace Entity.Migrations
                             Gender = 0,
                             Identification = 800900100,
                             LastName = "Rodríguez",
-                            Nation = "Colombia",
                             Phone = 320456789,
                             SecondLastName = "Hernández",
                             SecondName = "Camilo",
@@ -2826,7 +3093,6 @@ namespace Entity.Migrations
                             Gender = 1,
                             Identification = 111222333,
                             LastName = "Moreno",
-                            Nation = "Colombia",
                             Phone = 301654987,
                             SecondLastName = "Castro",
                             SecondName = "Isabel",
@@ -2841,7 +3107,6 @@ namespace Entity.Migrations
                             Gender = 2,
                             Identification = 444555666,
                             LastName = "Ramírez",
-                            Nation = "Colombia",
                             Phone = 312789654,
                             SecondLastName = "Torres",
                             SecondName = "Esteban",

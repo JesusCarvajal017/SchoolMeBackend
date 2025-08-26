@@ -1,4 +1,4 @@
-﻿using Entity.Model.Business;
+﻿
 using Entity.Model.Global;
 
 namespace Entity.Model.Paramters

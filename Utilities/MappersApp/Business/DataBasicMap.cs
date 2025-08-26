@@ -9,7 +9,7 @@ namespace Utilities.MappersApp.Business
         public DataBasicMap()
         {
             // Mapeo de Rol a RolDto y viceversa
-            CreateMap<Estudent, DataBasicDto>().ReverseMap();
+            CreateMap<DataBasic, DataBasicDto>().ReverseMap();
         }
     }
 }

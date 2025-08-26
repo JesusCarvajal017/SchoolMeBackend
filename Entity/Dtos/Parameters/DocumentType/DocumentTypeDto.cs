@@ -7,4 +7,5 @@ namespace Entity.Dtos.Parameters.DocumentType
         public string Name { get; set; }
         public string Acronym { get; set; }
     }
+
 }
