@@ -9,7 +9,7 @@ namespace Entity.ConfigModels.Parameters
     {
         public void Configure(EntityTypeBuilder<Eps> builder)
         {
-            builder.ToTable("eps", schema: "parameters");
+            builder.ToTable("eps");
 
             builder.HasKey(p => p.Id);
 

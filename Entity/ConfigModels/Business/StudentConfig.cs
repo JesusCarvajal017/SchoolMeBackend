@@ -11,7 +11,7 @@ namespace Entity.ConfigModels.Business
         public void Configure(EntityTypeBuilder<Student> builder)
         {
             // Tabla y esquema
-            builder.ToTable("student", schema: "business");
+            builder.ToTable("student");
 
             // Clave primaria
             builder.HasKey(s => s.Id);

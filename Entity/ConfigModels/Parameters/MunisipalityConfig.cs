@@ -9,7 +9,7 @@ namespace Entity.ConfigModels.Parameters
     {
         public void Configure(EntityTypeBuilder<Munisipality> builder)
         {
-            builder.ToTable("munisipality", schema: "parameters");
+            builder.ToTable("munisipality");
 
             builder.HasKey(p => p.Id);
 

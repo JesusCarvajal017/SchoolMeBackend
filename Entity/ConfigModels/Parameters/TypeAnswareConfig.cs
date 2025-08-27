@@ -10,7 +10,7 @@ namespace Entity.ConfigModels.Parameters
         public void Configure(EntityTypeBuilder<TypeAnsware> builder)
         {
 
-            builder.ToTable("type_answare", schema: "parameters");
+            builder.ToTable("type_answare");
 
             builder.HasKey(t => t.Id);
 

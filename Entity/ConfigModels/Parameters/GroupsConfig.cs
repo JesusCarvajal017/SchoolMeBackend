@@ -11,7 +11,7 @@ namespace Entity.ConfigModels.Parameters
         {
 
             // Tabla y esquema (cámbialo a "parameters" si lo prefieres)
-            builder.ToTable("groups", schema: "parameters");
+            builder.ToTable("groups");
 
             // Clave primaria
             builder.HasKey(g => g.Id);

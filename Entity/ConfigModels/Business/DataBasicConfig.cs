@@ -10,7 +10,7 @@ namespace Entity.ConfigModels.Business
     {
         public void Configure(EntityTypeBuilder<DataBasic> builder)
         {
-            builder.ToTable("dataBasic", schema: "business");
+            builder.ToTable("dataBasic");
 
             builder.HasKey(p => p.Id);
 

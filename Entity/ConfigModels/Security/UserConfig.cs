@@ -9,7 +9,7 @@ namespace Entity.ConfigModels.Security
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable("user", schema: "security");
+            builder.ToTable("user");
 
             builder.HasKey(p => p.Id);
 

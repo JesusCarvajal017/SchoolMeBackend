@@ -11,7 +11,7 @@ namespace Entity.ConfigModels.Parameters
     {
         public void Configure(EntityTypeBuilder<DocumentType> builder)
         {
-            builder.ToTable("documentType", schema: "parameters");
+            builder.ToTable("documentType");
 
             builder.HasKey(p => p.Id);
 

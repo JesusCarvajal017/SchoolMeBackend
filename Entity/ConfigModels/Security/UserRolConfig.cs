@@ -9,7 +9,7 @@ namespace Entity.ConfigModels.Security
     {
         public void Configure(EntityTypeBuilder<UserRol> builder)
         {
-            builder.ToTable("userRol", schema: "security");
+            builder.ToTable("userRol");
 
             builder.HasKey(p => p.Id);
 

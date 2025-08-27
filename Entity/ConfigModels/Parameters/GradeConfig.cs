@@ -10,7 +10,7 @@ namespace Entity.ConfigModels.Parameters
         public void Configure(EntityTypeBuilder<Grade> builder)
         {
             // Tabla y esquema
-            builder.ToTable("grade", schema: "parameters");
+            builder.ToTable("grade");
 
             // Clave primaria
             builder.HasKey(p => p.Id);

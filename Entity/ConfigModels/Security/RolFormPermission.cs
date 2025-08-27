@@ -9,7 +9,7 @@ namespace Entity.ConfigModels.Security
     {
         public void Configure(EntityTypeBuilder<RolFormPermission> builder)
         {
-            builder.ToTable("rolFormPermission", schema: "security");
+            builder.ToTable("rolFormPermission");
 
             builder.HasKey(p => p.Id);
 

@@ -8,7 +8,7 @@ namespace Entity.ConfigModels.Logs
     {
         public void Configure(EntityTypeBuilder<Auditoria> builder)
         {
-            builder.ToTable("auditoria", schema: "main");
+            builder.ToTable("auditoria");
 
             builder.HasKey(p => p.Id);
 
