@@ -6,6 +6,8 @@ namespace Entity.Dtos.Parameters.Group
     {
         public string Name { get; set; }
 
+        public int DepartamentId { get; set; }
+
     }
 
 }

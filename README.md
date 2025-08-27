@@ -1,5 +1,21 @@
 # BACKEND SCHOOLME
 
+## COMANDOS DE MIGRACION
+
+1. Para crear la migración
+ ```
+    Add-Migration dbSchoolMe -Project Entity -StartupProject Web -Context AplicationDbContext
+ 
+ ```
+ 
+2. Para crear la db 
+ ```
+    Update-Database -Context AplicationDbContext
+ 
+ ```
+
+
+
 Para poder desplegar de forma local la api, debe tener instalado el motor de base de datos de **Posgrest 17**
 
 

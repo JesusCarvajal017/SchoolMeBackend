@@ -23,6 +23,8 @@ namespace Utilities.Helpers.Validations.Parameters
              .MinimumLength(4).WithMessage("El nombre debe tener al menos 4 caracteres.")
              .MaximumLength(15).WithMessage("El nombre no puede exceder 15 caracteres.");
 
+            
+
 
         }
     }
