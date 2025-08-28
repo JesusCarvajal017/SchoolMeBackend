@@ -34,21 +34,24 @@ namespace Entity.ConfigModels.Parameters
                {
                    Id = 1,
                    Name = "Cedula Ciudadana",
-                   Acronym = "C.C"
+                   Acronym = "C.C", 
+                   Status = 1
 
                },
               new DocumentType
               {
                   Id = 2,
                   Name = "Targeta de identidad",
-                  Acronym = "T.I"
+                  Acronym = "T.I",
+                  Status = 1
 
               },
                new DocumentType
                {
                    Id = 3,
                    Name = "Registro civil",
-                   Acronym = "R.C"
+                   Acronym = "R.C",
+                   Status = 1
 
                }
 

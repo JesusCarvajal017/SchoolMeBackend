@@ -55,6 +55,8 @@ namespace Entity.Context.Main
             modelBuilder.ApplyConfiguration(new EpsConfig());
             modelBuilder.ApplyConfiguration(new DocumentTypeConfig());
             modelBuilder.ApplyConfiguration(new MaterialStatusConfig());
+
+            // academico parte del negocio
             modelBuilder.ApplyConfiguration(new GradeConfig());
             modelBuilder.ApplyConfiguration(new SubjectConfig());
             modelBuilder.ApplyConfiguration(new TypeAnswareConfig());
@@ -74,7 +76,12 @@ namespace Entity.Context.Main
 
             modelBuilder.ApplyConfiguration(new UserConfig());
             modelBuilder.ApplyConfiguration(new UserRolConfig());
+
+
             
+
+
+
 
 
             //Modulo de negocio

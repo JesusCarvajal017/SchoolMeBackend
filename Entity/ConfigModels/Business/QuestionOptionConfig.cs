@@ -47,9 +47,6 @@ namespace Entity.ConfigModels.Business
             // Índices / restricciones
             builder.HasIndex(qo => new { qo.QuestionId, qo.Order })
                    .IsUnique(); // evita duplicar el orden dentro de la misma pregunta
-
-            // (Opcional) Si también quieres evitar textos duplicados por pregunta:
-            // builder.HasIndex(qo => new { qo.QuestionId, qo.Text }).IsUnique();
         }
     }
 }

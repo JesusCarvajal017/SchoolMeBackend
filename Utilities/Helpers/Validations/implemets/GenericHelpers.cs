@@ -47,8 +47,5 @@ namespace Utilities.Helpers.Validations.implemets
                     .Where(p => p.CanRead && p.GetValue(instance) != null)
                     .Select(p => p.Name);
             }
-        
-
-
     }
 }

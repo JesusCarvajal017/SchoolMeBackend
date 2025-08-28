@@ -35,8 +35,8 @@ builder.Services.AddOutputCache((options) =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
@@ -46,7 +46,7 @@ if (app.Environment.IsDevelopment())
         // Esto colapsa todos los endpoints
         c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
     });
-}
+//}
 
 // Middleware del cache
 app.UseOutputCache();
