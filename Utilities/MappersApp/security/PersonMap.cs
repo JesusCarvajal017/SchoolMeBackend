@@ -10,6 +10,9 @@ namespace Utilities.MappersApp.security
         {
             // Mapeo de Rol a RolDto y viceversa
             CreateMap<Person, PersonDto>().ReverseMap();
+
+            CreateMap<Person, PersonQueryDto>()
+                .ForMember(dest => dest.AcronymDocument, opt => opt.MapFrom(p => p.DocumentType.Acronym));                 //.ReverseMap();
         }
     }
 }

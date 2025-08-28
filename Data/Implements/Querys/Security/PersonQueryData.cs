@@ -1,0 +1,50 @@
+﻿using Data.Interfaces.Group.Querys;
+using Entity.Context.Main;
+using Entity.Model.Security;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+
+namespace Data.Implements.Querys.Security
+{
+    public class PersonQueryData : BaseGenericQuerysData<Person>
+    {
+        protected readonly ILogger<PersonQueryData> _logger;
+        protected readonly AplicationDbContext _context;
+
+        public PersonQueryData(AplicationDbContext context, ILogger<PersonQueryData> logger) : base(context, logger)
+        {
+            _context = context;
+            _logger = logger;
+        }
+
+
+        public override async Task<IEnumerable<Person>> QueryAllAsyn(int? status)
+        {
+            try
+            {
+                IQueryable<Person> query = _context.Person.AsNoTracking()
+                     .Include(ur => ur.DocumentType);
+
+
+                if (status.HasValue)
+                    query = query.Where(x => x.Status == status.Value);
+
+
+                var model = await query.ToListAsync();
+
+                //ToListAsync();
+                _logger.LogInformation("Consulta de la enidad {Entity} se realizo exitosamente", typeof(UserRol).Name);
+                return model;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogInformation(ex, "Error en la consulta la entidad {Entity}", typeof(UserRol).Name);
+                throw;
+            }
+        }
+
+
+       
+
+    }
+}

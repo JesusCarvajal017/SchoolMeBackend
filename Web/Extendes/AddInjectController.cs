@@ -62,7 +62,13 @@ namespace Web.Extendes
                 typeof(ModuleFormQueryData)
             );
 
+            services.AddScoped(
+                typeof(IQuerys<Person>),
+                typeof(PersonQueryData)
+            );
+
             services.AddScoped<IQuerysUserRol, UserRolQueryData>();
+            //services.AddScoped<IQuery, PersonQueryData>();
             //services.AddScoped(
             //    typeof(IQuerys<UserRol>),
             //    typeof(UserRolQueryData)

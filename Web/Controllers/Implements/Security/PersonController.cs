@@ -9,11 +9,11 @@ namespace Web.Controllers.Implements.Security
     public class PersonController
        : GenericController<
        Person,
-       PersonDto,
+       PersonQueryDto,
        PersonDto>
     {
         public PersonController(
-            IQueryServices<Person, PersonDto> q,
+            IQueryServices<Person, PersonQueryDto> q,
             ICommandService<Person, PersonDto> c)
           : base(q, c) { }
     }
