@@ -10,6 +10,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMapperApp();
 
+// base de datos disponible MySQL, SQLServer, PgAdmin
+
 // Configuracion de la base de datos
 builder.Services.AddDb("PgAdmin", builder.Configuration);
 //builder.Services.AddDb("PgAdminLog", builder.Configuration);
@@ -34,9 +36,9 @@ builder.Services.AddOutputCache((options) =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//// Configure the HTTP request pipeline.
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
@@ -46,7 +48,7 @@ if (app.Environment.IsDevelopment())
         // Esto colapsa todos los endpoints
         c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
     });
-}
+//}
 
 // Middleware del cache
 app.UseOutputCache();

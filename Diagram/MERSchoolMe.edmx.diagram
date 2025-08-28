@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="495906861bfe416dbfae3fdadd6f5b7d" Name="Diagram1" ZoomLevel="52" >
+      <Diagram DiagramId="495906861bfe416dbfae3fdadd6f5b7d" Name="Diagram1" ZoomLevel="28" >
         <EntityTypeShape EntityType="Model1.Person" Width="2.125" PointX="19.5" PointY="2.625" FillColor="0, 0, 192" IsExpanded="true" />
         <EntityTypeShape EntityType="Model1.User" Width="1.5" PointX="11.75" PointY="3.125" FillColor="255, 128, 0" />
         <EntityTypeShape EntityType="Model1.UserRol" Width="1.5" PointX="10" PointY="0.875" FillColor="255, 128, 0" />
@@ -24,14 +24,13 @@
         <AssociationConnector Association="Model1.EpsDataBasic" />
         <AssociationConnector Association="Model1.MunisipalityDataBasic" />
         <EntityTypeShape EntityType="Model1.DocumentType" Width="1.5" PointX="17" PointY="3.375" FillColor="128, 255, 128" />
-        <EntityTypeShape EntityType="Model1.Teacher" Width="1.5" PointX="15.375" PointY="7" FillColor="255, 128, 128" />
+        <EntityTypeShape EntityType="Model1.Teacher" Width="1.5" PointX="16" PointY="6.125" FillColor="255, 128, 128" />
         <AssociationConnector Association="Model1.PersonDocumentType" />
         <AssociationConnector Association="Model1.PersonTeacher" />
-        <EntityTypeShape EntityType="Model1.GroupDirector" Width="1.5" PointX="15.125" PointY="11.5" />
+        <EntityTypeShape EntityType="Model1.GroupDirector" Width="1.5" PointX="11.75" PointY="6.625" />
         <AssociationConnector Association="Model1.TeacherGroupDirector" />
         <EntityTypeShape EntityType="Model1.Group" Width="2" PointX="17.5" PointY="8.625" />
-        <AssociationConnector Association="Model1.GroupGroupDirector" />
-        <EntityTypeShape EntityType="Model1.Grade" Width="1.5" PointX="15.875" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Grade" Width="1.5" PointX="15.25" PointY="12.25" IsExpanded="true" FillColor="128, 255, 128" />
         <AssociationConnector Association="Model1.GradeGroup" />
         <EntityTypeShape EntityType="Model1.Students" Width="1.5" PointX="21" PointY="8.125" FillColor="255, 128, 128" />
         <AssociationConnector Association="Model1.PersonStudents" ></AssociationConnector>
@@ -43,9 +42,9 @@
         <AssociationConnector Association="Model1.RolFormPermisionForm" />
         <AssociationConnector Association="Model1.RolFormPermisionRol" />
         <AssociationConnector Association="Model1.UserRolRol" />
-        <EntityTypeShape EntityType="Model1.AcademicLoad" Width="1.5" PointX="13" PointY="8.625" />
+        <EntityTypeShape EntityType="Model1.AcademicLoad" Width="1.5" PointX="13.75" PointY="8.25" />
         <AssociationConnector Association="Model1.AcademicLoadTeacher" />
-        <EntityTypeShape EntityType="Model1.Subject" Width="1.5" PointX="13.125" PointY="12.5" />
+        <EntityTypeShape EntityType="Model1.Subject" Width="1.5" PointX="11.75" PointY="12.75" />
         <AssociationConnector Association="Model1.AcademicLoadSubject" />
         <AssociationConnector Association="Model1.AcademicLoadGroup" />
         <AssociationConnector Association="Model1.StudentsGroup" />
@@ -75,6 +74,7 @@
         <EntityTypeShape EntityType="Model1.attendants" Width="1.5" PointX="23.125" PointY="6.875" FillColor="255, 128, 128" />
         <AssociationConnector Association="Model1.attendantsPerson1" />
         <AssociationConnector Association="Model1.attendantsStudents" />
+        <AssociationConnector Association="Model1.GroupDirectorGroup" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

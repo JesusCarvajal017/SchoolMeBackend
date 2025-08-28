@@ -50,8 +50,8 @@
             <End Role="DocumentType" EntitySet="DocumentTypeSet" />
           </AssociationSet>
           <AssociationSet Name="PersonTeacher" Association="Model1.PersonTeacher">
-            <End Role="Person" EntitySet="PersonSet" />
-            <End Role="Teacher" EntitySet="TeacherSet" />
+            <End EntitySet="PersonSet" Role="Person" />
+            <End EntitySet="TeacherSet" Role="Teacher" />
           </AssociationSet>
           <EntitySet Name="GroupDirectorSet" EntityType="Model1.GroupDirector" />
           <AssociationSet Name="TeacherGroupDirector" Association="Model1.TeacherGroupDirector">
@@ -59,10 +59,6 @@
             <End Role="GroupDirector" EntitySet="GroupDirectorSet" />
           </AssociationSet>
           <EntitySet Name="GroupSet" EntityType="Model1.Group" />
-          <AssociationSet Name="GroupGroupDirector" Association="Model1.GroupGroupDirector">
-            <End Role="Group" EntitySet="GroupSet" />
-            <End Role="GroupDirector" EntitySet="GroupDirectorSet" />
-          </AssociationSet>
           <EntitySet Name="GradeSet" EntityType="Model1.Grade" />
           <AssociationSet Name="GradeGroup" Association="Model1.GradeGroup">
             <End Role="Grade" EntitySet="GradeSet" />
@@ -201,6 +197,10 @@
           <AssociationSet Name="attendantsStudents" Association="Model1.attendantsStudents">
             <End Role="attendants" EntitySet="attendantsSet" />
             <End Role="Students" EntitySet="StudentsSet" />
+          </AssociationSet>
+          <AssociationSet Name="GroupDirectorGroup" Association="Model1.GroupDirectorGroup">
+            <End Role="GroupDirector" EntitySet="GroupDirectorSet" />
+            <End Role="Group" EntitySet="GroupSet" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Person">
@@ -402,8 +402,8 @@
           <End Type="Model1.DocumentType" Role="DocumentType" Multiplicity="1" />
         </Association>
         <Association Name="PersonTeacher">
-          <End Type="Model1.Person" Role="Person" Multiplicity="1" />
-          <End Type="Model1.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="Model1.Person" Multiplicity="1" Role="Person" />
+          <End Type="Model1.Teacher" Multiplicity="1" Role="Teacher" />
         </Association>
         <EntityType Name="GroupDirector">
           <Key>
@@ -413,7 +413,7 @@
           <Property Name="Status" Type="Int16" Nullable="false" />
           <NavigationProperty Name="Teacher" Relationship="Model1.TeacherGroupDirector" FromRole="GroupDirector" ToRole="Teacher" />
           <Property Name="TeacherId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Group" Relationship="Model1.GroupGroupDirector" FromRole="GroupDirector" ToRole="Group" />
+          <NavigationProperty Name="Group" Relationship="Model1.GroupDirectorGroup" FromRole="GroupDirector" ToRole="Group" />
         </EntityType>
         <Association Name="TeacherGroupDirector">
           <End Type="Model1.Teacher" Role="Teacher" Multiplicity="1" />
@@ -434,7 +434,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Status" Type="Int16" Nullable="false" />
-          <NavigationProperty Name="GroupDirector" Relationship="Model1.GroupGroupDirector" FromRole="Group" ToRole="GroupDirector" />
           <NavigationProperty Name="Grade" Relationship="Model1.GradeGroup" FromRole="Group" ToRole="Grade" />
           <Property Name="GradeId" Type="Int32" Nullable="false" />
           <Property Name="AmountStudents" Type="String" Nullable="false" />
@@ -442,11 +441,8 @@
           <NavigationProperty Name="Students" Relationship="Model1.StudentsGroup" FromRole="Group" ToRole="Students" />
           <NavigationProperty Name="Agenda" Relationship="Model1.GroupAgenda" FromRole="Group" ToRole="Agenda" />
           <NavigationProperty Name="AgendaDay" Relationship="Model1.GroupAgendaDay" FromRole="Group" ToRole="AgendaDay" />
+          <NavigationProperty Name="GroupDirector" Relationship="Model1.GroupDirectorGroup" FromRole="Group" ToRole="GroupDirector" />
         </EntityType>
-        <Association Name="GroupGroupDirector">
-          <End Type="Model1.Group" Role="Group" Multiplicity="1" />
-          <End Type="Model1.GroupDirector" Role="GroupDirector" Multiplicity="1" />
-        </Association>
         <EntityType Name="Grade">
           <Key>
             <PropertyRef Name="Id" />
@@ -474,7 +470,6 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Person" Relationship="Model1.PersonStudents" FromRole="Students" ToRole="Person" />
-          <Property Name="TutionId" Type="String" Nullable="false" />
           <Property Name="PersonId" Type="String" Nullable="false" />
           <NavigationProperty Name="Group" Relationship="Model1.StudentsGroup" FromRole="Students" ToRole="Group" />
           <Property Name="GroupId" Type="Int32" Nullable="false" />
@@ -891,9 +886,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Person1" Relationship="Model1.attendantsPerson1" FromRole="attendants" ToRole="Person" />
           <Property Name="PersonId" Type="Int32" Nullable="false" />
+          <Property Name="RelationShipType" Type="String" Nullable="false" />
           <NavigationProperty Name="Students" Relationship="Model1.attendantsStudents" FromRole="attendants" ToRole="Students" />
           <Property Name="StudentsId" Type="Int32" Nullable="false" />
-          <Property Name="RelationShipType" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="attendantsPerson1">
           <End Type="Model1.attendants" Role="attendants" Multiplicity="*" />
@@ -918,6 +913,10 @@
               <PropertyRef Name="StudentsId" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <Association Name="GroupDirectorGroup">
+          <End Type="Model1.GroupDirector" Role="GroupDirector" Multiplicity="1" />
+          <End Type="Model1.Group" Role="Group" Multiplicity="1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
