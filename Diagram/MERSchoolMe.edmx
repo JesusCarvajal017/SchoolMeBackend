@@ -153,10 +153,6 @@
             <End Role="AssignedAgenda" EntitySet="AssignedAgendaSet" />
             <End Role="Group" EntitySet="GroupSet" />
           </AssociationSet>
-          <AssociationSet Name="GroupAgenda" Association="Model1.GroupAgenda">
-            <End Role="Group" EntitySet="GroupSet" />
-            <End Role="Agenda" EntitySet="AgendaSet" />
-          </AssociationSet>
           <EntitySet Name="AgendaDaySet" EntityType="Model1.AgendaDay" />
           <AssociationSet Name="GroupAgendaDay" Association="Model1.GroupAgendaDay">
             <End Role="AgendaDay" EntitySet="AgendaDaySet" />
@@ -440,8 +436,8 @@
           <Property Name="AmountStudents" Type="String" Nullable="false" />
           <NavigationProperty Name="AcademicLoad" Relationship="Model1.AcademicLoadGroup" FromRole="Group" ToRole="AcademicLoad" />
           <NavigationProperty Name="Students" Relationship="Model1.StudentsGroup" FromRole="Group" ToRole="Students" />
-          <NavigationProperty Name="Agenda" Relationship="Model1.GroupAgenda" FromRole="Group" ToRole="Agenda" />
           <NavigationProperty Name="AgendaDay" Relationship="Model1.GroupAgendaDay" FromRole="Group" ToRole="AgendaDay" />
+          <Property Name="AgendaId" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="GroupGroupDirector">
           <End Type="Model1.Group" Role="Group" Multiplicity="1" />
@@ -614,7 +610,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CreationDate" Type="Time" Nullable="false" />
           <NavigationProperty Name="compositionAgenda" Relationship="Model1.compositionAgendaAgenda" FromRole="Agenda" ToRole="compositionAgenda" />
-          <NavigationProperty Name="Group" Relationship="Model1.GroupAgenda" FromRole="Agenda" ToRole="Group" />
           <NavigationProperty Name="AgendaDay" Relationship="Model1.AgendaDayAgenda" FromRole="Agenda" ToRole="AgendaDay" />
         </EntityType>
         <EntityType Name="compositionAgenda">
@@ -733,10 +728,6 @@
         <Association Name="AssignedAgendaGroup">
           <End Type="Model1.AssignedAgenda" Role="AssignedAgenda" Multiplicity="1" />
           <End Type="Model1.Group" Role="Group" Multiplicity="1" />
-        </Association>
-        <Association Name="GroupAgenda">
-          <End Type="Model1.Group" Role="Group" Multiplicity="*" />
-          <End Type="Model1.Agenda" Role="Agenda" Multiplicity="1" />
         </Association>
         <EntityType Name="AgendaDay">
           <Key>

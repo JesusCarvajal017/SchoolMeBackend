@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="495906861bfe416dbfae3fdadd6f5b7d" Name="Diagram1" ZoomLevel="82" >
+      <Diagram DiagramId="495906861bfe416dbfae3fdadd6f5b7d" Name="Diagram1" ZoomLevel="154" >
         <EntityTypeShape EntityType="Model1.Person" Width="2.125" PointX="19.5" PointY="2.625" FillColor="0, 0, 192" IsExpanded="true" />
         <EntityTypeShape EntityType="Model1.User" Width="1.5" PointX="11.75" PointY="3.125" FillColor="255, 128, 0" />
         <EntityTypeShape EntityType="Model1.UserRol" Width="1.5" PointX="10" PointY="0.875" FillColor="255, 128, 0" />
@@ -59,17 +59,16 @@
         <AssociationConnector Association="Model1.compositionAgendaAgenda" />
         <AssociationConnector Association="Model1.compositionAgendaQuestion" />
         <AssociationConnector Association="Model1.DataBasicMatirialStatus" />
-        <AssociationConnector Association="Model1.GroupAgenda" />
         <EntityTypeShape EntityType="Model1.AgendaDay" Width="1.5" PointX="21.875" PointY="11.75" />
         <AssociationConnector Association="Model1.GroupAgendaDay" />
         <AssociationConnector Association="Model1.AgendaDayAgenda" />
         <EntityTypeShape EntityType="Model1.AgendaDayStudent" Width="1.875" PointX="26.625" PointY="10.875" />
         <AssociationConnector Association="Model1.AgendaDayStudentAgendaDay" />
         <AssociationConnector Association="Model1.AgendaDayStudentStudents" />
-        <EntityTypeShape EntityType="Model1.StudentAnswer" Width="1.5" PointX="31" PointY="14.75" />
+        <EntityTypeShape EntityType="Model1.StudentAnswer" Width="2" PointX="31" PointY="14.75" />
         <AssociationConnector Association="Model1.StudentAnswerAgendaDayStudent" />
         <AssociationConnector Association="Model1.QuestionStudentAnswer" />
-        <EntityTypeShape EntityType="Model1.StudentAnswareOptions" Width="1.5" PointX="33.625" PointY="15.375" />
+        <EntityTypeShape EntityType="Model1.StudentAnswareOptions" Width="2.125" PointX="33.625" PointY="15.375" />
         <AssociationConnector Association="Model1.StudentAnswareOptionsStudentAnswer" />
         <AssociationConnector Association="Model1.StudentAnswareOptionsQuestionOption" />
         <EntityTypeShape EntityType="Model1.attendants" Width="1.5" PointX="23.125" PointY="6.875" FillColor="255, 128, 128" />
