@@ -21,9 +21,9 @@ namespace Entity.ConfigModels.Business
                    .HasColumnName("id")
                    .IsRequired();
 
-            builder.Property(s => s.TutionId)
-                   .HasColumnName("tution_id")   // si es "tuition", renombra la columna/FK
-                   .IsRequired();
+            //builder.Property(s => s.TutionId)
+            //       .HasColumnName("tution_id")   // si es "tuition", renombra la columna/FK
+            //       .IsRequired();
 
             builder.Property(s => s.PersonId)
                    .HasColumnName("person_id")

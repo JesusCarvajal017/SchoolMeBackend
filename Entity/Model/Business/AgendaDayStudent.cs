@@ -1,17 +1,19 @@
 ﻿using Entity.Model.Global;
-using Entity.Model.Paramters;
 
 namespace Entity.Model.Business
 {
-    public class AgendaDay : ABaseEntity
+    public class AgendaDayStudent : ABaseEntity
     {
-        public int GroupId { get; set; }
-        public int AgendaId { get; set; }
+        public long AgendaDayId { get; set; }
+        public long StudentsId { get; set; }
+        public int AgendaDayStudentStatus { get; set; }
+        public DateTime? CompletedAt {  get; set; } // cuando completo la agenda de ese estudiante
 
-        public Groups Group { get; set; }
-        public Agenda Agenda { get; set; }
-
-        public ICollection<AgendaDayStudent> AgendaDayStudents { get; set; }
+        // Navegación
+        public AgendaDay AgendaDay { get; set; } = null!;
+        public Student Students { get; set; } = null!;
+        public ICollection<StudentAnswer> StudentAnswers { get; set; } = new List<StudentAnswer>();
+        public ICollection<TeacherObservation> TeacherObservation { get; set; }
 
     }
 }

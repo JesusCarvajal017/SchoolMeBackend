@@ -7,10 +7,8 @@ namespace Entity.Model.Business
     {
         // FK
         public long QuestionId { get; set; }
-
         public string Text { get; set; } = null!;
         public int Order { get; set; }
-        public int Status { get; set; }
 
         // Navegación
         public virtual Question Question { get; set; } = null!;

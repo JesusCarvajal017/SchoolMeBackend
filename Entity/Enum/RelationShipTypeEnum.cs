@@ -2,11 +2,11 @@
 {
     public enum RelationShipTypeEnum
     {
-        Father = 1,
-        Mother = 2,
-        Brother = 3,
-        Sister = 4,
+        Padre = 1,
+        Madre = 2,
+        Hermano = 3,
+        Hermana = 4,
         Tutor = 5,
-        Other = 6   
+        Otro = 6   
     }
 }

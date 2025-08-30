@@ -29,10 +29,10 @@ namespace Entity.ConfigModels.Parameters
 
             builder.MapBaseModel();
 
-            //builder.HasMany(s => s.AcademicLoads)
-            //       .WithOne(al => al.Subject)
-            //       .HasForeignKey(al => al.SubjectId)
-            //       .OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(s => s.AcademicLoads)
+                   .WithOne(al => al.Subject)
+                   .HasForeignKey(al => al.SubjectId)
+                   .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasData(
                 new Subject { Id = 1, Name = "Lengua Castellana", Status = 1 },

@@ -3,17 +3,17 @@ using Entity.Model.Paramters;
 
 namespace Entity.Model.Business
 {
-    public class AgendaDayStudent : ABaseEntity
+    public class AgendaDay : ABaseEntity
     {
-        public long AgendaDayId { get; set; }
-        public long StudentsId { get; set; }
+        public int GroupId { get; set; }
+        public int AgendaId { get; set; }
+        public DateOnly Date { get; set; }
+        public DateTime? OpenedAt { get; set; }
+        public DateTime? ClosedAt { get; set; }
 
-        public int State { get; set; }   
-
-        // Navegación
-        public virtual AgendaDay AgendaDay { get; set; } = null!;
-        public virtual Student Students { get; set; } = null!;
-        public virtual ICollection<StudentAnswer> StudentAnswers { get; set; } = new List<StudentAnswer>();
+        public Groups Group { get; set; }
+        public Agenda Agenda { get; set; } 
+        public ICollection<AgendaDayStudent> AgendaDayStudents { get; set; }
 
     }
 }

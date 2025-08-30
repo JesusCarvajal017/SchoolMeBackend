@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="495906861bfe416dbfae3fdadd6f5b7d" Name="Diagram1" ZoomLevel="32" >
+      <Diagram DiagramId="495906861bfe416dbfae3fdadd6f5b7d" Name="Diagram1" ZoomLevel="111" >
         <EntityTypeShape EntityType="Model1.Person" Width="2.125" PointX="19.5" PointY="2.625" FillColor="0, 0, 192" IsExpanded="true" />
         <EntityTypeShape EntityType="Model1.User" Width="1.5" PointX="11.75" PointY="3.125" FillColor="255, 128, 0" />
         <EntityTypeShape EntityType="Model1.UserRol" Width="1.5" PointX="10" PointY="0.875" FillColor="255, 128, 0" />
@@ -27,11 +27,11 @@
         <EntityTypeShape EntityType="Model1.Teacher" Width="1.5" PointX="15.375" PointY="5.5" FillColor="255, 128, 128" />
         <AssociationConnector Association="Model1.PersonDocumentType" />
         <AssociationConnector Association="Model1.PersonTeacher" />
-        <EntityTypeShape EntityType="Model1.GroupDirector" Width="1.5" PointX="15.25" PointY="8.375" />
+        <EntityTypeShape EntityType="Model1.GroupDirector" Width="1.5" PointX="15.125" PointY="8.375" />
         <AssociationConnector Association="Model1.TeacherGroupDirector" />
         <EntityTypeShape EntityType="Model1.Group" Width="2" PointX="17.5" PointY="8.625" />
         <AssociationConnector Association="Model1.GroupGroupDirector" />
-        <EntityTypeShape EntityType="Model1.Grade" Width="1.5" PointX="20.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Grade" Width="1.5" PointX="20.5" PointY="10.625" IsExpanded="true" />
         <AssociationConnector Association="Model1.GradeGroup" />
         <EntityTypeShape EntityType="Model1.Students" Width="1.5" PointX="20.75" PointY="7.75" FillColor="255, 128, 128" />
         <AssociationConnector Association="Model1.PersonStudents" ></AssociationConnector>
@@ -50,8 +50,8 @@
         <AssociationConnector Association="Model1.AcademicLoadGroup" />
         <AssociationConnector Association="Model1.StudentsGroup" />
         <EntityTypeShape EntityType="Model1.Agenda" Width="1.625" PointX="16.625" PointY="12.75" />
-        <EntityTypeShape EntityType="Model1.compositionAgenda" Width="1.5" PointX="28" PointY="13.75" />
-        <EntityTypeShape EntityType="Model1.TypeAswer" Width="1.5" PointX="30.375" PointY="14.125" />
+        <EntityTypeShape EntityType="Model1.compositionAgenda" Width="2" PointX="28" PointY="13.875" />
+        <EntityTypeShape EntityType="Model1.TypeAswer" Width="1.5" PointX="30.5" PointY="14.75" />
         <EntityTypeShape EntityType="Model1.Question" Width="1.5" PointX="29.75" PointY="10.875" />
         <AssociationConnector Association="Model1.QuestionTypeAswer" />
         <EntityTypeShape EntityType="Model1.QuestionOption" Width="1.5" PointX="32.25" PointY="11.625" />
@@ -59,7 +59,7 @@
         <AssociationConnector Association="Model1.compositionAgendaAgenda" />
         <AssociationConnector Association="Model1.compositionAgendaQuestion" />
         <AssociationConnector Association="Model1.DataBasicMatirialStatus" />
-        <EntityTypeShape EntityType="Model1.AgendaDay" Width="1.5" PointX="22.75" PointY="12.375" />
+        <EntityTypeShape EntityType="Model1.AgendaDay" Width="1.5" PointX="22.25" PointY="12.5" />
         <AssociationConnector Association="Model1.GroupAgendaDay" />
         <AssociationConnector Association="Model1.AgendaDayAgenda" />
         <EntityTypeShape EntityType="Model1.AgendaDayStudent" Width="1.875" PointX="25.125" PointY="10.25" />
@@ -78,7 +78,7 @@
         <EntityTypeShape EntityType="Model1.ParentConfirmation" Width="2.25" PointX="27" PointY="6.5" />
         <AssociationConnector Association="Model1.ParentConfirmationAgendaDayStudent" />
         <AssociationConnector Association="Model1.ParentConfirmationPerson" />
-        <EntityTypeShape EntityType="Model1.TeacherObservation" Width="1.5" PointX="24.875" PointY="16.375" />
+        <EntityTypeShape EntityType="Model1.TeacherObservation" Width="2" PointX="24.875" PointY="16.375" IsExpanded="true" />
         <AssociationConnector Association="Model1.TeacherObservationAgendaDayStudent" />
         <AssociationConnector Association="Model1.TeacherObservationTeacher" />
       </Diagram>

@@ -8,7 +8,7 @@ namespace Entity.Model.Paramters
     {
         public string Name { get; set; }
 
-        [NotMapped]
+        //[NotMapped]
         public ICollection<AcademicLoad> AcademicLoads { get; set; }
     }
 }
