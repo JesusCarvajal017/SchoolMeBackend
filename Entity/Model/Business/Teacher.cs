@@ -6,10 +6,13 @@ namespace Entity.Model.Business
     public class Teacher : ABaseEntity
     {
         public int PersonId { get; set; } 
+        public Person Person { get; set; }
 
-        public virtual Person Person { get; set; }
-        public virtual GroupDirector GroupDirector { get; set; }
-        public virtual ICollection<AcademicLoad> AcademicLoad { get; set; }
+
+
+        public ICollection<GroupDirector> GroupDirector { get; set; }
+        public ICollection<AcademicLoad> AcademicLoad { get; set; }
+        public ICollection<TeacherObservation> TeacherObservation { get; set; }
 
     }
 }

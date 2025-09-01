@@ -1,5 +1,4 @@
-﻿
-using Entity.ConfigModels.global;
+﻿using Entity.ConfigModels.global;
 using Entity.Model.Business;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -51,7 +50,7 @@ namespace Entity.ConfigModels.Business
                    .OnDelete(DeleteBehavior.Cascade);
 
             // 1 (Question) -> N (CompositionAgendaQuestion)
-            builder.HasMany(q => q.CompositionAgendaQuestions)
+            builder.HasMany(q => q.CompositionAgendaQuestion)
                    .WithOne(caq => caq.Question)
                    .HasForeignKey(caq => caq.QuestionId)
                    .OnDelete(DeleteBehavior.Cascade);
@@ -61,6 +60,7 @@ namespace Entity.ConfigModels.Business
                    .WithOne(sa => sa.Question)
                    .HasForeignKey(sa => sa.QuestionId)
                    .OnDelete(DeleteBehavior.Restrict);
+
         }
     }
 }

@@ -93,7 +93,8 @@ namespace Entity.ConfigModels.Business
                     StratumStatus = 3,
                     MaterialStatusId = 1,
                     EpsId = 1,
-                    MunisipalityId = 200
+                    MunisipalityId = 200,
+                    Status = 1
                 },
                 new DataBasic
                 {
@@ -105,7 +106,8 @@ namespace Entity.ConfigModels.Business
                     StratumStatus = 4,
                     MaterialStatusId = 2,
                     EpsId = 1,
-                    MunisipalityId = 200
+                    MunisipalityId = 200,
+                    Status = 1
                 },
                 new DataBasic
                 {
@@ -117,7 +119,8 @@ namespace Entity.ConfigModels.Business
                     StratumStatus = 2,
                     MaterialStatusId = 2,
                     EpsId = 1,
-                    MunisipalityId = 200
+                    MunisipalityId = 200,
+                    Status = 1
                 },
                 new DataBasic
                 {
@@ -129,7 +132,8 @@ namespace Entity.ConfigModels.Business
                     StratumStatus = 5,
                     MaterialStatusId = 1,
                     EpsId = 1,
-                    MunisipalityId = 200
+                    MunisipalityId = 200,
+                    Status = 1
                 },
                 new DataBasic
                 {
@@ -141,7 +145,8 @@ namespace Entity.ConfigModels.Business
                     StratumStatus = 3,
                     MaterialStatusId = 2,
                     EpsId = 1,
-                    MunisipalityId = 200
+                    MunisipalityId = 200,
+                    Status = 1
                 }
             );
 

@@ -10,8 +10,9 @@ namespace Entity.Model.Business
 
         // Navegación
         public TypeAnsware TypeAswer { get; set; } = null!;
+
         public ICollection<QuestionOption> QuestionOptions { get; set; } 
-        public ICollection<CompositionAgendaQuestion> CompositionAgendaQuestions { get; set; }
+        public ICollection<CompositionAgendaQuestion> CompositionAgendaQuestion { get; set; }
         public ICollection<StudentAnswer> StudentAnswers { get; set; } 
 
     }

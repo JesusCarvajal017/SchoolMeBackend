@@ -36,7 +36,7 @@ namespace Entity.ConfigModels.Security
 
             builder.HasData(
                  // ADMINISTRACIÓN
-                 new Form { Id = 1, Name = "Todos", Description = "Vista de todos los registros administrativos", Path = "todos", Order = 1 },
+                 new Form { Id = 1, Name = "Todos", Description = "Vista de todos los registros administrativos", Path = "person", Order = 1 },
                  new Form { Id = 2, Name = "Administrativos", Description = "Gestión de personal administrativo", Path = "administrativos", Order = 2 },
                  new Form { Id = 3, Name = "Docentes", Description = "Gestión de docentes", Path = "docentes", Order = 3 },
                  new Form { Id = 4, Name = "Niños", Description = "Gestión de estudiantes", Path = "ninos", Order = 4 },

@@ -1,5 +1,6 @@
 ﻿using Entity.Dtos.Security.Form;
 using FluentValidation;
+using Utilities.Helpers.Validations.ValidationsGenerics;
 
 namespace Utilities.Helpers.Validations.Security
 {
@@ -7,8 +8,7 @@ namespace Utilities.Helpers.Validations.Security
     {
         public ModuleValidation()
         {
-            RuleFor(x => x.Name)
-           .NotEmpty().WithMessage("El nombre del modulo es obligatorio");
+            RuleFor(x => x.Name).StandardName(min: 4, max: 15);
 
             RuleFor(x => x.Description)
                 .NotEmpty().WithMessage("La descripcion es obligatoria");

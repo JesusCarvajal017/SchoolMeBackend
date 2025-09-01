@@ -21,9 +21,9 @@ namespace Entity.ConfigModels.Business
                    .HasColumnName("id")
                    .IsRequired();
 
-            builder.Property(s => s.TutionId)
-                   .HasColumnName("tution_id")   // si es "tuition", renombra la columna/FK
-                   .IsRequired();
+            //builder.Property(s => s.TutionId)
+            //       .HasColumnName("tution_id")   // si es "tuition", renombra la columna/FK
+            //       .IsRequired();
 
             builder.Property(s => s.PersonId)
                    .HasColumnName("person_id")
@@ -43,7 +43,7 @@ namespace Entity.ConfigModels.Business
                    .OnDelete(DeleteBehavior.Restrict);
 
             // Relaciones: muchos(Student) -> uno(Group)
-            builder.HasOne(s => s.Group)
+            builder.HasOne(s => s.Groups)
                    .WithMany() // usa .WithMany(g => g.Student) o g.Students si existe la colección
                    .HasForeignKey(s => s.GroupId)
                    .OnDelete(DeleteBehavior.Restrict);
