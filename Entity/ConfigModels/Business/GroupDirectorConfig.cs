@@ -21,6 +21,10 @@ namespace Entity.ConfigModels.Business
                    .HasColumnName("teacher_id")
                    .IsRequired();
 
+            builder.Property(x => x.GroupId)
+                   .HasColumnName("group_id")
+                   .IsRequired();
+
             // Auditoría/estado de ABaseEntity (created_at, updated_at, status, etc.)
             builder.MapBaseModel();
 
@@ -35,12 +39,13 @@ namespace Entity.ConfigModels.Business
                    .HasConstraintName("fk_group_director_teacher")
                    .OnDelete(DeleteBehavior.Restrict);
 
-            //// Relación 1:N con Group (se configura desde Group también)
-            //builder.HasMany(x => x.Groups)
-            //       .WithOne(g => g.GroupDirector)
-            //       .HasForeignKey(g => g.GroupDirectorId)
-            //       .HasConstraintName("fk_group_group_director")
-            //       .OnDelete(DeleteBehavior.SetNull);        // si borras el director, los grupos quedan sin director
+            // 1:1 Group <-> GroupDirector (PK-FK compartida)
+            builder.HasOne(x => x.Groups)
+                   .WithOne(g => g.GroupDirector)
+                   .HasForeignKey<GroupDirector>(x => x.GroupId)
+                   .HasConstraintName("fk_group_director_group")
+                   .OnDelete(DeleteBehavior.Cascade); // si se borra el grupo, se borra su registro de director
+
 
         }
     }
