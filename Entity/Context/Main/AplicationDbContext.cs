@@ -71,21 +71,37 @@ namespace Entity.Context.Main
             modelBuilder.ApplyConfiguration(new RolFormPermissionConfig());
 
             // Modulo de parametros
-
             modelBuilder.ApplyConfiguration(new PersonConfig());
 
             modelBuilder.ApplyConfiguration(new UserConfig());
             modelBuilder.ApplyConfiguration(new UserRolConfig());
 
+            //Actores principales 
+            modelBuilder.ApplyConfiguration(new AttendantsConfig());
+            modelBuilder.ApplyConfiguration(new TeacherConfig());
+            modelBuilder.ApplyConfiguration(new StudentConfig());
 
-            
+            modelBuilder.ApplyConfiguration(new GroupDirectorConfig());
+            modelBuilder.ApplyConfiguration(new AcademicLoadConfig());
 
-
-
+            // negocio
+            modelBuilder.ApplyConfiguration(new QuestionConfig());
+            modelBuilder.ApplyConfiguration(new QuestionOptionConfig());
+            modelBuilder.ApplyConfiguration(new StudentAnswareConfig());
+            modelBuilder.ApplyConfiguration(new StudentAnswareOptionsConfig());
 
 
             //Modulo de negocio
             modelBuilder.ApplyConfiguration(new DataBasicConfig());
+
+            modelBuilder.ApplyConfiguration(new AgendaConfig());
+            modelBuilder.ApplyConfiguration(new AgendaDayConfig());
+            modelBuilder.ApplyConfiguration(new AgendaDayStudentConfig());
+
+            modelBuilder.ApplyConfiguration(new CompositionConfig());
+
+            modelBuilder.ApplyConfiguration(new TeacherObservationConfig());
+
         }
 
 

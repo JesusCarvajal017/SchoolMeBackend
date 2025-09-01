@@ -6,7 +6,7 @@ namespace Entity.Model.Business
     public class QuestionOption : ABaseEntity
     {
         // FK
-        public long QuestionId { get; set; }
+        public int QuestionId { get; set; }
         public string Text { get; set; } = null!;
         public int Order { get; set; }
 

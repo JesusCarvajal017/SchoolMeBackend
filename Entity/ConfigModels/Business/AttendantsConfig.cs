@@ -31,7 +31,6 @@ namespace Entity.ConfigModels.Business
             // Enum -> número (portátil para SQL Server / PostgreSQL / MySQL)
             builder.Property(a => a.RelationShipTypeEnum)
                    .HasColumnName("relationship_type")
-                   .HasConversion<int>()     // guarda como int; si prefieres byte, usa .HasConversion<byte>()
                    .IsRequired();
 
             // Auditoría / estado comunes
@@ -41,14 +40,6 @@ namespace Entity.ConfigModels.Business
             builder.HasIndex(a => new { a.StudentId, a.PersonId })
                    .HasDatabaseName("uq_attendants_student_person")
                    .IsUnique();
-
-            // Índices de apoyo
-            //builder.HasIndex(a => a.StudentId).HasDatabaseName("ix_attendants_student");
-            //builder.HasIndex(a => a.PersonId).HasDatabaseName("ix_attendants_person");
-
-            // (Opcional) CHECK de rango para el enum (siempre que tu enum sea 1..N conocidos)
-            // Nota: MySQL < 8.0.16 ignora CHECKs
-            // builder.HasCheckConstraint("ck_attendants_relationship_type", "[relationship_type] BETWEEN 1 AND 5");
 
             // Relaciones
             builder.HasOne(a => a.Student)

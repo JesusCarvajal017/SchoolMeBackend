@@ -46,14 +46,14 @@ namespace Entity.ConfigModels.Business
             // Relaciones
             builder.HasOne(x => x.Agenda)
                    // ajusta la colección en Agenda si la tienes, p. ej. .WithMany(a => a.CompositionQuestions)
-                   .WithMany()
+                   .WithMany(x=> x.CompositionAgendaQuestion)
                    .HasForeignKey(x => x.AgendaId)
                    .HasConstraintName("fk_caq_agenda")
                    .OnDelete(DeleteBehavior.Cascade); // al borrar Agenda, se borran sus filas de composición
 
             builder.HasOne(x => x.Question)
                    // ajusta la colección en Question si la tienes
-                   .WithMany()
+                   .WithMany(x => x.CompositionAgendaQuestion)
                    .HasForeignKey(x => x.QuestionId)
                    .HasConstraintName("fk_caq_question")
                    .OnDelete(DeleteBehavior.Restrict); // protege catálogo de preguntas

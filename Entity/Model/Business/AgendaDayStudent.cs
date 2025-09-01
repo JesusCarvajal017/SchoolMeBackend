@@ -4,8 +4,8 @@ namespace Entity.Model.Business
 {
     public class AgendaDayStudent : ABaseEntity
     {
-        public long AgendaDayId { get; set; }
-        public long StudentsId { get; set; }
+        public int AgendaDayId { get; set; }
+        public int StudentsId { get; set; }
         public int AgendaDayStudentStatus { get; set; }
         public DateTime? CompletedAt {  get; set; } // cuando completo la agenda de ese estudiante
 

@@ -5,8 +5,8 @@ namespace Entity.Model.Business
     public class CompositionAgendaQuestion : ABaseEntity
     {
         // FKs
-        public long AgendaId { get; set; }
-        public long QuestionId { get; set; }
+        public int AgendaId { get; set; }
+        public int QuestionId { get; set; }
 
         // Navegación
         public Agenda Agenda { get; set; } = null!;

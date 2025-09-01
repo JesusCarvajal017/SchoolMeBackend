@@ -58,10 +58,10 @@ namespace Entity.ConfigModels.Business
                    .WithMany(s => s.StudentAnswers)
                    .HasForeignKey(e => e.AgendaDayStudentId)
                    .HasConstraintName("fk_student_answer_ads")
-                   .OnDelete(DeleteBehavior.Cascade); // Si se elimina el padre los registro hijo deparecen de igual forma
+                   .OnDelete(DeleteBehavior.Restrict); // Si se elimina el padre los registro hijo deparecen de igual forma
 
             builder.HasOne(e => e.Question)
-                   .WithMany() // o .WithMany(q => q.StudentAnswers) si tienes navegación
+                   .WithMany(e=> e.StudentAnswers) // o .WithMany(q => q.StudentAnswers) si tienes navegación
                    .HasForeignKey(e => e.QuestionId)
                    .HasConstraintName("fk_student_answer_question")
                    .OnDelete(DeleteBehavior.Restrict);
@@ -71,7 +71,7 @@ namespace Entity.ConfigModels.Business
                    .WithOne(o => o.StudentAnswer)
                    .HasForeignKey(o => o.StudentAnswerId)
                    .HasConstraintName("fk_sao_answer")
-                   .OnDelete(DeleteBehavior.Cascade);
+                   .OnDelete(DeleteBehavior.Restrict);
         }
   
     }

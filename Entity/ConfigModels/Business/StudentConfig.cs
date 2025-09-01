@@ -43,7 +43,7 @@ namespace Entity.ConfigModels.Business
                    .OnDelete(DeleteBehavior.Restrict);
 
             // Relaciones: muchos(Student) -> uno(Group)
-            builder.HasOne(s => s.Group)
+            builder.HasOne(s => s.Groups)
                    .WithMany() // usa .WithMany(g => g.Student) o g.Students si existe la colección
                    .HasForeignKey(s => s.GroupId)
                    .OnDelete(DeleteBehavior.Restrict);

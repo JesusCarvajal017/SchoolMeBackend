@@ -20,5 +20,6 @@ namespace Entity.Model.Security
         public DocumentType DocumentType { get; set; }
         public DataBasic DataBasic { get; set; }
         public ICollection<Attendants> Attendants { get; set; }
+       
     }
 }

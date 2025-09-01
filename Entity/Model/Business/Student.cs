@@ -1,6 +1,6 @@
 ﻿using Entity.Model.Global;
+using Entity.Model.Paramters;
 using Entity.Model.Security;
-using System.Text.RegularExpressions;
 
 namespace Entity.Model.Business
 {
@@ -11,9 +11,8 @@ namespace Entity.Model.Business
         
         public Person Person { get; set; }
         public ICollection<AgendaDayStudent> AgendaDayStudent { get; set; }
-        public ICollection<Attendants> FamilyRelation { get; set; }
         public ICollection<Attendants> Attendants { get; set; }
-        public Group Group { get; set; }
+        public Groups Groups { get; set; }
 
     }
 }

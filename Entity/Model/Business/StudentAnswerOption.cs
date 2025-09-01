@@ -4,11 +4,11 @@ namespace Entity.Model.Business
 {
     public class StudentAnswerOption : ABaseEntity
     {
-        public long StudentAnswerId { get; set; }
-        public long QuestionOptionId { get; set; }
+        public int StudentAnswerId { get; set; }
+        public int QuestionOptionId { get; set; }
 
-        public virtual StudentAnswer StudentAnswer { get; set; } = null!;
-        public virtual QuestionOption QuestionOption { get; set; } = null!;
+        public StudentAnswer StudentAnswer { get; set; } = null!;
+        public QuestionOption QuestionOption { get; set; } = null!;
 
     }
 }

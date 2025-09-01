@@ -51,7 +51,7 @@ namespace Entity.ConfigModels.Business
                    .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(e => e.QuestionOption)
-                   .WithMany() // o .WithMany(qo => qo.StudentAnswerOptions) si tienes la colección en QuestionOption
+                   .WithMany(e=> e.StudentAnswerOptions) // o .WithMany(qo => qo.StudentAnswerOptions) si tienes la colección en QuestionOption
                    .HasForeignKey(e => e.QuestionOptionId)
                    .HasConstraintName("fk_sao_question_option")
                    .OnDelete(DeleteBehavior.Restrict);

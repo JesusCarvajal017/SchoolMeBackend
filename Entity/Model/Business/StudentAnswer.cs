@@ -4,8 +4,8 @@ namespace Entity.Model.Business
 {
     public class StudentAnswer : ABaseEntity
     {
-        public long AgendaDayStudentId { get; set; }
-        public long QuestionId { get; set; }
+        public int AgendaDayStudentId { get; set; }
+        public int QuestionId { get; set; }
 
         // Valores posibles según el tipo de respuesta
         public string? ValueText { get; set; }
