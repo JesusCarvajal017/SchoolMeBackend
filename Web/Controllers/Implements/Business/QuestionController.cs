@@ -1,20 +1,20 @@
 ﻿using Business.Interfaces.Commands;
 using Business.Interfaces.Querys;
-using Entity.Dtos.Business.GroupDirector;
+using Entity.Dtos.Business.Question;
 using Entity.Model.Business;
 using Web.Controllers.Implements.Abstract;
 
 namespace Web.Controllers.Implements.Business
 {
-    public class GroupDirectorController
+    public class QuestionController
        : GenericController<
-       GroupDirector,
-       GroupDirectorDto,
-       GroupDirectorDto>
+       Question,
+       QuestionDto,
+       QuestionDto>
     {
-        public GroupDirectorController(
-            IQueryServices<GroupDirector, GroupDirectorDto> q,
-            ICommandService<GroupDirector, GroupDirectorDto> c)
+        public QuestionController(
+            IQueryServices<Question, QuestionDto> q,
+            ICommandService<Question, QuestionDto> c)
           : base(q, c) { }
     }
 

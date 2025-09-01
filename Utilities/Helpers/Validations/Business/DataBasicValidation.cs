@@ -3,7 +3,7 @@ using FluentValidation;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace Utilities.Helpers.Business
+namespace Utilities.Helpers.Validations.Business
 {
     public class DataBasicValidation : AbstractValidator<DataBasicDto>
     {

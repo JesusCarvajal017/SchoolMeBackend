@@ -7,15 +7,15 @@ using Web.Controllers.Implements.Abstract;
 
 namespace Web.Controllers.Implements.Business
 {
-    public class QuestionController
+    public class GroupDirectorController
        : GenericController<
-       Question,
-       QuestionDto,
-       QuestionDto>
+       GroupDirector,
+       GroupDirectorDto,
+       GroupDirectorDto>
     {
-        public QuestionController(
-            IQueryServices<Question, QuestionDto> q,
-            ICommandService<Question, QuestionDto> c)
+        public GroupDirectorController(
+            IQueryServices<GroupDirector, GroupDirectorDto> q,
+            ICommandService<GroupDirector, GroupDirectorDto> c)
           : base(q, c) { }
     }
 
