@@ -10,10 +10,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMapperApp();
 
-// base de datos disponible MySQL, SQLServer, PgAdmin
+// base de datos disponible MySQL, SqlServer, PgAdmin
 
 // Configuracion de la base de datos
-builder.Services.AddDb("PgAdmin", builder.Configuration);
+builder.Services.AddDb("SqlServer", builder.Configuration);
 //builder.Services.AddDb("PgAdminLog", builder.Configuration);
 
 // Inyeccion de dependencias de los controladores

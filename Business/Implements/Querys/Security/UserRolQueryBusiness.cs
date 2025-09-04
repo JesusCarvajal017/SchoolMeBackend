@@ -2,7 +2,6 @@
 using Business.Implements.Bases;
 using Business.Interfaces.Querys;
 using Data.Interfaces.Group.Querys;
-using Entity.Dtos.Security.User;
 using Entity.Dtos.Security.UserRol;
 using Entity.Model.Security;
 using Microsoft.Extensions.Logging;

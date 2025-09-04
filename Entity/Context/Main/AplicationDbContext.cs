@@ -46,8 +46,6 @@ namespace Entity.Context.Main
         {
             base.OnModelCreating(modelBuilder);
 
-    
-
             // Aplica tu configuración que implementen IEntityTypeConfiguration<T>
 
             // Prioridad de crecion 1
@@ -76,9 +74,7 @@ namespace Entity.Context.Main
 
             modelBuilder.ApplyConfiguration(new UserConfig());
             modelBuilder.ApplyConfiguration(new UserRolConfig());
-            
-
-
+         
         }
 
 
