@@ -1,5 +1,4 @@
-﻿using Data.Interfaces.Group.Querys;
-using Entity.Context.Main;
+﻿using Entity.Context.Main;
 using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
