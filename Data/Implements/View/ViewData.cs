@@ -90,7 +90,7 @@ namespace Data.Implements.View
                     Name = g.Key.ModuleName,
                     Icon = g.Key.ModuleIcon,
                     Path = g.Key.ModulePath,
-                    Orden = g.Key.ModuleOrd,
+                    Order = g.Key.ModuleOrd,
                     Formularios = g
                         .OrderBy(x => x.FormOrd)
                         .Select(x => new FormItemDto
@@ -102,12 +102,12 @@ namespace Data.Implements.View
                         })
                         .ToList()
                 })
-                .OrderBy(m => m.Orden)
+                .OrderBy(m => m.Order)
                 .ThenBy(m => m.Name)
                 .ToList();
 
             // el modulo de incio por defecto para todos si importar el rol
-             menu.Insert(0, new MenuDto { Name = "inicio", Icon = "", Path = "/", Orden = 0, Formularios = new() });
+             menu.Insert(0, new MenuDto { Name = "inicio", Icon = "home", Path = "/dashboard", Order = 1, Formularios = new() });
 
             return menu;
         }

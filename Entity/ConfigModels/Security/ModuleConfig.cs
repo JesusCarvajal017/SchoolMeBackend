@@ -44,9 +44,10 @@ namespace Entity.ConfigModels.Security
                      Id = 1,
                      Name = "Inicio",
                      Description = "Pantalla principal del sistema",
-                     Path = "/inicio",
+                     Path = "/dashboard",
                      Icon = "home", // Usa el nombre del icono que maneje tu UI
-                     Order = 1
+                     Order = 1,
+                     Status = 1
                  },
                  new Module
                  {
@@ -55,7 +56,8 @@ namespace Entity.ConfigModels.Security
                      Description = "Opciones administrativas del sistema",
                      Path = "",
                      Icon = "person",
-                     Order = 2
+                     Order = 2,
+                     Status = 1
                  },
                  new Module
                  {
@@ -64,7 +66,8 @@ namespace Entity.ConfigModels.Security
                      Description = "Módulo para gestión académica",
                      Path = "",
                      Icon = "school",
-                     Order = 3
+                     Order = 3,
+                     Status = 1
                  },
                  new Module
                  {
@@ -73,7 +76,8 @@ namespace Entity.ConfigModels.Security
                      Description = "Gestión de eventos y agendas",
                      Path = "",
                      Icon = "book",
-                     Order = 4
+                     Order = 4,
+                     Status = 1
                  },
                  new Module
                  {
@@ -82,7 +86,8 @@ namespace Entity.ConfigModels.Security
                      Description = "Parámetros y ajustes del sistema",
                      Path = "",
                      Icon = "settings",
-                     Order = 5
+                     Order = 5,
+                     Status = 1
                  },
                  new Module
                  {
@@ -91,7 +96,8 @@ namespace Entity.ConfigModels.Security
                      Description = "Todo el tema de permisos del sistema",
                      Path = "",
                      Icon = "calendar",
-                     Order = 6
+                     Order = 6,
+                     Status = 1
                  }
              );
 
