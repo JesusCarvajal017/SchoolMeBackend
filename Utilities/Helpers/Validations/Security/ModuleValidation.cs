@@ -1,4 +1,4 @@
-﻿using Entity.Dtos.Security.Form;
+﻿using Entity.Dtos.Security.Module;
 using FluentValidation;
 using Utilities.Helpers.Validations.ValidationsGenerics;
 
