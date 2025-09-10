@@ -8,21 +8,10 @@ namespace Utilities.Helpers.Validations.Business
     public class DataBasicValidation : AbstractValidator<DataBasicDto>
     {
 
-        // Patrón básico para direcciones urbanas en Colombia
         private static readonly Regex AddressCoRegex = new Regex(
-            @"^(?:
-            (?:Cl|Calle|Cra|Carrera|Av|Avenida|Tv|Transv|Transversal|Dg|Diagonal|Autop(?:ista)?)\.?\s+   # tipo de vía
-          )
-          \d{1,3}[A-Z]?                                             # número principal (ej. 100, 8A)
-          (?:\s*(?:Sur|Norte|Este|Oeste|Occidente))?                # sufijo de orientación opcional
-          \s*(?:No\.?|#)\s*                                         # separador No./#
-          \d{1,3}[A-Z]?                                             # número secundario
-          \s*-\s*
-          \d{1,3}                                                   # número complementario
-          (?:\s*(?:Int\.?|Interior|Apto\.?|Apartamento|Of\.?|Oficina|Torre|Piso)\s*\w+)*  # complementos
-          \s*$",
-            RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.IgnorePatternWhitespace
-        );
+             @"^\s*(?:Cl|Calle|Cra|Carrera|Av|Avenida|Tv|Transv|Transversal|Dg|Diagonal|Autop(?:ista)?)\.?\s+\d{1,3}[A-Z]?(?:\s*(?:Sur|Norte|Este|Oeste|Occidente))?\s*(?:No\.?|#)\s*\d{1,3}[A-Z]?\s*-\s*\d{1,3}(?:\s*(?:Int\.?|Interior|Apto\.?|Apartamento|Of\.?|Oficina|Torre|Piso)\s*[\p{L}\p{N}_-]+)*\s*$",
+             RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase
+         );
 
         public DataBasicValidation()
         {
