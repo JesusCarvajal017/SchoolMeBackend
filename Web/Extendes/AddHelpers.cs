@@ -14,6 +14,16 @@ namespace Web.Extendes
             services.AddValidatorsFromAssemblyContaining<UserValidation>();
             services.AddFluentValidationAutoValidation();
 
+
+            services
+            .AddFluentValidationAutoValidation()
+            .AddFluentValidationClientsideAdapters();
+
+            // Tus validators (ejemplo):
+            // builder.Services.AddTransient<IValidator<FormDto>, DataBasicValidation>();
+
+            services.AddTransient<IValidatorInterceptor, PatchOnlyPresentInterceptor>();
+
             return services;
 
         }

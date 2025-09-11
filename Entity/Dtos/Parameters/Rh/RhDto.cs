@@ -1,10 +1,10 @@
 ﻿using Entity.Dtos.Global;
 
-namespace Entity.Dtos.Parameters.Subject
+namespace Entity.Dtos.Parameters.Rh
 {
-    public class SubjectDto : ABaseDto
+    public class RhDto : ABaseDto
     {
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
     }
 

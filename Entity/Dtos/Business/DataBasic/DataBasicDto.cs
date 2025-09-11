@@ -4,15 +4,15 @@ namespace Entity.Dtos.Business.DataBasic
 {
     public class DataBasicDto : ABaseDto
     {
-        public int PersonId { get; set; }
-        public int RhId { get; set; }
-        public string Adress { get; set; }
-        public string BrithDate { get; set; }
-        public int StratumStatus { get; set; }
+        public int? PersonId { get; set; }
+        public int? RhId { get; set; }
+        public string? Adress { get; set; }
+        public string? BrithDate { get; set; }
+        public int? StratumStatus { get; set; }
 
-        public int MaterialStatusId { get; set; }
+        public int? MaterialStatusId { get; set; }
 
-        public int EpsId { get; set; }
-        public int MunisipalityId { get; set; }
+        public int? EpsId { get; set; }
+        public int? MunisipalityId { get; set; }
     }
 }

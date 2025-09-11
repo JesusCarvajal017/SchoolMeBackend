@@ -15,35 +15,38 @@ namespace Utilities.Helpers.Validations.Business
 
         public DataBasicValidation()
         {
-            RuleFor(x => x.PersonId)
+
+            RuleSet("Full", () =>
+            {
+                RuleFor(x => x.PersonId)
                 .GreaterThan(0)
                  .WithMessage("El id de la persona no es valido.")
-            .NotEmpty().WithMessage("El id de la persona es obligatorio");
+                .NotEmpty().WithMessage("El id de la persona es obligatorio");
 
-            RuleFor(x => x.RhId)
-                .GreaterThan(0)
-                 .WithMessage("El id de rh no es valido.")
-                .NotEmpty().WithMessage("El id del rh es obligatorio");
+                RuleFor(x => x.RhId)
+                    .GreaterThan(0)
+                     .WithMessage("El id de rh no es valido.")
+                    .NotEmpty().WithMessage("El id del rh es obligatorio");
 
-            RuleFor(x => x.Status)
-                .InclusiveBetween(0, 5)
-                .WithMessage("El estado debe estar entre 0 y 5.");
+                RuleFor(x => x.Status)
+                    .InclusiveBetween(0, 5)
+                    .WithMessage("El estado debe estar entre 0 y 5.");
 
-            RuleFor(x => x.Adress)
-              .Cascade(CascadeMode.Stop)
-              // Obligatoria (no nula/espacios)
-              .Must(v => !string.IsNullOrWhiteSpace(v))
-                  .WithMessage("La dirección es obligatoria.")
-              // Longitud 8–100 considerando Trim
-              .Must(v => {
-                  var s = v!.Trim();
-                  return s.Length >= 8 && s.Length <= 100;
-              })
-                  .WithMessage("La dirección debe tener entre 8 y 100 caracteres.")
+                RuleFor(x => x.Adress)
+                  .Cascade(CascadeMode.Stop)
+                  // Obligatoria (no nula/espacios)
+                  .Must(v => !string.IsNullOrWhiteSpace(v))
+                      .WithMessage("La dirección es obligatoria.")
+                  // Longitud 8–100 considerando Trim
+                  .Must(v => {
+                      var s = v!.Trim();
+                      return s.Length >= 8 && s.Length <= 100;
+                  })
+                      .WithMessage("La dirección debe tener entre 8 y 100 caracteres.")
 
-              // Formato (evaluado sobre el Trim)
-              .Must(v => AddressCoRegex.IsMatch(v!.Trim()))
-                  .WithMessage("Formato inválido. Ejemplos: 'Cra 15 # 85-24', 'Calle 100 # 8A-55'.");
+                  // Formato (evaluado sobre el Trim)
+                  .Must(v => AddressCoRegex.IsMatch(v!.Trim()))
+                      .WithMessage("Formato inválido. Ejemplos: 'Cra 15 # 85-24', 'Calle 100 # 8A-55'.");
 
 
                 RuleFor(x => x.BrithDate)
@@ -67,20 +70,22 @@ namespace Utilities.Helpers.Validations.Business
                        .GreaterThan(0)
                         .WithMessage("El id del municipio no es valido.")
                    .NotEmpty().WithMessage("El id del municipio es obligatorio");
+
+            });
+
+            // Reglas para PATCH: solo valida si el campo viene presente
+            RuleSet("Patch", () =>
+            {
+                RuleFor(x => x.Id).NotEmpty().WithMessage("El Id es obligatorio");
+
+            });
+            
         }
 
 
     }
 
-        //RuleFor(x => x.Name)
-        //.Cascade(CascadeMode.Stop)
-        //.NotEmpty().WithMessage("El nombre es obligatorio.")
-        //.Must(s => !string.IsNullOrWhiteSpace(s))
-        //    .WithMessage("El nombre no puede ser solo espacios.")
-        //.Matches(@"^[\p{L}\s'\-]+$") // letras Unicode + espacios + ' y -
-        //    .WithMessage("El nombre solo puede contener letras y espacios (sin números).")
-        // .MinimumLength(4).WithMessage("El nombre debe tener al menos 4 caracteres.")
-        // .MaximumLength(15).WithMessage("El nombre no puede exceder 15 caracteres.");
+     
     
     
 }

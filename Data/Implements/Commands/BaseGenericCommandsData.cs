@@ -1,6 +1,8 @@
 ﻿using Data.Implements.Base;
 using Entity.Context.Main;
 using Entity.Model.Global;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using Microsoft.Extensions.Logging;
 
 namespace Data.Implements.Commands
@@ -10,7 +12,6 @@ namespace Data.Implements.Commands
         public BaseGenericCommandsData(AplicationDbContext context, ILogger<BaseGenericCommandsData<T>> logger) : base(context, logger)
         {
         }
-
 
         public override async Task<T> InsertAsync(T entity)
         {
@@ -59,29 +60,51 @@ namespace Data.Implements.Commands
         //<summary>
         // Este metodo, recibe cualquier propiedad de modelo para actualizarlo, siempre se debe mandar el Id de la entiendad
         //</summary>
-        public override async Task<bool> UpdatePartialAsync(T entity)
+        public override async Task<T?> UpdatePartialAsync(T entity)
         {
-            // Momento en el que hace la actualizacion parcial
-            entity.UpdatedAt = DateTime.UtcNow;
-
             var dbEntity = await _dbSet.FindAsync(entity.Id);
-            if (dbEntity == null) return false;
+            if (dbEntity == null) return null; // o null/throw según tu contrato
 
-            // Solo se marcan las propiedades modificadas
-            _context.Entry(dbEntity).CurrentValues.SetValues(entity);
+            var entry = _context.Entry(dbEntity);
+            var et = _context.Model.FindEntityType(typeof(T))
+                     ?? throw new InvalidOperationException($"Tipo {typeof(T).Name} no está en el modelo EF.");
 
-            // Opcional: ignorar propiedades nulas (actualización parcial real)
-            foreach (var prop in typeof(T).GetProperties())
+            // Solo nombres de propiedades escalares mapeadas por EF (no navegaciones)
+            var scalarNames = et.GetProperties().Select(p => p.Name).ToHashSet(StringComparer.Ordinal);
+
+            // Marcar como Unchanged y tocar selectivamente
+            entry.State = EntityState.Unchanged;
+
+            foreach (var name in scalarNames)
             {
-                var newValue = prop.GetValue(entity);
-                if (newValue == null)
+                // evita campos de sistema
+                if (name is nameof(ABaseEntity.Id)
+                        or nameof(ABaseEntity.CreatedAt)
+                        or nameof(ABaseEntity.DeleteAt))
+                    continue;
+
+                var pi = typeof(T).GetProperty(name);
+                if (pi == null) continue;
+
+                var newValue = pi.GetValue(entity);
+                if (newValue != null)
                 {
-                    _context.Entry(dbEntity).Property(prop.Name).IsModified = false;
+                    entry.Property(name).CurrentValue = newValue;
+                    entry.Property(name).IsModified = true;
+                }
+                else
+                {
+                    // null => no tocar (semántica de parcial)
+                    entry.Property(name).IsModified = false;
                 }
             }
 
+            dbEntity.UpdatedAt = DateTime.UtcNow;
+
             await _context.SaveChangesAsync();
-            return true;
+            await entry.ReloadAsync(); // si hay valores generados por BD
+
+            return dbEntity;
         }
 
     }

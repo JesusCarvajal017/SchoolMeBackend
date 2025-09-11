@@ -7,12 +7,23 @@ namespace Utilities.Helpers.Validations.Security
     {
         public RolValidator()
         {
-            RuleFor(x => x.Name)
-           .NotEmpty().WithMessage("El nombre del rol es obligatorio");
+            RuleSet("Full", () =>
+            {
+                RuleFor(x => x.Name)
+               .NotEmpty().WithMessage("El nombre del rol es obligatorio");
 
-            RuleFor(x => x.Description)
-                .NotEmpty().WithMessage("La descripcion es obligatoria");
-     
+                RuleFor(x => x.Description)
+                    .NotEmpty().WithMessage("La descripcion es obligatoria");
+
+            });
+
+            // Reglas para PATCH: solo valida si el campo viene presente
+            RuleSet("Patch", () =>
+            {
+                RuleFor(x => x.Id).NotEmpty().WithMessage("El Id es obligatorio");
+
+            });
+
         }
     }
 }

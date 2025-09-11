@@ -10,5 +10,8 @@ namespace Business.Interfaces.Commands
 
         Task<bool> DeleteLogicalServices(int id, int status);
 
+        Task<TWriteDto> PathServices(TWriteDto dto);
+
+
     }
 }

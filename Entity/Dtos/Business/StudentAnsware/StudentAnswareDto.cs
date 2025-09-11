@@ -4,8 +4,8 @@ namespace Entity.Dtos.Business.StudentAnsware
 {
     public class StudentAnswareDto : ABaseDto
     {
-        public int AgendaDayStudentId { get; set; }
-        public int QuestionId { get; set; }
+        public int? AgendaDayStudentId { get; set; }
+        public int? QuestionId { get; set; }
 
         // Valores posibles según el tipo de respuesta
         public string? ValueText { get; set; }

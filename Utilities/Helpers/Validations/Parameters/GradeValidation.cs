@@ -8,7 +8,18 @@ namespace Utilities.Helpers.Validations.Parameters
     {
         public GradeValidation()
         {
-            RuleFor(x => x.Name).StandardName(min: 4, max: 20);
+            RuleSet("Full", () =>
+            {
+                RuleFor(x => x.Name).StandardName(min: 4, max: 20);
+
+            });
+
+            // Reglas para PATCH: solo valida si el campo viene presente
+            RuleSet("Patch", () =>
+            {
+                RuleFor(x => x.Id).NotEmpty().WithMessage("El Id es obligatorio");
+
+            });
 
 
         }

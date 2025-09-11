@@ -8,11 +8,24 @@ namespace Utilities.Helpers.Validations.Security
     {
         public UserRolValidation() 
         {
-            RuleFor(x => x.UserId)
-           .NotEmpty().WithMessage("El id del usuario debe ser obligatorio");
 
-            RuleFor(x => x.RolId)
-           .NotEmpty().WithMessage("El id del rol es obligatorio");
+            RuleSet("Full", () =>
+            {
+                RuleFor(x => x.UserId)
+                .NotEmpty().WithMessage("El id del usuario debe ser obligatorio");
+
+                RuleFor(x => x.RolId)
+               .NotEmpty().WithMessage("El id del rol es obligatorio");
+
+            });
+
+            // Reglas para PATCH: solo valida si el campo viene presente
+            RuleSet("Patch", () =>
+            {
+                RuleFor(x => x.Id).NotEmpty().WithMessage("El Id es obligatorio");
+
+            });
+          
         }
     }
 }

@@ -4,6 +4,6 @@ namespace Entity.Dtos.Parameters.Departament
 {
     public class DepartamentDto : ABaseDto
     {
-        public string Name { get; set; }
+        public string? Name { get; set; }
     }
 }

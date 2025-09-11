@@ -1,5 +1,4 @@
-﻿using Entity.Dtos.Business.QuestionOption;
-using Entity.Dtos.Business.Student;
+﻿using Entity.Dtos.Business.Student;
 using FluentValidation;
 
 namespace Utilities.Helpers.Validations.Business
@@ -8,10 +7,21 @@ namespace Utilities.Helpers.Validations.Business
     {
         public StudentsValidation()
         {
-            RuleFor(x => x.GroupId)
-              .GreaterThan(0)
-               .WithMessage("El id de grupo no es valido.")
-                .NotEmpty().WithMessage("El id de grupo es obligatorio");
+            RuleSet("Full", () =>
+            {
+                RuleFor(x => x.GroupId)
+                  .GreaterThan(0)
+                    .WithMessage("El id de grupo no es valido.")
+                    .NotEmpty().WithMessage("El id de grupo es obligatorio");
+
+            });
+
+            // Reglas para PATCH: solo valida si el campo viene presente
+            RuleSet("Patch", () =>
+            {
+                RuleFor(x => x.Id).NotEmpty().WithMessage("El Id es obligatorio");
+
+            });
         }
 
 

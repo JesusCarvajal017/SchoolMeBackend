@@ -41,5 +41,32 @@ namespace Data.Implements.Commands.Security
             }
 
         }
+
+        // <summary>
+        //  Metodo sobreescrito, para poder agregarle la encriptacion de contraseña
+        // </summary>
+        public override async Task<bool> UpdateAsync(User entity)
+        {
+
+
+            try
+            {
+                entity.UpdatedAt = DateTime.UtcNow;
+
+                // encriptacion de la contraseña
+                entity.Password = HashPassword.EncriptPassword(entity.Password);
+                _context.Set<User>().Update(entity);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex) {
+                _logger.LogError(ex, $"Actalizando de usuario denegado:  {entity}");
+                throw;
+
+            }
+
+
+        }
+
     }
 }

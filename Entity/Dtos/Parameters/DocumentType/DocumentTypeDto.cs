@@ -4,8 +4,8 @@ namespace Entity.Dtos.Parameters.DocumentType
 {
     public class DocumentTypeDto : ABaseDto
     {
-        public string Name { get; set; }
-        public string Acronym { get; set; }
+        public string? Name { get; set; }
+        public string? Acronym { get; set; }
     }
 
 }

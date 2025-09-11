@@ -4,6 +4,6 @@ namespace Data.Interfaces.Basic
 {
     public interface IUpdatePartial<T> where T : ABaseEntity
     {
-        Task<bool> UpdatePartialAsync(T Entity);
+        Task<T?> UpdatePartialAsync(T Entity);
     }
 }

@@ -2,7 +2,7 @@
 using Business.Interfaces.Querys;
 using Entity.Dtos.Global;
 using Entity.Model.Global;
-using Microsoft.AspNetCore.Authorization;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
 
@@ -33,15 +33,15 @@ namespace Web.Controllers.Implements.Abstract
         [HttpGet]
         [OutputCache]
         //[Authorize]
-        public virtual async Task<IActionResult> GetAll(int? status) => Ok(await _querySvc.GetAllServices(status));
+        public virtual async Task<IActionResult> GetAll([CustomizeValidator(RuleSet = "Full")]  int? status) => Ok(await _querySvc.GetAllServices(status));
 
         [HttpGet("{id}")]
         //[Authorize]
-        public virtual async Task<IActionResult> GetById(int id) => Ok(await _querySvc.GetByIdServices(id));
+        public virtual async Task<IActionResult> GetById([CustomizeValidator(RuleSet = "Full")]  int id) => Ok(await _querySvc.GetByIdServices(id));
 
         [HttpPost]
         //[Authorize]
-        public virtual async Task<IActionResult> Create([FromBody] TWriteDto dto)
+        public virtual async Task<IActionResult> Create([FromBody][CustomizeValidator(RuleSet = "Full")] TWriteDto dto)
         {
             var created = await _cmdSvc.CreateServices(dto);
 
@@ -56,14 +56,17 @@ namespace Web.Controllers.Implements.Abstract
 
         [HttpPut]
         //[Authorize]
-        public virtual async Task<IActionResult> Update([FromBody] TWriteDto dto) => Ok(await _cmdSvc.UpdateServices(dto));
+        public virtual async Task<IActionResult> Update([FromBody] [CustomizeValidator(RuleSet = "Full")] TWriteDto dto) => Ok(await _cmdSvc.UpdateServices(dto));
 
         [HttpDelete("{id}")]
         //[Authorize]
-        public virtual async Task<IActionResult> Delete(int id) => Ok(await _cmdSvc.DeleteServices(id));
+        public virtual async Task<IActionResult> Delete([CustomizeValidator(RuleSet = "Full")] int id) => Ok(await _cmdSvc.DeleteServices(id));
 
         [HttpDelete("{id:int}/{status:int}")]
         //[Authorize]
-        public virtual async Task<IActionResult> DeleteLogica(int id, int status) => Ok(await _cmdSvc.DeleteLogicalServices(id, status));
+        public virtual async Task<IActionResult> DeleteLogica([CustomizeValidator(RuleSet = "Full")] int id, int status) => Ok(await _cmdSvc.DeleteLogicalServices(id, status));
+
+        [HttpPatch]
+        public virtual async Task<IActionResult> PartialUpdate([FromBody] [CustomizeValidator(RuleSet = "Patch")] TWriteDto dto) => Ok(await _cmdSvc.PathServices(dto));
     }
 }

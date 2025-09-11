@@ -39,5 +39,7 @@ namespace Business.Implements.abastract
 
 
         public abstract Task<bool> DeleteLogicalServices(int id, int status);
+
+        public abstract Task<D> PathServices(D dto);
     }
 }

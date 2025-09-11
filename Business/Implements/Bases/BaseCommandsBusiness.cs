@@ -196,12 +196,34 @@ namespace Business.Implements.Bases
         {
             try
             {
+
+
                 _logger.LogInformation($"Cambiando de estado {typeof(T).Name} con ID: {id}");
                 return await _data.DeleteLogicalAsyn(id, status);
             }
             catch (Exception ex)
             {
                 _logger.LogError($"Error al cambiar el estado {typeof(T).Name} con ID {id}: {ex.Message}");
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Hace un actualizacion parcial de la entidad, donde siempre debe mandarce el id en el cuerpo, y los demas datos de forma opcional
+        /// </summary>
+        public override async Task<D> PathServices(D dto)
+        {
+            try{ 
+                _logger.LogInformation($"Actualizacion parcial {typeof(T).Name} con ID: {dto.Id}");
+                var entity = _mapper.Map<T>(dto);
+
+                var updatePartial = await _data.UpdatePartialAsync(entity);
+
+                return _mapper.Map<D>(updatePartial) ;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error al actualizar {typeof(T).Name} con ID {dto.Id}: {ex.Message}");
                 throw;
             }
         }

@@ -1,5 +1,4 @@
 ﻿using Entity.Dtos.Security.Permission;
-using Entity.Dtos.Security.Rol;
 using FluentValidation;
 
 namespace Utilities.Helpers.Validations.Security
@@ -8,11 +7,24 @@ namespace Utilities.Helpers.Validations.Security
     {
         public PermissionValidator()
         {
-            RuleFor(x => x.Name)
-           .NotEmpty().WithMessage($"El nombre del permiso es obligatorio");
 
-            RuleFor(x => x.Description)
-                .NotEmpty().WithMessage("La descripcion es obligatoria");
+            RuleSet("Full", () =>
+            {
+                RuleFor(x => x.Name)
+              .NotEmpty().WithMessage($"El nombre del permiso es obligatorio");
+
+                    RuleFor(x => x.Description)
+                        .NotEmpty().WithMessage("La descripcion es obligatoria");
+
+            });
+
+            // Reglas para PATCH: solo valida si el campo viene presente
+            RuleSet("Patch", () =>
+            {
+                RuleFor(x => x.Id).NotEmpty().WithMessage("El Id es obligatorio");
+
+            });
+           
      
         }
     }

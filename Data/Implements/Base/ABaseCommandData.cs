@@ -24,6 +24,6 @@ namespace Data.Implements.Base
         public abstract Task<bool> UpdateAsync(T entity);
         public abstract Task<bool> DeleteAsync(int id);
         public abstract Task<bool> DeleteLogicalAsyn(int id, int status);
-        public abstract Task<bool> UpdatePartialAsync(T Entity);
+        public abstract Task<T> UpdatePartialAsync(T Entity);
     }
 }

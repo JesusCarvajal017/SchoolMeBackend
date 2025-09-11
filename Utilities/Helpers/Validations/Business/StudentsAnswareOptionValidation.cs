@@ -7,11 +7,24 @@ namespace Utilities.Helpers.Validations.Business
     {
         public StudentsAnswareOptionValidation()
         {
-            RuleFor(x => x.StudentAnswerId)
-              .GreaterThan(0)
-              .GreaterThan(0)
-               .WithMessage("El id de grupo no es valido.")
-                .NotEmpty().WithMessage("El id de grupo es obligatorio");
+           
+
+            RuleSet("Full", () =>
+            {
+                RuleFor(x => x.StudentAnswerId)
+                     .GreaterThan(0)
+                     .GreaterThan(0)
+                    .WithMessage("El id de grupo no es valido.")
+                    .NotEmpty().WithMessage("El id de grupo es obligatorio");
+
+            });
+
+            // Reglas para PATCH: solo valida si el campo viene presente
+            RuleSet("Patch", () =>
+            {
+                RuleFor(x => x.Id).NotEmpty().WithMessage("El Id es obligatorio");
+
+            });
         }
 
 

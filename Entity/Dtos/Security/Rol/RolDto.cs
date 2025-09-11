@@ -4,8 +4,8 @@ namespace Entity.Dtos.Security.Rol
 {
     public class RolDto : ABaseDto
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string? Name { get; set; }
+        public string?  Description { get; set; }
 
     }
 }
