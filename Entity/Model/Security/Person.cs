@@ -2,6 +2,7 @@
 using Entity.Model.Business;
 using Entity.Model.Global;
 using Entity.Model.Paramters;
+using System.Diagnostics.Eventing.Reader;
 
 namespace Entity.Model.Security
 {
@@ -14,7 +15,7 @@ namespace Entity.Model.Security
         public string LastName { get; set; }
         public string SecondLastName { get; set; }
         //public string Nation { get; set; }
-        public int Phone { get; set; }
+        public long Phone { get; set; }
         public GenderEmun Gender { get; set; }
         public int Age { get; set; }
         public DocumentType DocumentType { get; set; }

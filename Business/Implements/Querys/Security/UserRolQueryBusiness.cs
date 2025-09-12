@@ -2,7 +2,6 @@
 using Business.Implements.Bases;
 using Business.Interfaces.Querys;
 using Data.Interfaces.Group.Querys;
-using Entity.Dtos.Security.User;
 using Entity.Dtos.Security.UserRol;
 using Entity.Model.Security;
 using Microsoft.Extensions.Logging;
@@ -22,18 +21,6 @@ namespace Business.Implements.Querys.Security
         {
             _data = data;
         }
-
-
-
-        //protected async Task EnsureValid(UserDto dto)
-        //{
-        //    var validationResult = await _helpers.Validate(dto);
-        //    if (!validationResult.IsValid)
-        //    {
-        //        var errors = string.Join(", ", validationResult.Errors);
-        //        throw new ArgumentException($"Validación fallida: {errors}");
-        //    }
-        //}
 
         public async Task<IEnumerable<UserRolDto>> GetRolsUserServices(int IdUser)
         {

@@ -1,4 +1,4 @@
-﻿using Data.Implements.Commands;
+﻿using Data.Interfaces.Group.Commands;
 using Entity.Context.Main;
 using Entity.Model.Security;
 using Microsoft.Extensions.Logging;
@@ -6,9 +6,8 @@ using Utilities.helpers;
 
 namespace Data.Implements.Commands.Security
 {
-    public class UserCommandData : BaseGenericCommandsData<User> 
+    public class UserCommandData : BaseGenericCommandsData<User> , ICommandUser
     {
-
         protected readonly ILogger<UserCommandData> _logger;
         protected readonly AplicationDbContext _context;
 
@@ -16,6 +15,8 @@ namespace Data.Implements.Commands.Security
         {
             _context = context;
             _logger = logger;
+
+
         }
 
         // <summary>
@@ -26,6 +27,7 @@ namespace Data.Implements.Commands.Security
 
             try
             {
+
                 // encriptacion de la contraseña
                 entity.Password = HashPassword.EncriptPassword(entity.Password);
 
@@ -48,7 +50,6 @@ namespace Data.Implements.Commands.Security
         public override async Task<bool> UpdateAsync(User entity)
         {
 
-
             try
             {
                 entity.UpdatedAt = DateTime.UtcNow;
@@ -64,7 +65,6 @@ namespace Data.Implements.Commands.Security
                 throw;
 
             }
-
 
         }
 

@@ -1,10 +1,8 @@
 ﻿using Data.Interfaces.Group.Querys;
 using Entity.Context.Main;
-using Entity.Dtos.Security.UserRol;
 using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Data.Implements.Querys.Security
 {

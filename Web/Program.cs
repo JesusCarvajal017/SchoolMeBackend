@@ -1,4 +1,6 @@
-﻿using Web.Extendes;
+﻿using Utilities.AlmacenadorArchivos.implementes;
+using Utilities.AlmacenadorArchivos.Interface;
+using Web.Extendes;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -24,10 +26,15 @@ builder.Services.AddHelpersValidation();
 builder.Services.AddCustomCors(builder.Configuration);
 
 
+// azure (AlmacenadorArchivos) local (AlmacenadorLocal) esto para el almacenamiento de las imagenes
+builder.Services.AddTransient<IAlmacenadorArchivos, AlmacenadorLocal>();
+builder.Services.AddHttpContextAccessor();
+//builder.Services.AddTransient<IAlmacenadorArchivos, AlmacenadorLocal>();
+
+
 // CACHE
 builder.Services.AddOutputCache((options) =>
 {
-
     // se puede configurar para minutos, horas dias ..
     options.DefaultExpirationTimeSpan = TimeSpan.FromSeconds(10);
 });
@@ -47,6 +54,9 @@ var app = builder.Build();
         c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
     });
 //}
+
+// para servir achivos estaticos
+app.UseStaticFiles();
 
 // Middleware del cache
 app.UseOutputCache();

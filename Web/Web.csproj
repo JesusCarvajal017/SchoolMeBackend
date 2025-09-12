@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Glgobal\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>

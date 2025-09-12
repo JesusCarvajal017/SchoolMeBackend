@@ -1,5 +1,6 @@
 ﻿using Business.Implements.Auth;
 using Business.Implements.Bases;
+using Business.Implements.Commands.Security;
 using Business.Implements.Querys.Security;
 using Business.Interfaces.Commands;
 using Business.Interfaces.Querys;
@@ -26,6 +27,8 @@ namespace Web.Extendes
         {
 
             // ============================ Inyecciones genericas ============================ 
+
+            // Coommand === Data
             services.AddScoped(
                   typeof(IQuerys<>),
                   typeof(BaseGenericQuerysData<>)
@@ -36,6 +39,7 @@ namespace Web.Extendes
                 typeof(BaseGenericCommandsData<>)
             );
 
+            // servicios === business
             services.AddScoped(
                   typeof(IQueryServices<,>),
                   typeof(BaseQueryBusiness<,>)
@@ -44,7 +48,6 @@ namespace Web.Extendes
                 typeof(ICommandService<,>),
                 typeof(BaseCommandsBusiness<,>)
             );
-
 
 
             // ============================  inyecciones concretas ============================ 
@@ -67,21 +70,13 @@ namespace Web.Extendes
                 typeof(PersonQueryData)
             );
 
+            // user - rol
             services.AddScoped<IQuerysUserRol, UserRolQueryData>();
-            //services.AddScoped<IQuery, PersonQueryData>();
-            //services.AddScoped(
-            //    typeof(IQuerys<UserRol>),
-            //    typeof(UserRolQueryData)
-            //);
-
-
-            // QUERY BUSINESS
-            //services.AddScoped(
-            //    typeof(IQueryServices<UserRol, UserRolDto>),
-            //    typeof(UserRolQueryBusiness)
-            //);
-
             services.AddScoped<IQueryUserRolServices, UserRolQueryBusiness>();
+
+            // user
+            services.AddScoped<ICommandUser, UserCommandData>();
+            services.AddScoped<ICommandUserServices, UserCommandBusines>();
 
 
             // ================ COMMANDS ================

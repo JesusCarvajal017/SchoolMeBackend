@@ -7,8 +7,13 @@ namespace Utilities.MappersApp.security
     public class UserMap : Profile
     {
         public UserMap() 
-        { 
-            CreateMap<User, UserDto>().ReverseMap();
+        {
+            // map de commandos
+            CreateMap<User, UserDto>()
+                .ForMember(x => x.Photo, op => op.Ignore()).ReverseMap();
+
+            // consulta principal
+            CreateMap<User, UserQueryDto>().ReverseMap();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Entity.Dtos.Security.User;
-using Entity.Dtos.Security.UserRol;
+﻿using Entity.Dtos.Security.UserRol;
 using Entity.Model.Security;
 
 namespace Business.Interfaces.Querys

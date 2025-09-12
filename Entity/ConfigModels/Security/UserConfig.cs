@@ -19,7 +19,8 @@ namespace Entity.ConfigModels.Security
             builder.Property(p => p.Photo)
                 .HasColumnName("photo")
                 .IsRequired()
-                .HasMaxLength(100);
+                .IsUnicode(false);
+
             builder.Property(p => p.Email)
                 .HasColumnName("email")
                 .IsRequired()

@@ -6,12 +6,10 @@ namespace Business.Interfaces.Commands
     {
         Task<TWriteDto> CreateServices(TWriteDto dto);
         Task<bool> UpdateServices(TWriteDto dto);
-        Task<bool> DeleteServices(int id);
+        Task<bool> DeleteServices(int id); 
 
         Task<bool> DeleteLogicalServices(int id, int status);
 
         Task<TWriteDto> PathServices(TWriteDto dto);
-
-
     }
 }

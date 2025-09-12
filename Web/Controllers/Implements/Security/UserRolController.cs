@@ -16,10 +16,7 @@ namespace Web.Controllers.Implements.Security
 
         protected readonly IQueryUserRolServices _services;
 
-        public UserRolController(
-            IQueryUserRolServices q,
-            ICommandService<UserRol, UserRolCreateDtos> c)
-          : base(q, c) 
+        public UserRolController(IQueryUserRolServices q, ICommandService<UserRol, UserRolCreateDtos> c) : base(q, c) 
         {
             _services = q;
         }
