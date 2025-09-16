@@ -3,7 +3,6 @@ using Entity.Context.Main;
 using Entity.Model.Global;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Org.BouncyCastle.Tls;
 
 namespace Data.Implements.Querys
 {
@@ -37,9 +36,21 @@ namespace Data.Implements.Querys
 
         public override async Task<T?> QueryById(int id)
         {
-            return await _dbSet
-              .AsNoTracking()
-              .FirstOrDefaultAsync(e => e.Id == id);
+
+            try
+            {
+                var query = await _dbSet
+                  .AsNoTracking()
+                  .FirstOrDefaultAsync(e => e.Id == id); ;
+
+                return query;
+
+            }
+            catch (Exception ex) 
+            {
+                _logger.LogInformation(ex, "Error en la consulta con id {id}", typeof(T).Name);
+                return null;
+            }
 
         }
     }

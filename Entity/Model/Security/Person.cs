@@ -2,7 +2,6 @@
 using Entity.Model.Business;
 using Entity.Model.Global;
 using Entity.Model.Paramters;
-using System.Diagnostics.Eventing.Reader;
 
 namespace Entity.Model.Security
 {

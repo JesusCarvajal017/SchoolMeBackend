@@ -1,7 +1,4 @@
-﻿using Data.Interfaces.Basic;
-using Entity.Model.Global;
-using Entity.Model.Security;
-using Microsoft.AspNetCore.Identity;
+﻿using Entity.Model.Paramters;
 
 namespace Data.Interfaces.Group.Querys
 {
@@ -10,8 +7,8 @@ namespace Data.Interfaces.Group.Querys
     /// Interfaz de extension de user rol
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IQuerysPerson : IQuerys<Person>
+    public interface IQuerysMunicipality : IQuerys<Munisipality>
     {
-        //Task<IEnumerable<UserRol>> QueryUserRol(int UserId);
+        Task<IEnumerable<Munisipality>> QueryMunicpalitysDepartaments(int departementId);
     }
 }

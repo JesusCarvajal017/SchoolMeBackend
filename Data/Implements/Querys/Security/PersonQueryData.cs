@@ -1,11 +1,12 @@
-﻿using Entity.Context.Main;
+﻿using Data.Interfaces.Group.Querys;
+using Entity.Context.Main;
 using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace Data.Implements.Querys.Security
 {
-    public class PersonQueryData : BaseGenericQuerysData<Person>
+    public class PersonQueryData : BaseGenericQuerysData<Person> , IQuerysPerson
     {
         protected readonly ILogger<PersonQueryData> _logger;
         protected readonly AplicationDbContext _context;
@@ -15,7 +16,6 @@ namespace Data.Implements.Querys.Security
             _context = context;
             _logger = logger;
         }
-
 
         public override async Task<IEnumerable<Person>> QueryAllAsyn(int? status)
         {
@@ -41,9 +41,39 @@ namespace Data.Implements.Querys.Security
                 throw;
             }
         }
+        public virtual async Task<Person> QueryCompleteData(int personId)
+        {
+            try
+            {
+                var query = await _dbSet
+                 .AsNoTracking()
+                 .Include(p => p.DocumentType)
+                 .Include(p => p.Attendants)
+                 .Include(p => p.DataBasic)
+                     .ThenInclude(d => d.Rh)
+                 .Include(p => p.DataBasic)
+                     .ThenInclude(d => d.Eps)
+                 .Include(p => p.DataBasic)
+                     .ThenInclude(d => d.Munisipality)
+                 .Include(p => p.DataBasic)
+                     .ThenInclude(d => d.MaterialStatus)
+                 .AsSplitQuery() // recomendable cuando hay varias colecciones
+                 .FirstOrDefaultAsync(p => p.Id == personId);
+
+                return query;
+
+            } catch (Exception ex) 
+            {
+
+                _logger.LogInformation(ex, "Error en la consulta la entidad {Entity}", typeof(UserRol).Name);
+                return new Person();
+            }
+
+        }
 
 
-       
+
+
 
     }
 }

@@ -81,6 +81,10 @@ namespace Web.Extendes
             services.AddScoped<IQuerysMunicipality, MunicipalityQueryData>();
             services.AddScoped<IQueryMunicipalityServices, MunicipalityQueryBusiness>();
 
+            // person
+            services.AddScoped<IQuerysPerson, PersonQueryData>();
+            services.AddScoped<IQueryPersonServices, PersonQueryBusiness>();
+
 
 
             // ================ COMMANDS ================
