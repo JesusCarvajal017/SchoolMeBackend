@@ -8,6 +8,7 @@ using Data.Implements.Auth;
 using Data.Implements.Commands;
 using Data.Implements.Commands.Security;
 using Data.Implements.Querys;
+using Data.Implements.Querys.Parameters;
 using Data.Implements.Querys.Security;
 using Data.Implements.View;
 using Data.Infrastructure.Interceptors;
@@ -70,13 +71,16 @@ namespace Web.Extendes
                 typeof(PersonQueryData)
             );
 
-            // user - rol
-            services.AddScoped<IQuerysUserRol, UserRolQueryData>();
-            services.AddScoped<IQueryUserRolServices, UserRolQueryBusiness>();
+            services.AddScoped(
+                typeof(IQuerys<User>),
+                typeof(UserQueryData)
+            );
 
-            // user
-            services.AddScoped<ICommandUser, UserCommandData>();
-            services.AddScoped<ICommandUserServices, UserCommandBusines>();
+
+            // muncipality
+            services.AddScoped<IQuerysMunicipality, MunicipalityQueryData>();
+            services.AddScoped<IQueryMunicipalityServices, MunicipalityQueryBusiness>();
+
 
 
             // ================ COMMANDS ================
@@ -84,6 +88,16 @@ namespace Web.Extendes
                 typeof(ICommands<User>),
                 typeof(UserCommandData)
             );
+
+            // user - rol
+            services.AddScoped<ICommandUser, UserCommandData>();
+            services.AddScoped<ICommandUserServices, UserCommandBusines>();
+
+            // user
+            services.AddScoped<ICommandUser, UserCommandData>();
+            services.AddScoped<ICommandUserServices, UserCommandBusines>();
+
+
 
             //services.AddScoped();
 

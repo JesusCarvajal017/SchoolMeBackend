@@ -23,7 +23,7 @@ namespace Data.Implements.Querys
                 if (status.HasValue)
                     query = query.Where(x => x.Status == status.Value);
 
-                var model = await query.ToListAsync(); 
+                var model = await query.ToListAsync();
 
                 _logger.LogInformation("Consulta de la enidad {Entity} se realizo exitosamente", typeof(T).Name);
                 return model;
@@ -35,10 +35,12 @@ namespace Data.Implements.Querys
             }
         }
 
-        public override async Task<T> QueryById(int id)
+        public override async Task<T?> QueryById(int id)
         {
-            return await _dbSet.FindAsync(id);
-        }
+            return await _dbSet
+              .AsNoTracking()
+              .FirstOrDefaultAsync(e => e.Id == id);
 
+        }
     }
 }

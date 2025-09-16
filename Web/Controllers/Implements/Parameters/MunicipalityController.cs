@@ -2,6 +2,7 @@
 using Business.Interfaces.Querys;
 using Entity.Dtos.Parameters.Group;
 using Entity.Model.Paramters;
+using Microsoft.AspNetCore.Mvc;
 using Web.Controllers.Implements.Abstract;
 
 namespace Web.Controllers.Implements.Parameters
@@ -11,11 +12,28 @@ namespace Web.Controllers.Implements.Parameters
        Munisipality,
        MunicipalityDto,
        MunicipalityDto>
-    {
+    {   
+
+        protected readonly IQueryMunicipalityServices _queryMunicipalityServices;
+
+
         public MunicipalityController(
-            IQueryServices<Munisipality, MunicipalityDto> q,
+            IQueryMunicipalityServices q,
             ICommandService<Munisipality, MunicipalityDto> c)
-          : base(q, c) { }
+          : base(q, c) 
+        {
+            this._queryMunicipalityServices = q;
+        }
+
+
+        [HttpGet("list/{IdDepart}")]
+        public async Task<IActionResult> GetUserRolsById(int IdDepart)
+        {
+            var result = await _queryMunicipalityServices.GetMunicipalitysDepartament(IdDepart);
+            return Ok(result);
+        }
+
+
     }
 
 }

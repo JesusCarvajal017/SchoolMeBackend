@@ -15,8 +15,6 @@ namespace Data.Implements.Commands.Security
         {
             _context = context;
             _logger = logger;
-
-
         }
 
         // <summary>
@@ -24,7 +22,6 @@ namespace Data.Implements.Commands.Security
         // </summary>
         public override async Task<User> InsertAsync(User entity)
         {
-
             try
             {
 
@@ -49,7 +46,6 @@ namespace Data.Implements.Commands.Security
         // </summary>
         public override async Task<bool> UpdateAsync(User entity)
         {
-
             try
             {
                 entity.UpdatedAt = DateTime.UtcNow;

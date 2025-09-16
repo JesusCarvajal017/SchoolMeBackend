@@ -38,6 +38,17 @@ namespace Web.Controllers.Implements.Security
             );
         }
 
+
+        [HttpPut]
+        //[Authorize]
+        public override async Task<IActionResult> Update([FromForm][CustomizeValidator(RuleSet = "Full")] UserDto dto) 
+        {
+
+            return Ok(await _cmdSvc.UpdateServices(dto));
+        } 
+
+
+
     }
 
 }

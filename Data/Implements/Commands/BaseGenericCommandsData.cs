@@ -2,7 +2,6 @@
 using Entity.Context.Main;
 using Entity.Model.Global;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using Microsoft.Extensions.Logging;
 
 namespace Data.Implements.Commands
@@ -45,8 +44,6 @@ namespace Data.Implements.Commands
 
             return true;
         }
-
-
         public override async Task<bool> DeleteAsync(int id)
         {
             var entity = await _context.Set<T>().FindAsync(id);
