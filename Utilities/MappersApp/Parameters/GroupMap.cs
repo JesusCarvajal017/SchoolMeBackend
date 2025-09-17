@@ -9,6 +9,10 @@ namespace Utilities.MappersApp.Parameters
         public GroupMap()
         {
             CreateMap<Groups, GroupsDto>().ReverseMap();
+
+            CreateMap<Groups, GroupsQueryDto>()
+                .ForMember(dest => dest.GradeName, opt => opt.MapFrom(g => g.Grade.Name))
+                .ReverseMap();
         }
     }
 }

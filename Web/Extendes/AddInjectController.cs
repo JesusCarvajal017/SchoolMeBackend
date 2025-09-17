@@ -15,6 +15,7 @@ using Data.Infrastructure.Interceptors;
 using Data.Interfaces.Group.Commands;
 using Data.Interfaces.Group.Querys;
 using Entity.Dtos.Security.UserRol;
+using Entity.Model.Paramters;
 using Entity.Model.Security;
 using Utilities.Helpers.Validations;
 using Utilities.Helpers.Validations.implemets;
@@ -75,6 +76,12 @@ namespace Web.Extendes
                 typeof(IQuerys<User>),
                 typeof(UserQueryData)
             );
+
+            services.AddScoped(
+                typeof(IQuerys<Groups>),
+                typeof(GroupsQueryData)
+            );
+
 
 
             // muncipality
