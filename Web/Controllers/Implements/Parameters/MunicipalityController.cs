@@ -10,7 +10,7 @@ namespace Web.Controllers.Implements.Parameters
     public class MunicipalityController
        : GenericController<
        Munisipality,
-       MunicipalityDto,
+       MunicipalityQueryDto,
        MunicipalityDto>
     {   
 

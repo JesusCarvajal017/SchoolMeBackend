@@ -1,4 +1,4 @@
-﻿using Data.Interfaces.Group.Commands;
+﻿using Data.Interfaces.Group.Commands; 
 using Entity.Context.Main;
 using Entity.Model.Security;
 using Microsoft.Extensions.Logging;
@@ -24,7 +24,6 @@ namespace Data.Implements.Commands.Security
         {
             try
             {
-
                 // encriptacion de la contraseña
                 entity.Password = HashPassword.EncriptPassword(entity.Password);
 
@@ -61,7 +60,6 @@ namespace Data.Implements.Commands.Security
                 throw;
 
             }
-
         }
 
     }

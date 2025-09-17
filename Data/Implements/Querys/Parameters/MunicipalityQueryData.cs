@@ -17,6 +17,31 @@ namespace Data.Implements.Querys.Parameters
             _logger = logger;
         }
 
+        public override async Task<IEnumerable<Munisipality>> QueryAllAsyn(int? status)
+        {
+            try
+            {
+                // El as queryable me permite ir construyendo la consulta
+                IQueryable<Munisipality> query = _dbSet.
+                                                AsQueryable()
+                                                .Include(m => m.Departament);
+
+                if (status.HasValue)
+                    query = query.Where(x => x.Status == status.Value);
+
+                var model = await query.ToListAsync();
+
+                _logger.LogInformation("Consulta de la enidad {Entity} se realizo exitosamente", typeof(Munisipality).Name);
+                return model;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogInformation(ex, "Error en la consulta la entidad {Entity}", typeof(Munisipality).Name);
+                throw;
+            }
+        }
+
+
         public virtual async Task<IEnumerable<Munisipality>> QueryMunicpalitysDepartaments(int departementId)
         {
             try

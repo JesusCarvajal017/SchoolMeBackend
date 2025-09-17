@@ -10,6 +10,10 @@ namespace Utilities.MappersApp.Parameters
         {
             // Mapeo de Rol a RolDto y viceversa
             CreateMap < Munisipality, MunicipalityDto>().ReverseMap();
+
+            CreateMap<Munisipality, MunicipalityQueryDto>()
+                .ForMember(dest=> dest.DepartamentName, opt=> opt.MapFrom(src => src.Departament.Name))
+                .ReverseMap();
         }
     }
 }

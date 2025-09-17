@@ -9,7 +9,7 @@ using Utilities.Helpers.Validations;
 
 namespace Business.Implements.Querys.Security
 {
-    public class MunicipalityQueryBusiness : BaseQueryBusiness<Munisipality, MunicipalityDto>, IQueryMunicipalityServices
+    public class MunicipalityQueryBusiness : BaseQueryBusiness<Munisipality, MunicipalityQueryDto>, IQueryMunicipalityServices
     {
         protected readonly IQuerysMunicipality _data;
 
