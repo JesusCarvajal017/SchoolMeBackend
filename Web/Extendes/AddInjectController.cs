@@ -101,8 +101,8 @@ namespace Web.Extendes
             );
 
             // user - rol
-            services.AddScoped<ICommandUser, UserCommandData>();
-            services.AddScoped<ICommandUserServices, UserCommandBusines>();
+            services.AddScoped<IQuerysUserRol, UserRolQueryData>();
+            services.AddScoped<IQueryUserRolServices, UserRolQueryBusiness>();
 
             // user
             services.AddScoped<ICommandUser, UserCommandData>();
