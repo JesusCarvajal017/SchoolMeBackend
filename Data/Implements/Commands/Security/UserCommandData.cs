@@ -1,6 +1,8 @@
 ﻿using Data.Interfaces.Group.Commands;
 using Entity.Context.Main;
+using Entity.Dtos.Especific.Security;
 using Entity.Model.Security;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Utilities.helpers;
 
@@ -62,24 +64,39 @@ namespace Data.Implements.Commands.Security
 
 
 
-        // <summary>
-        //  Metodo sobreescrito, para poder agregarle la encriptacion de contraseña
-        // </summary>
-        //public virtual async Task<bool> UpdatePassword(ChangePassword current)
-        //{
-        //    try
-        //    {
-        //        //busqueda del usuario por nombre
-        //        var user = await _context.Set<User>()
-        //            .FirstOrDefaultAsync(u => u.Email == credenciales.Email);
+         //<summary>
+         // Metodo sobreescrito, para poder agregarle la encriptacion de contraseña
+         //</summary>
+        public virtual async Task<bool> UpdatePassword(ChangePassword current)
+        {
+            try
+            {
+                //busqueda del usuario por nombre
+                var user = await _context.Set<User>()
+                    .FirstOrDefaultAsync(u => u.Id == current.IdUser);
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError(ex, $"Actalizando de usuario denegado:  {entity}");
-        //        throw;
-        //    }
-        //}
+                if(user == null)
+                {
+                    return false;
+                }
+
+                current.PasswordNew = HashPassword.EncriptPassword(current.PasswordNew);
+
+                user.UpdatedAt = DateTime.UtcNow;
+                user.Password = current.PasswordNew;
+
+                await _context.SaveChangesAsync();
+
+                return true;
+
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Actalizando de contraseña denegado");
+                throw;
+            }
+        }
 
     }
 }

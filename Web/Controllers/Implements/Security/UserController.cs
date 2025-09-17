@@ -1,4 +1,5 @@
 ﻿using Business.Interfaces.Querys;
+using Entity.Dtos.Especific.Security;
 using Entity.Dtos.Security.User;
 using Entity.Model.Security;
 using FluentValidation.AspNetCore;
@@ -15,12 +16,15 @@ namespace Web.Controllers.Implements.Security
     {
         // en caso de extender el controlador en la parte de commandos
 
-        //protected readonly ICommandUserServices _services;
+        protected readonly ICommandUserServices _services;
 
         public UserController(
             IQueryServices<User, UserQueryDto> q,
             ICommandUserServices c)
-          : base(q, c) { }
+          : base(q, c) 
+        {
+            _services = c;
+        }
 
 
         [HttpPost]
@@ -45,7 +49,15 @@ namespace Web.Controllers.Implements.Security
         {
 
             return Ok(await _cmdSvc.UpdateServices(dto));
-        } 
+        }
+
+        [HttpPost("passwordUpdate")]
+        //[Authorize]
+        public virtual async Task<IActionResult> UpdatePassword([FromBody][CustomizeValidator(RuleSet = "Full")] ChangePassword dto)
+        {
+
+            return Ok(await _services.ChangePasswordServices(dto));
+        }
 
 
 

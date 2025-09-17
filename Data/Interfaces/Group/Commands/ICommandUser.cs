@@ -6,6 +6,6 @@ namespace Data.Interfaces.Group.Commands
 {
     public interface ICommandUser : ICommands<User>
     {
-        //Task<bool> UpdatePassword(ChangePassword current);
+        Task<bool> UpdatePassword(ChangePassword current);
     }
 }

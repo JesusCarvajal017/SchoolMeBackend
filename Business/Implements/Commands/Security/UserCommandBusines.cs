@@ -3,6 +3,7 @@ using Business.Implements.Bases;
 using Business.Interfaces.Querys;
 using Data.Interfaces.Group.Commands;
 using Data.Interfaces.Group.Querys;
+using Entity.Dtos.Especific.Security;
 using Entity.Dtos.Security.User;
 using Entity.Model.Security;
 using Microsoft.Extensions.Logging;
@@ -95,6 +96,27 @@ namespace Business.Implements.Commands.Security
             catch (Exception ex)
             {
                 _logger.LogError($"Error al crear {typeof(User).Name} desde DTO: {ex.Message}");
+                throw;
+            }
+        }
+
+
+        public virtual async Task<bool> ChangePasswordServices(ChangePassword dto)
+        {
+            try
+            {
+                if(dto.PasswordNew == dto.PasswordConfirm)
+                {
+                    return await _data.UpdatePassword(dto);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error al actualizar la contraseña de la persona {dto.IdUser}");
                 throw;
             }
         }
