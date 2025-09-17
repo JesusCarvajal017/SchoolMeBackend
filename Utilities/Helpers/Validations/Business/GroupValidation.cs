@@ -1,5 +1,6 @@
 ﻿using Entity.Dtos.Parameters.Group;
 using FluentValidation;
+using Utilities.Helpers.Validations.ValidationsGenerics;
 
 namespace Utilities.Helpers.Validations.Business
 {
@@ -9,10 +10,11 @@ namespace Utilities.Helpers.Validations.Business
         {
             RuleSet("Full", () =>
             {
-                RuleFor(x => x.AgendaId)
-                    .GreaterThan(0)
-                    .WithMessage("El id de la agenda no es valido.")
-                    .NotEmpty().WithMessage("El id de la agenda es obligatorio");
+                RuleFor(x => x.Name).StandardName(min: 4, max: 15);
+                //RuleFor(x => x.AgendaId)
+                //    .GreaterThan(0)
+                //    .WithMessage("El id de la agenda no es valido.")
+                //    .NotEmpty().WithMessage("El id de la agenda es obligatorio");
 
             });
 

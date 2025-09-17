@@ -34,6 +34,7 @@ namespace Entity.Context.Main
         public DbSet<Eps> Eps { get; set; }
         public DbSet<MaterialStatus> MaterialStatus { get; set; }
         public DbSet<Rh> Rh { get; set; }
+        public DbSet<Groups> Groups { get; set; }
         public DbSet<Grade> Grade { get; set; }
         public DbSet<Subject> Subject { get; set; }
         public DbSet<TypeAnsware> TypeAnsware { get; set; }
@@ -57,6 +58,7 @@ namespace Entity.Context.Main
             modelBuilder.ApplyConfiguration(new MaterialStatusConfig());
 
             // academico parte del negocio
+            modelBuilder.ApplyConfiguration(new GroupsConfig());
             modelBuilder.ApplyConfiguration(new GradeConfig());
             modelBuilder.ApplyConfiguration(new SubjectConfig());
             modelBuilder.ApplyConfiguration(new TypeAnswareConfig());

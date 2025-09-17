@@ -1,4 +1,4 @@
-﻿using Data.Interfaces.Group.Commands; 
+﻿using Data.Interfaces.Group.Commands;
 using Entity.Context.Main;
 using Entity.Model.Security;
 using Microsoft.Extensions.Logging;
@@ -37,7 +37,6 @@ namespace Data.Implements.Commands.Security
                 _logger.LogError(ex, $"registro de usuario denegado:  {entity}");
                 throw;
             }
-
         }
 
         // <summary>
@@ -58,9 +57,29 @@ namespace Data.Implements.Commands.Security
             catch (Exception ex) {
                 _logger.LogError(ex, $"Actalizando de usuario denegado:  {entity}");
                 throw;
-
             }
         }
+
+
+
+        // <summary>
+        //  Metodo sobreescrito, para poder agregarle la encriptacion de contraseña
+        // </summary>
+        //public virtual async Task<bool> UpdatePassword(ChangePassword current)
+        //{
+        //    try
+        //    {
+        //        //busqueda del usuario por nombre
+        //        var user = await _context.Set<User>()
+        //            .FirstOrDefaultAsync(u => u.Email == credenciales.Email);
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError(ex, $"Actalizando de usuario denegado:  {entity}");
+        //        throw;
+        //    }
+        //}
 
     }
 }
