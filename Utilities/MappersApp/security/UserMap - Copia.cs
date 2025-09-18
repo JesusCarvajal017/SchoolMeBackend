@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Entity.Dtos.Especific;
 using Entity.Dtos.Security.User;
 using Entity.Model.Security;
 
@@ -14,6 +15,13 @@ namespace Utilities.MappersApp.security
 
             // consulta principal
             CreateMap<User, UserQueryDto>().ReverseMap();
+
+
+            CreateMap<ChangePhoto, ChangePhotoDto>()
+                .ForMember(x => x.Photo, op => op.Ignore()).ReverseMap();
+
+
+
         }
     }
 }

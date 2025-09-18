@@ -1,5 +1,6 @@
 ﻿using Data.Interfaces.Group.Commands;
 using Entity.Context.Main;
+using Entity.Dtos.Especific;
 using Entity.Dtos.Especific.Security;
 using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
@@ -62,8 +63,6 @@ namespace Data.Implements.Commands.Security
             }
         }
 
-
-
          //<summary>
          // Metodo sobreescrito, para poder agregarle la encriptacion de contraseña
          //</summary>
@@ -89,7 +88,6 @@ namespace Data.Implements.Commands.Security
 
                 return true;
 
-
             }
             catch (Exception ex)
             {
@@ -97,6 +95,40 @@ namespace Data.Implements.Commands.Security
                 throw;
             }
         }
+
+
+        //<summary>
+        // Actualizacion de contraseña
+        //</summary>
+        public virtual async Task<bool> UpdatePhoto(ChangePhoto current)
+        {
+            try
+            {
+                //busqueda del usuario por id
+                var user = await _context.Set<User>()
+                    .FirstOrDefaultAsync(u => u.Id == current.Id);
+
+                if (user == null)
+                {
+                    return false;
+                }
+
+                user.UpdatedAt = DateTime.UtcNow;
+                user.Photo = current.Photo;
+
+                await _context.SaveChangesAsync();
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Actalizando de avatar denegado");
+                throw;
+            }
+        }
+
+
 
     }
 }

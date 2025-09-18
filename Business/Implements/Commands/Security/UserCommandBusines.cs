@@ -3,6 +3,7 @@ using Business.Implements.Bases;
 using Business.Interfaces.Querys;
 using Data.Interfaces.Group.Commands;
 using Data.Interfaces.Group.Querys;
+using Entity.Dtos.Especific;
 using Entity.Dtos.Especific.Security;
 using Entity.Dtos.Security.User;
 using Entity.Model.Security;
@@ -33,8 +34,6 @@ namespace Business.Implements.Commands.Security
             _svArchv = alamacenadorArchivos;
             _dataQuery = dataQuery;
         }
-
-
 
         /// <summary>
         /// Valida un DTO utilizando las reglas de validación de FluentValidation.
@@ -100,7 +99,6 @@ namespace Business.Implements.Commands.Security
             }
         }
 
-
         public virtual async Task<bool> ChangePasswordServices(ChangePassword dto)
         {
             try
@@ -152,6 +150,34 @@ namespace Business.Implements.Commands.Security
             }
         }
 
+        // Actualización avatars
+        public virtual async Task<bool> ChangePhotoServices(ChangePhotoDto dto)
+        {
+            try
+            {
+                // existencia del usuario para la posterios actualización
+                // tener cuidado con este parche, puede que se vaya el 0, esto para el int? != int
+                var user = await _dataQuery.QueryById(dto.Id);
+
+                var entity = _mapper.Map<ChangePhoto>(dto);
+
+                if (dto.Photo is not null)
+                {
+                    await _svArchv.Borrar(user.Photo, contenedor);
+
+                    // eliminacion de destino == azure o local
+                    var url = await _svArchv.Almacenar(contenedor, dto.Photo);
+                    entity.Photo = url;
+                }
+
+                return await _data.UpdatePhoto(entity);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error al actualizar {typeof(UserDto).Name} desde DTO: {ex.Message}");
+                throw;
+            }
+        }
 
         public override async Task<bool> DeleteServices(int id)
         {

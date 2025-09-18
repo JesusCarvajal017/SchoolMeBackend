@@ -1,4 +1,5 @@
 ﻿using Business.Interfaces.Querys;
+using Entity.Dtos.Especific;
 using Entity.Dtos.Especific.Security;
 using Entity.Dtos.Security.User;
 using Entity.Model.Security;
@@ -42,7 +43,6 @@ namespace Web.Controllers.Implements.Security
             );
         }
 
-
         [HttpPut]
         //[Authorize]
         public override async Task<IActionResult> Update([FromForm][CustomizeValidator(RuleSet = "Full")] UserDto dto) 
@@ -59,6 +59,13 @@ namespace Web.Controllers.Implements.Security
             return Ok(await _services.ChangePasswordServices(dto));
         }
 
+
+        [HttpPost("photoUpdate")]
+        //[Authorize]
+        public virtual async Task<IActionResult> UpdatePhoto([FromForm][CustomizeValidator(RuleSet = "Full")] ChangePhotoDto dto)
+        {
+            return Ok(await _services.ChangePhotoServices(dto));
+        }
 
 
     }
