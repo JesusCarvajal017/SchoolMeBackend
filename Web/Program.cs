@@ -41,19 +41,16 @@ builder.Services.AddOutputCache((options) =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        // Endpoint del JSON de Swagger
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mi API V1");
 
-        // Esto colapsa todos los endpoints
-        c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
-    });
-//}
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    // Endpoint del JSON de Swagger
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mi API V1");
+
+    // Esto colapsa todos los endpoints
+    c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
+});
 
 // para servir achivos estaticos
 app.UseStaticFiles();

@@ -12,6 +12,7 @@ namespace Data.Infrastructure.DataBase
                 "PgAdmin" => new PostgresConfigurator(),
                 "PgAdminLog" => new PostgresLogConfigurator(),
                 "MySQL" => new MySqlConfigurator(),
+                "SqlServer" => new SqlServerConfigurator(),
                 _ => throw new InvalidOperationException($"Motor no soportado: {engine}")
             };
         }
