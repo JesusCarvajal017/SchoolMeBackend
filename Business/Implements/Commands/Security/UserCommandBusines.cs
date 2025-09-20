@@ -7,7 +7,9 @@ using Entity.Dtos.Especific;
 using Entity.Dtos.Especific.Security;
 using Entity.Dtos.Security.User;
 using Entity.Model.Security;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Utilities.AlmacenadorArchivos.Interface;
 using Utilities.Helpers.Validations;
 
@@ -36,15 +38,22 @@ namespace Business.Implements.Commands.Security
         }
 
         /// <summary>
-        /// Valida un DTO utilizando las reglas de validación de FluentValidation.
-        /// </summary>
-        /// <param name="dto">El objeto DTO a validar</param>
-        /// <returns>Una tarea que representa la operación de validación asíncrona</returns>
-        /// <remarks>
-        /// Este método utiliza el servicio _helpers para realizar la validación.
-        /// Si la validación falla, se agrupan todos los errores en una sola excepción.
+        /// Valida un DTO utilizando las reglas de validación de FluentValidation
         /// </remarks>
         protected async Task EnsureValid(UserDto dto)
+        {
+            var validationResult = await _helpers.Validate(dto);
+            if (!validationResult.IsValid)
+            {
+                var errors = string.Join(", ", validationResult.Errors);
+                throw new ArgumentException($"Validación fallida: {errors}");
+            }
+        }
+
+        /// <summary>
+        /// Valida un DTO utilizando las reglas de validación de FluentValidation
+        /// </remarks>
+        protected async Task EnsureValid(UserCreateDto dto)
         {
             var validationResult = await _helpers.Validate(dto);
             if (!validationResult.IsValid)
@@ -72,12 +81,14 @@ namespace Business.Implements.Commands.Security
         /// 4. Mapea la entidad creada de vuelta a DTO y la retorna
         /// 5. Registra la operación y maneja errores
         /// </remarks>
-        public override async Task<UserDto> CreateServices(UserDto dto)
+        public virtual async Task<UserDto> CreateRemastered(UserCreateDto dto)
         {
             try
             {
                 // validacion de dto
                 await EnsureValid(dto);
+
+
                 var entity = _mapper.Map<User>(dto);
 
                 if(dto.Photo is not null)
@@ -86,9 +97,13 @@ namespace Business.Implements.Commands.Security
                     var url = await _svArchv.Almacenar(contenedor, dto.Photo);
                     entity.Photo = url;
                 }
+                else
+                {
+                    entity.Photo = "defaul.png";
+                }
 
 
-                entity = await _data.InsertAsync(entity);
+                 entity = await _data.InsertAsync(entity);
                 _logger.LogInformation($"Creando nuevo {typeof(User).Name}");
                 return _mapper.Map<UserDto>(entity);
             }

@@ -16,6 +16,7 @@ namespace Web.Controllers.Implements.Security
             IQueryServices<Rol, RolDto> q,
             ICommandService<Rol, RolDto> c)
           : base(q, c) { }
+
     }
 
 }

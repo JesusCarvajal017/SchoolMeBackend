@@ -28,6 +28,7 @@ namespace Web.Controllers.Implements.Security
         }
 
 
+        [NonAction] 
         [HttpPost]
         //[Authorize]
         public override async Task<IActionResult> Create([FromForm][CustomizeValidator(RuleSet = "Full")] UserDto dto)
@@ -42,6 +43,24 @@ namespace Web.Controllers.Implements.Security
               created
             );
         }
+
+        [HttpPost]
+        //[Authorize]
+        public virtual async Task<IActionResult> CreateRemasted([FromForm][CustomizeValidator(RuleSet = "Full")] UserCreateDto dto)
+        {
+            var created = await _services.CreateRemastered(dto);
+
+            var id = created.Id;
+
+            return CreatedAtAction(
+                nameof(GetById),
+                new { id = id },
+              created
+            );
+        }
+
+
+
 
         [HttpPut]
         //[Authorize]

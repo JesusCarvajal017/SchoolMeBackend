@@ -8,6 +8,7 @@ namespace Business.Interfaces.Querys
 {
     public interface ICommandUserServices : ICommandService<User, UserDto>
     {
+        Task<UserDto> CreateRemastered(UserCreateDto current);
         Task<bool> ChangePasswordServices(ChangePassword current);
         Task<bool> ChangePhotoServices(ChangePhotoDto current);
     }

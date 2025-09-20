@@ -8,6 +8,7 @@ using Data.Implements.Auth;
 using Data.Implements.Commands;
 using Data.Implements.Commands.Security;
 using Data.Implements.Querys;
+using Data.Implements.Querys.Business;
 using Data.Implements.Querys.Parameters;
 using Data.Implements.Querys.Security;
 using Data.Implements.View;
@@ -15,6 +16,7 @@ using Data.Infrastructure.Interceptors;
 using Data.Interfaces.Group.Commands;
 using Data.Interfaces.Group.Querys;
 using Entity.Dtos.Security.UserRol;
+using Entity.Model.Business;
 using Entity.Model.Paramters;
 using Entity.Model.Security;
 using Utilities.Helpers.Validations;
@@ -67,9 +69,16 @@ namespace Web.Extendes
                 typeof(ModuleFormQueryData)
             );
 
+
+            //services.AddScoped(
+            //    typeof(IQuerys<Person>),
+            //    typeof(PersonQueryData)
+            //);
+
+
             services.AddScoped(
-                typeof(IQuerys<Person>),
-                typeof(PersonQueryData)
+                typeof(IQuerys<GroupDirector>),
+                typeof(GroupDirectorQueryData)
             );
 
             services.AddScoped(

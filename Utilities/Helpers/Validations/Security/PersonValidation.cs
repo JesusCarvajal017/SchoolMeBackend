@@ -38,9 +38,6 @@ namespace Utilities.Helpers.Validations.Security
 
                 RuleFor(x => x.SecondName)
                    .Cascade(CascadeMode.Stop)
-                   .NotEmpty().WithMessage("El segundo nombre es obligatorio.")
-                   .Must(s => !string.IsNullOrWhiteSpace(s))
-                       .WithMessage("El nombre no puede ser solo espacios.")
                    .Matches(@"^[\p{L}\s'\-]+$") // letras Unicode + espacios + ' y -
                        .WithMessage("El nombre solo puede contener letras y espacios (sin números).")
                        .MinimumLength(4).WithMessage("El nombre debe tener al menos 4 caracteres.")

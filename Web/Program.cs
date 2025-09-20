@@ -1,4 +1,6 @@
-﻿using Utilities.AlmacenadorArchivos.implementes;
+﻿using Entity.Context.Main;
+using Microsoft.EntityFrameworkCore;
+using Utilities.AlmacenadorArchivos.implementes;
 using Utilities.AlmacenadorArchivos.Interface;
 using Web.Extendes;
 
@@ -40,9 +42,17 @@ builder.Services.AddOutputCache((options) =>
 });
 
 var app = builder.Build();
+/*
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AplicationDbContext>();
+    if (dbContext.Database.IsRelational())
+    {
+        dbContext.Database.Migrate();
+    }
+}*/
 
-
-app.UseSwagger();
+    app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     // Endpoint del JSON de Swagger

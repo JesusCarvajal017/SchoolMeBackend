@@ -6,6 +6,6 @@ namespace Entity.Dtos.Global
     public abstract class ABaseDto
     {
         public int? Id { get; set; }
-        public int Status { get; set; }
+        public  int Status { get; set; }
     }
 }

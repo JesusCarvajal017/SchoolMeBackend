@@ -8,8 +8,8 @@ namespace Data.Interfaces.Group.Querys
     /// Interfaz de extension de user rol
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IQuerysMunicipality : IQuerys<Munisipality>
+    public interface IQuerysGroupDirector : IQuerys<GroupDirector>
     {
-        Task<IEnumerable<Munisipality>> QueryMunicpalitysDepartaments(int departementId);
+        
     }
 }

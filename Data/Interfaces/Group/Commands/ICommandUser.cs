@@ -6,7 +6,11 @@ namespace Data.Interfaces.Group.Commands
 {
     public interface ICommandUser : ICommands<User>
     {
+
+        //Task<bool> InsertFormDataAsync(ChangePassword current);
         Task<bool> UpdatePassword(ChangePassword current);
         Task<bool> UpdatePhoto(ChangePhoto current);
+
+
     }
 }
