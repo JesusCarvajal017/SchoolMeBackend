@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Utilities.AlmacenadorArchivos.implementes;
 using Utilities.AlmacenadorArchivos.Interface;
 using Web.Extendes;
+using Web.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -42,6 +43,10 @@ builder.Services.AddOutputCache((options) =>
 });
 
 var app = builder.Build();
+
+
+app.UseMiddleware<ProblemDetailsMiddleware>();
+
 /*
 using (var scope = app.Services.CreateScope())
 {
@@ -52,7 +57,7 @@ using (var scope = app.Services.CreateScope())
     }
 }*/
 
-    app.UseSwagger();
+app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     // Endpoint del JSON de Swagger

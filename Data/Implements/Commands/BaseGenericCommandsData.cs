@@ -3,6 +3,7 @@ using Entity.Context.Main;
 using Entity.Model.Global;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Utilities.Exceptions;
 
 namespace Data.Implements.Commands
 {
@@ -14,20 +15,37 @@ namespace Data.Implements.Commands
 
         public override async Task<T> InsertAsync(T entity)
         {
-            entity.CreatedAt = DateTime.UtcNow;
 
-            await _dbSet.AddAsync(entity);
-            await _context.SaveChangesAsync();
-            return entity;
+            try
+            {
+                entity.CreatedAt = DateTime.UtcNow;
+
+                await _dbSet.AddAsync(entity);
+                await _context.SaveChangesAsync();
+                return entity; 
+            } catch (DbUpdateException ex) 
+            {
+                throw DbExceptionTranslator.ToBusiness(ex, "insert", typeof(T).Name);
+            }
         }
 
         public override async Task<bool> UpdateAsync(T entity)
         {
-            entity.UpdatedAt = DateTime.UtcNow;
-            
-            _context.Set<T>().Update(entity);
-            await _context.SaveChangesAsync();
-            return true;
+
+            try
+            {
+                entity.UpdatedAt = DateTime.UtcNow;
+
+                _context.Set<T>().Update(entity);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (DbUpdateException ex) 
+            {
+                throw DbExceptionTranslator.ToBusiness(ex, "update", typeof(T).Name);
+            }
+
+           
         }
 
         public override async Task<bool> DeleteLogicalAsyn(int id, int status)
@@ -35,23 +53,43 @@ namespace Data.Implements.Commands
             var entity = await _dbSet.FindAsync(id);
 
             if (entity == null)
-                return false;
+                throw new EntityNotFoundException(typeof(T).Name, id);
 
-            entity.Status = status;
-            entity.DeleteAt = DateTime.UtcNow;
 
-            await _context.SaveChangesAsync();
+            try
+            {
+                entity.Status = status;
+                entity.DeleteAt = DateTime.UtcNow;
 
-            return true;
+                await _context.SaveChangesAsync();
+
+                return true;
+
+            }
+            catch(DbUpdateException ex) 
+            {
+                throw DbExceptionTranslator.ToBusiness(ex, "update", typeof(T).Name);
+            }
+           
         }
         public override async Task<bool> DeleteAsync(int id)
         {
             var entity = await _context.Set<T>().FindAsync(id);
-            if (entity == null) return false;
 
-            _context.Set<T>().Remove(entity);
-            await _context.SaveChangesAsync();
-            return true;
+            if (entity == null)
+                throw new EntityNotFoundException(typeof(T).Name, id);
+
+            try
+            {
+                _context.Set<T>().Remove(entity);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (DbUpdateException ex) {
+
+                throw DbExceptionTranslator.ToBusiness(ex, "delete", typeof(T).Name);
+
+            }
         }
 
         //<summary>

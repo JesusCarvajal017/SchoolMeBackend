@@ -4,6 +4,7 @@ using Data.Interfaces.Group.Commands;
 using Entity.Dtos.Global;
 using Entity.Model.Global;
 using Microsoft.Extensions.Logging;
+using Utilities.Exceptions;
 using Utilities.Helpers.Validations;
 
 namespace Business.Implements.Bases
@@ -79,8 +80,9 @@ namespace Business.Implements.Bases
             var validationResult = await _helpers.Validate(dto);
             if (!validationResult.IsValid)
             {
-                var errors = string.Join(", ", validationResult.Errors);
-                throw new ArgumentException($"Validación fallida: {errors}");
+                var errors = string.Join(", ", validationResult.Errors.Select(e => e.ToString()));
+                // Puedes asociar property cuando sea 1 a 1; si son varios, deja el mensaje agregado
+                throw new ValidationException("dto", errors);
             }
         }
 
@@ -114,7 +116,7 @@ namespace Business.Implements.Bases
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error al crear {typeof(T).Name} desde DTO: {ex.Message}");
+                //_logger.LogError($"Error al crear {typeof(T).Name} desde DTO: {ex.Message}");
                 throw;
             }
         }
@@ -143,7 +145,7 @@ namespace Business.Implements.Bases
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error al actualizar {typeof(T).Name} desde DTO: {ex.Message}");
+                //_logger.LogError($"Error al actualizar {typeof(T).Name} desde DTO: {ex.Message}");
                 throw;
             }
         }
@@ -171,7 +173,7 @@ namespace Business.Implements.Bases
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error al eliminar {typeof(T).Name} con ID {id}: {ex.Message}");
+                //_logger.LogError($"Error al eliminar {typeof(T).Name} con ID {id}: {ex.Message}");
                 throw;
             }
         }
@@ -203,7 +205,7 @@ namespace Business.Implements.Bases
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error al cambiar el estado {typeof(T).Name} con ID {id}: {ex.Message}");
+                //_logger.LogError($"Error al cambiar el estado {typeof(T).Name} con ID {id}: {ex.Message}");
                 throw;
             }
         }
@@ -223,7 +225,7 @@ namespace Business.Implements.Bases
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error al actualizar {typeof(T).Name} con ID {dto.Id}: {ex.Message}");
+                //_logger.LogError($"Error al actualizar {typeof(T).Name} con ID {dto.Id}: {ex.Message}");
                 throw;
             }
         }

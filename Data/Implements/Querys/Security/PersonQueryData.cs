@@ -29,7 +29,7 @@ namespace Data.Implements.Querys.Security
                     query = query.Where(x => x.Status == status.Value);
 
 
-                var model = await query.ToListAsync();
+                var model = await query.OrderBy(x => x.Id).ToListAsync();
 
                 //ToListAsync();
                 _logger.LogInformation("Consulta de la enidad {Entity} se realizo exitosamente", typeof(UserRol).Name);

@@ -22,7 +22,9 @@ namespace Data.Implements.Querys
                 if (status.HasValue)
                     query = query.Where(x => x.Status == status.Value);
 
-                var model = await query.ToListAsync();
+                var model = await query
+                    .OrderBy(x => x.Id)
+                    .ToListAsync();
 
                 _logger.LogInformation("Consulta de la enidad {Entity} se realizo exitosamente", typeof(T).Name);
                 return model;

@@ -48,6 +48,7 @@ namespace Data.Implements.Querys.Security
                             Name = ur.Rol.Name
                         }
                     })
+                    .OrderBy(x => x.Id)
                     .ToListAsync();
 
                 //ToListAsync();
