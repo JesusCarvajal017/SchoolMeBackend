@@ -42,6 +42,10 @@ namespace Entity.Context.Main
 
         //Modulo de negocio
         public DbSet<DataBasic> DataBasic { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Teacher> Teacher { get; set; }
+        public DbSet<Attendants> Attendants { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -42,10 +42,19 @@ namespace Business.Implements.Querys.Security
         }
 
 
-
-
-
-
-
+        public virtual async Task<PersonCompleteDto> GetPersonDataBasic(int personId)
+        {
+            try
+            {
+                var entities = await _data.QueryById(personId);
+                _logger.LogInformation($"Obteniendo {typeof(Person).Name} con ID: {personId}");
+                return _mapper.Map<PersonCompleteDto>(entities);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error al obtener {typeof(Person).Name} con ID {personId}: {ex.Message}");
+                throw;
+            }
+        }
     }
 }

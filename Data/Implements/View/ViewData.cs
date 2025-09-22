@@ -1,4 +1,5 @@
 ﻿using Entity.Context.Main;
+using Entity.Dtos.Especific;
 using Entity.Dtos.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -110,6 +111,22 @@ namespace Data.Implements.View
              menu.Insert(0, new MenuDto { Name = "inicio", Icon = "home", Path = "/dashboard", Order = 1, Formularios = new() });
 
             return menu;
+        }
+
+        public async Task<CountRegistersDto> QueryCountRegister() 
+        {
+            int  queryPerson = await _context.Person.AsNoTracking().CountAsync(); 
+            int queryStudents = await _context.Students.AsNoTracking().CountAsync();
+            int queryTeacher = await _context.Teacher.AsNoTracking().CountAsync();
+            int queryAttedanst = await _context.Attendants.AsNoTracking().CountAsync();
+
+            return new CountRegistersDto
+            {
+                Persons = queryPerson,
+                Students = queryStudents,
+                Attendats = queryAttedanst,
+                Teachers = queryTeacher
+            };
         }
 
     }

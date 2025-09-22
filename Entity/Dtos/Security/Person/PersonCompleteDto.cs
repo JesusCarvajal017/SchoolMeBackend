@@ -4,7 +4,7 @@ using Entity.Enum;
 
 namespace Entity.Dtos.Security.Person
 {
-    public class PersonDto : ABaseDto
+    public class PersonCompleteDto : ABaseDto
     {
         public int? DocumentTypeId { get; set; }
         public long? Identification { get; set; }
@@ -14,5 +14,7 @@ namespace Entity.Dtos.Security.Person
         public string? SecondLastName { get; set; }
         public long? Phone { get; set; }
         public GenderEmun? Gender { get; set; }
+
+        public DataBasicDto DataBasic { get; set; }
     }
 }

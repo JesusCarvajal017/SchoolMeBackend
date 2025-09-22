@@ -76,10 +76,20 @@ namespace Utilities.Helpers.Validations.Security
                 RuleFor(x => x.Id).NotEmpty().WithMessage("El Id es obligatorio");
 
             });
-
-           
-     
-
         }
     }
-}
+
+        public class PersonCompleteValidation : AbstractValidator<PersonCompleteDto>
+        {
+            public PersonCompleteValidation()
+            {
+                RuleSet("Full", () =>
+                {
+                    RuleFor(x => x.DocumentTypeId)
+                   .GreaterThan(0)
+                    .WithMessage("El id de rh no es valido.")
+                   .NotEmpty().WithMessage("El id del rh es obligatorio");
+                });
+            }
+        }
+    }

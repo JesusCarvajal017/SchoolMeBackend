@@ -25,6 +25,11 @@ namespace Utilities.Exceptions
         }
     }
 
+    public class NotFoundException : Exception
+    {
+        public NotFoundException(string message) : base(message) { }
+    }
+
     /// <summary>
     /// Excepción lanzada cuando no se encuentra una entidad en el sistema.
     /// </summary>
@@ -137,7 +142,7 @@ namespace Utilities.Exceptions
         /// <param name="ruleCode">Código que identifica la regla de negocio violada.</param>
         /// <param name="message">El mensaje que describe la violación.</param>
         public BusinessRuleViolationException(string ruleCode, string message)
-            : base($"Violación de regla de negocio [{ruleCode}]: {message}")
+            : base($"{message}")
         {
             RuleCode = ruleCode;
         }

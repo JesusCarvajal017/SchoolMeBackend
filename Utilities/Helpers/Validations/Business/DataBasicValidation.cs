@@ -50,12 +50,9 @@ namespace Utilities.Helpers.Validations.Business
 
 
                 RuleFor(x => x.BrithDate)
-                .NotEmpty().WithMessage("La fecha de nacimiento es obligatoria.")
-                .Matches(@"^\d{2}-\d{2}-\d{4}$")
-                    .WithMessage("Usa el formato dd-MM-yyyy (ej: 26-08-2025).")
-                .Must(s => DateTime.TryParseExact(s, "dd-MM-yyyy",
-                        CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
-                    .WithMessage("Fecha inválida. Usa dd-MM-yyyy.");
+                 .NotNull().WithMessage("La fecha de nacimiento es obligatoria.")
+                 .LessThan(DateTime.Today).WithMessage("La fecha de nacimiento debe ser anterior a hoy.")
+                 .GreaterThan(new DateTime(1900, 1, 1)).WithMessage("La fecha de nacimiento no puede ser anterior a 1900.");
 
                 RuleFor(x => x.StratumStatus)
                     .InclusiveBetween(0, 5)

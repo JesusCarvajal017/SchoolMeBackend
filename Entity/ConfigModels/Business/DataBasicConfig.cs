@@ -52,11 +52,13 @@ namespace Entity.ConfigModels.Business
                 .HasColumnName("munisipalityId")
                 .IsRequired();
 
+            builder.HasIndex(p => p.PersonId).IsUnique();
+
             // Llaves foraenas
             builder.HasOne(db => db.Person)       
              .WithOne(p => p.DataBasic)     
              .HasForeignKey<DataBasic>(db => db.PersonId)  
-             .OnDelete(DeleteBehavior.Restrict);
+             .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(ur => ur.Rh)
               .WithMany(r => r.DataBasics)

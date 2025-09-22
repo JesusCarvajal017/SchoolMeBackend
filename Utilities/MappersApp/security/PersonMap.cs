@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using Entity.Dtos.Business.DataBasic;
 using Entity.Dtos.Especific.DataBasicComplete;
 using Entity.Dtos.Security.Person;
 using Entity.Enum;
+using Entity.Model.Business;
 using Entity.Model.Security;
 
 namespace Utilities.MappersApp.security
@@ -47,6 +49,32 @@ namespace Utilities.MappersApp.security
                 // Por si tu ABaseDto tiene más props y no quieres mapearlas automáticamente:
                 //.ForAllOtherMembers(o => o.Ignore())
                 ;
+
+
+            CreateMap<PersonCompleteDto, Person>()
+               .ForMember(d => d.Id, o => o.Ignore())     // PK la genera la 
+               .ForMember(d => d.DataBasic, o => o.MapFrom(s => s.DataBasic))
+               // Importante para UPDATE parcial: no sobrescribir con nulls
+               .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
+
+            // DataBasicDto -> DataBasic
+            CreateMap<DataBasicDto, DataBasic>()
+                .ForMember(d => d.Id, o => o.Ignore())       // PK propia
+                .ForMember(d => d.PersonId, o => o.Ignore())       // EF lo fija por navegación en create
+                                                                   // No sobrescribir con nulls (útil para updates parciales)
+                .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
+
+            // =========================
+            // ENTITY -> DTO (Read)
+            // =========================
+
+            CreateMap<Person, PersonCompleteDto>()
+                .ForMember(d => d.DataBasic, o => o.MapFrom(s => s.DataBasic));
+
+            CreateMap<DataBasic, DataBasicDto>()
+                .ForMember(d => d.PersonId, o => o.MapFrom(s => s.PersonId));
+
+
 
         }
     }

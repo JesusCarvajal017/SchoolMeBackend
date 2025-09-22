@@ -6,9 +6,9 @@ using Utilities.Exceptions;
 
 namespace Web.Controllers.Implements.View
 {
-    //[Route("api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("api/Menu")]
+    //[Route("api/Menu")]
     public class ViewController : ControllerBase
     {
         // no deberia conectarse directamente con la data
@@ -26,8 +26,8 @@ namespace Web.Controllers.Implements.View
             _logger = logger;
         }
 
-        [HttpGet]
-      
+        [HttpGet("Menu")]
+
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
@@ -51,6 +51,24 @@ namespace Web.Controllers.Implements.View
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error interno consultado el menu");
             }
         }
-       
+
+
+        [HttpGet("Registers")]
+        public async Task<IActionResult> CountRegisters()
+        {
+         
+            try
+            {
+                var query = await _data.QueryCountRegister();
+                return Ok(query);
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogError("Error al consultar la informacion del los registros");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error interno consultado los registros");
+            }
+        }
+
     }
 }

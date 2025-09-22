@@ -117,6 +117,9 @@ namespace Web.Extendes
             services.AddScoped<ICommandUser, UserCommandData>();
             services.AddScoped<ICommandUserServices, UserCommandBusines>();
 
+            //Person
+            services.AddScoped<ICommanPerson, PersonCommandData>();
+            services.AddScoped<ICommandPersonServices, PersonCommandBusines>();
 
 
             //services.AddScoped();

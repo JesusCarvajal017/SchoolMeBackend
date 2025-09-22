@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Data.Implements.Querys.Security
 {
-    public class PersonQueryData : BaseGenericQuerysData<Person> , IQuerysPerson
+    public class PersonQueryData : BaseGenericQuerysData<Person>, IQuerysPerson
     {
         protected readonly ILogger<PersonQueryData> _logger;
         protected readonly AplicationDbContext _context;
@@ -24,10 +24,8 @@ namespace Data.Implements.Querys.Security
                 IQueryable<Person> query = _context.Person.AsNoTracking()
                      .Include(ur => ur.DocumentType);
 
-
                 if (status.HasValue)
                     query = query.Where(x => x.Status == status.Value);
-
 
                 var model = await query.OrderBy(x => x.Id).ToListAsync();
 
@@ -41,6 +39,7 @@ namespace Data.Implements.Querys.Security
                 throw;
             }
         }
+
         public virtual async Task<Person> QueryCompleteData(int personId)
         {
             try
@@ -62,15 +61,35 @@ namespace Data.Implements.Querys.Security
 
                 return query;
 
-            } catch (Exception ex) 
+            }
+            catch (Exception ex)
             {
 
                 _logger.LogInformation(ex, "Error en la consulta la entidad {Entity}", typeof(UserRol).Name);
                 return new Person();
             }
+        }
+        public override async Task<Person?> QueryById(int id)
+        {
+            try
+            {
+                var query = await _dbSet
+                  .AsNoTracking()
+                  .Include(p => p.DataBasic)
+                  .FirstOrDefaultAsync(e => e.Id == id); ;
+
+                return query;
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogInformation(ex, "Error en la consulta con id {id}", typeof(Person).Name);
+                return null;
+            }
 
         }
 
+       
 
 
 

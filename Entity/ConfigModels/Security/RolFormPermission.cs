@@ -47,7 +47,6 @@ namespace Entity.ConfigModels.Security
             //builder.HasData(
                builder.HasData(
                     new RolFormPermission { Id = 1, RolId = 1, FormId = 1, PermissionId = 1, Status= 1},
-                    new RolFormPermission { Id = 2, RolId = 1, FormId = 2, PermissionId = 1, Status= 1},
                     new RolFormPermission { Id = 3, RolId = 1, FormId = 3, PermissionId = 1, Status= 1},
                     new RolFormPermission { Id = 4, RolId = 1, FormId = 4, PermissionId = 1, Status= 1},
                     new RolFormPermission { Id = 5, RolId = 1, FormId = 5, PermissionId = 1, Status= 1},
