@@ -1,4 +1,5 @@
-﻿using Entity.Model.Global;
+﻿using Entity.Enum;
+using Entity.Model.Global;
 using Entity.Model.Paramters;
 
 namespace Entity.Model.Business
@@ -9,8 +10,7 @@ namespace Entity.Model.Business
         public int SubjectId { get; set; }
         public int GroupId { get; set; }
 
-        public DayOfWeek Day { get; set; }   
-        public TimeSpan Time { get; set; }   
+        public Days Days { get; set; }   
 
         public  Teacher Teacher { get; set; }
         public  Subject Subject { get; set; }

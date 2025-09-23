@@ -2,12 +2,12 @@
 
 namespace Entity.Dtos.Business.AcademicLoad
 {
-    public class AcademicLoadDto : ABaseDto
+    public class AcademicLoadReadDto : ABaseDto
     {
         public int? TeacherId { get; set; }
         public int? SubjectId { get; set; }
         public int? GroupId { get; set; }
 
-        public int? Day { get; set; }
+        public string[] DaysText { get; set; } = [];
     }
 }

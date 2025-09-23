@@ -1,7 +1,9 @@
 ﻿using Entity.ConfigModels.global;
+using Entity.Enum;
 using Entity.Model.Business;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Entity.ConfigModels.Business
 {
@@ -32,20 +34,18 @@ namespace Entity.ConfigModels.Business
                    .HasColumnName("group_id")
                    .IsRequired();
 
-            builder.Property(x => x.Day)
-                   .HasColumnName("day_of_week")
-                   .HasConversion<int>()        
-                   .IsRequired();
-
-            builder.Property(x => x.Time)
-                 .HasColumnName("time")
-                 .HasColumnType("time")         
-                 .IsRequired();
+            builder.Property(a => a.Days)
+                  .HasColumnName("days")
+                  .HasConversion<int>()        // enum -> int (bitmask)
+                  .HasColumnType("integer")    // pg: integer
+                  .HasDefaultValue(Days.None)
+                  .IsRequired();
 
             builder.MapBaseModel();
 
+
             // Evita duplicados exactos del mismo bloque
-            builder.HasIndex(a => new { a.TeacherId, a.GroupId, a.SubjectId, a.Day, a.Time })
+            builder.HasIndex(a => new { a.TeacherId, a.GroupId, a.SubjectId, a.Days })
                    .HasDatabaseName("uq_academic_load_slot")
                    .IsUnique();
 

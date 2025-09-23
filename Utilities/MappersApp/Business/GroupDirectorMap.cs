@@ -12,6 +12,7 @@ namespace Utilities.MappersApp.Business
             CreateMap<GroupDirector, GroupDirectorDto>().ReverseMap();
 
             CreateMap<GroupDirector, GroupDirectorQueryDto>()
+                .ForMember(dest => dest.FullName, opt => opt.MapFrom(t => $"{t.Teacher.Person.FisrtName} {t.Teacher.Person.LastName}"))
                 .ForMember(dest=> dest.FisrtName, opt => opt.MapFrom(t => t.Teacher.Person.FisrtName))
                 .ForMember(dest => dest.SecondName, opt => opt.MapFrom(t => t.Teacher.Person.SecondLastName))
                 .ForMember(dest => dest.LastName, opt => opt.MapFrom(t => t.Teacher.Person.LastName))
