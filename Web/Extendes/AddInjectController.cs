@@ -92,6 +92,12 @@ namespace Web.Extendes
             );
 
 
+            services.AddScoped(
+             typeof(IQuerys<Teacher>),
+             typeof(TeacherQueryData)
+         );
+
+
 
             // muncipality
             services.AddScoped<IQuerysMunicipality, MunicipalityQueryData>();

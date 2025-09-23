@@ -10,11 +10,11 @@ namespace Web.Controllers.Implements.Business
     public class TeacherController
        : GenericController<
        Teacher,
-       TeacherDto,
+       TeacherReadDto,
        TeacherDto>
     {
         public TeacherController(
-            IQueryServices<Teacher, TeacherDto> q,
+            IQueryServices<Teacher, TeacherReadDto> q,
             ICommandService<Teacher, TeacherDto> c)
           : base(q, c) { }
     }
