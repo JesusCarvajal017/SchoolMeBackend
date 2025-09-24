@@ -42,13 +42,13 @@ namespace Business.Implements.Querys.Security
         }
 
 
-        public virtual async Task<PersonCompleteDto> GetPersonDataBasic(int personId)
+        public virtual async Task<PersonCompleteReadDto> GetPersonDataBasic(int personId)
         {
             try
             {
                 var entities = await _data.QueryById(personId);
                 _logger.LogInformation($"Obteniendo {typeof(Person).Name} con ID: {personId}");
-                return _mapper.Map<PersonCompleteDto>(entities);
+                return _mapper.Map<PersonCompleteReadDto>(entities);
             }
             catch (Exception ex)
             {

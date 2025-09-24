@@ -2,7 +2,7 @@
 
 namespace Entity.Dtos.Business.DataBasic
 {
-    public class DataBasicDto : ABaseDto
+    public class DataBasicReadDto : ABaseDto
     {
 
         public int PersonId { get; set; }
@@ -14,6 +14,7 @@ namespace Entity.Dtos.Business.DataBasic
         public int? MaterialStatusId { get; set; }
 
         public int? EpsId { get; set; }
+        public int? DepartamentId { get; set; }
         public int? MunisipalityId { get; set; }
     }
 }

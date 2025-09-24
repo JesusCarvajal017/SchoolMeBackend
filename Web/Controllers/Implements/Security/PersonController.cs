@@ -44,7 +44,6 @@ namespace Web.Controllers.Implements.Security
 
         }
 
-
         [HttpGet("PersonBasic/{personId}")]
         public async Task<IActionResult> GetPersonBasic(int personId)
         {

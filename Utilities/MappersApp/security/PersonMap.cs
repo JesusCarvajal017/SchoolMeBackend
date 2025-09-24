@@ -66,16 +66,25 @@ namespace Utilities.MappersApp.security
                 // No sobrescribir con nulls (útil para updates parciales)
                 .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
 
+
+
+            CreateMap<Person, PersonCompleteDto>()
+               .ForMember(d => d.DataBasic, o => o.MapFrom(s => s.DataBasic));
+
+            CreateMap<DataBasic, DataBasicDto>()
+                .ForMember(d => d.PersonId, o => o.MapFrom(s => s.PersonId));
+
+
             // =========================
             // ENTITY -> DTO (Read)
             // =========================
 
-            CreateMap<Person, PersonCompleteDto>()
+            CreateMap<Person, PersonCompleteReadDto>()
                 .ForMember(d => d.DataBasic, o => o.MapFrom(s => s.DataBasic));
 
-            CreateMap<DataBasic, DataBasicDto>()
+            CreateMap<DataBasic, DataBasicReadDto>()
                 .ForMember(d => d.PersonId, o => o.MapFrom(s => s.PersonId))
-                .ForMember(d => d.DepartamentId, o => o.MapFrom(s => s.Munisipality.DepartamentId));
+                .ForMember(d => d.DepartamentId, o => o.MapFrom(s => s.Munisipality.Departament.Id));
 
 
 

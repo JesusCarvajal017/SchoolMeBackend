@@ -7,6 +7,6 @@ namespace Business.Interfaces.Querys
     public interface IQueryPersonServices : IQueryServices<Person, PersonQueryDto>
     {
         Task<CompleteDataPersonDto> GetDataCompleteServices(int personId);
-        Task<PersonCompleteDto> GetPersonDataBasic(int personId);
+        Task<PersonCompleteReadDto> GetPersonDataBasic(int personId);
     }
 }

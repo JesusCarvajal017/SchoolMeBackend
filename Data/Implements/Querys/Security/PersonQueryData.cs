@@ -76,7 +76,18 @@ namespace Data.Implements.Querys.Security
             {
                 var query = await _dbSet
                   .AsNoTracking()
-                  .Include(p => p.DataBasic)
+                  .Include(p => p.DocumentType)
+                 .Include(p => p.Attendants)
+                 .Include(p => p.DataBasic)
+                     .ThenInclude(d => d.Rh)
+                 .Include(p => p.DataBasic)
+                     .ThenInclude(d => d.Eps)
+                 .Include(p => p.DataBasic)
+                     .ThenInclude(d => d.Munisipality)
+                        .ThenInclude(m => m.Departament)
+                 .Include(p => p.DataBasic)
+                     .ThenInclude(d => d.MaterialStatus)
+                 .AsSplitQuery() // recomendable cuando hay varias colecciones
                   .FirstOrDefaultAsync(e => e.Id == id); ;
 
                 return query;
