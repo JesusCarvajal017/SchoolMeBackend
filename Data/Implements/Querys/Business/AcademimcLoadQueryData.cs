@@ -27,6 +27,7 @@ namespace Data.Implements.Querys.Business
                                                 AsQueryable()
                                                 .Include(p => p.Teacher)
                                                     .ThenInclude(d => d.Person)
+                                                .Include(p => p.Subject)
                                                 .Include(p => p.Group);
 
 
