@@ -1,8 +1,6 @@
 ﻿using Business.Interfaces.Commands;
 using Business.Interfaces.Querys;
-using Entity.Dtos.Business.AcademicLoad;
 using Entity.Dtos.Business.Agenda;
-using Entity.Dtos.Business.DataBasic;
 using Entity.Model.Business;
 using Web.Controllers.Implements.Abstract;
 

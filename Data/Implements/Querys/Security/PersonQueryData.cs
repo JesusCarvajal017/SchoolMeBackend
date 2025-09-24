@@ -54,6 +54,7 @@ namespace Data.Implements.Querys.Security
                      .ThenInclude(d => d.Eps)
                  .Include(p => p.DataBasic)
                      .ThenInclude(d => d.Munisipality)
+                        .ThenInclude(m=> m.Departament)
                  .Include(p => p.DataBasic)
                      .ThenInclude(d => d.MaterialStatus)
                  .AsSplitQuery() // recomendable cuando hay varias colecciones

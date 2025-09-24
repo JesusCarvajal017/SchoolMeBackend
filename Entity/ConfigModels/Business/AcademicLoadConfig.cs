@@ -38,7 +38,7 @@ namespace Entity.ConfigModels.Business
                   .HasColumnName("days")
                   .HasConversion<int>()        // enum -> int (bitmask)
                   .HasColumnType("integer")    // pg: integer
-                  .HasDefaultValue(Days.None)
+                  .HasDefaultValue(0)
                   .IsRequired();
 
             builder.MapBaseModel();

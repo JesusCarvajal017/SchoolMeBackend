@@ -25,26 +25,23 @@ namespace Entity.ConfigModels.Security
 
             builder.Property(p => p.SecondName)
                .HasColumnName("secondName")
-               .IsRequired()
                .HasMaxLength(100);
 
             builder.Property(p => p.LastName)
                 .HasColumnName("lastName")
                 .IsRequired()
                 .HasMaxLength(100);
+
             builder.Property(p => p.SecondLastName)
              .HasColumnName("secondLastName")
-             .IsRequired()
              .HasMaxLength(100);
 
             builder.Property(p => p.Identification)
                .HasColumnName("identification")
                .IsRequired();
 
-            //builder.Property(p => p.Nation)
-            //.HasColumnName("nation")
-            //.IsRequired()
-            //.HasMaxLength(100);
+            // Índice único
+            builder.HasIndex(p => p.Identification).IsUnique();
 
             builder.Property(p => p.Phone)
                .HasColumnName("phone")
@@ -133,7 +130,7 @@ namespace Entity.ConfigModels.Security
                     SecondLastName = "Torres",
                     //Nation = "Colombia",
                     Phone = 312789654,
-                    Gender = GenderEmun.otro,
+                    Gender = GenderEmun.NoBinario,
                     Age = 21
                 }
             );

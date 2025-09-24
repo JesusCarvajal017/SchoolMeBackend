@@ -10,11 +10,11 @@ namespace Web.Controllers.Implements.Business
     public class AcademicLoadController
        : GenericController<
        AcademicLoad,
-       AcademicLoadDto,
+       AcademicLoadReadDto,
        AcademicLoadDto>
     {
         public AcademicLoadController(
-            IQueryServices<AcademicLoad, AcademicLoadDto> q,
+            IQueryServices<AcademicLoad, AcademicLoadReadDto> q,
             ICommandService<AcademicLoad, AcademicLoadDto> c)
           : base(q, c) { }
     }

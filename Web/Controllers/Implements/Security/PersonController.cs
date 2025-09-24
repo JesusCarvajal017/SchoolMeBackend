@@ -53,7 +53,7 @@ namespace Web.Controllers.Implements.Security
         }
 
         // PUT: api/persons/5
-        [HttpPut("UpdateComplete{personId:int}")]
+        [HttpPut("UpdateComplete/{personId:int}")]
         public async Task<IActionResult> UpdatePerson(int personId, [FromBody] PersonCompleteDto dto)
         {
             if (dto == null)

@@ -63,6 +63,12 @@ namespace Entity.ConfigModels.Business
                    .HasConstraintName("fk_teacher_observation_teacher")
                    .OnDelete(DeleteBehavior.Restrict);
 
+
+            builder.HasData
+            (
+                new Teacher {Id=1, Status = 1, PersonId = 2 }
+            );
+
         }
     }
 }

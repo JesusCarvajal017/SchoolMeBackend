@@ -60,8 +60,10 @@ namespace Utilities.MappersApp.security
             // DataBasicDto -> DataBasic
             CreateMap<DataBasicDto, DataBasic>()
                 .ForMember(d => d.Id, o => o.Ignore())       // PK propia
-                .ForMember(d => d.PersonId, o => o.Ignore())       // EF lo fija por navegación en create
-                                                                   // No sobrescribir con nulls (útil para updates parciales)
+                .ForMember(d => d.PersonId, o => o.Ignore())
+                 
+                // EF lo fija por navegación en create
+                // No sobrescribir con nulls (útil para updates parciales)
                 .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
 
             // =========================
@@ -72,7 +74,8 @@ namespace Utilities.MappersApp.security
                 .ForMember(d => d.DataBasic, o => o.MapFrom(s => s.DataBasic));
 
             CreateMap<DataBasic, DataBasicDto>()
-                .ForMember(d => d.PersonId, o => o.MapFrom(s => s.PersonId));
+                .ForMember(d => d.PersonId, o => o.MapFrom(s => s.PersonId))
+                .ForMember(d => d.DepartamentId, o => o.MapFrom(s => s.Munisipality.DepartamentId));
 
 
 

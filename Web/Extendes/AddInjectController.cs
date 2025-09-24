@@ -1,6 +1,7 @@
 ﻿using Business.Implements.Auth;
 using Business.Implements.Bases;
 using Business.Implements.Commands.Security;
+using Business.Implements.Querys.Business;
 using Business.Implements.Querys.Security;
 using Business.Interfaces.Commands;
 using Business.Interfaces.Querys;
@@ -53,7 +54,6 @@ namespace Web.Extendes
                 typeof(BaseCommandsBusiness<,>)
             );
 
-
             // ============================  inyecciones concretas ============================ 
 
             // ================ QUERYS ================
@@ -68,13 +68,6 @@ namespace Web.Extendes
                 typeof(IQuerys<ModuleForm>),
                 typeof(ModuleFormQueryData)
             );
-
-
-            //services.AddScoped(
-            //    typeof(IQuerys<Person>),
-            //    typeof(PersonQueryData)
-            //);
-
 
             services.AddScoped(
                 typeof(IQuerys<GroupDirector>),
@@ -91,13 +84,15 @@ namespace Web.Extendes
                 typeof(GroupsQueryData)
             );
 
-
             services.AddScoped(
              typeof(IQuerys<Teacher>),
              typeof(TeacherQueryData)
-         );
+            );
 
-
+            services.AddScoped(
+             typeof(IQuerys<Tutition>),
+             typeof(TutitionQueryData)
+            );
 
             // muncipality
             services.AddScoped<IQuerysMunicipality, MunicipalityQueryData>();
@@ -107,7 +102,9 @@ namespace Web.Extendes
             services.AddScoped<IQuerysPerson, PersonQueryData>();
             services.AddScoped<IQueryPersonServices, PersonQueryBusiness>();
 
-
+            // Academic load
+            services.AddScoped<IQuerysAcademicLoad, AcademimcLoadQueryData>();
+            services.AddScoped<IQueryAcLoadServices, AcLoadQueryBusiness>();
 
             // ================ COMMANDS ================
             services.AddScoped(
@@ -127,21 +124,15 @@ namespace Web.Extendes
             services.AddScoped<ICommanPerson, PersonCommandData>();
             services.AddScoped<ICommandPersonServices, PersonCommandBusines>();
 
-
             //services.AddScoped();
-
             services.AddScoped<AuthBusiness>();
             services.AddScoped<LoginData>();
             services.AddScoped<GenerateToken>();
-
-
 
             services.AddScoped<IGenericHerlpers, GenericHelpers>();
   
             services.AddScoped<LogginDbCommandsInterceptor>();
             services.AddScoped<ViewData>();
-
-
 
             return services;
 

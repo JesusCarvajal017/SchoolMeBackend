@@ -8,6 +8,7 @@ namespace Entity.Dtos.Business.AcademicLoad
         public int? SubjectId { get; set; }
         public int? GroupId { get; set; }
 
-        public string[] DaysText { get; set; } = [];
+        //public int Day
+        public string[] Days { get; set; } = [];
     }
 }

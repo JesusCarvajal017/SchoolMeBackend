@@ -7,7 +7,6 @@ namespace Entity.Dtos.Business.AcademicLoad
         public int? TeacherId { get; set; }
         public int? SubjectId { get; set; }
         public int? GroupId { get; set; }
-
-        public int? Day { get; set; }
+        public int? Days { get; set; }
     }
 }

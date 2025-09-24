@@ -1,6 +1,5 @@
 ﻿using Business.Interfaces.Commands;
 using Business.Interfaces.Querys;
-using Entity.Dtos.Business.Student;
 using Entity.Dtos.Business.Teacher;
 using Entity.Model.Business;
 using Web.Controllers.Implements.Abstract;

@@ -27,13 +27,14 @@ namespace Entity.ConfigModels.Parameters
 
             builder.MapBaseModel();
 
+
+
             builder.HasData(
-                new Grade { Id = 1, Name = "Grado", Status = 1 },
-                new Grade { Id = 2, Name = "Primero", Status = 1 },
-                new Grade { Id = 3, Name = "Segundo", Status = 1 },
-                new Grade { Id = 4, Name = "Tercero", Status = 1 },
-                new Grade { Id = 5, Name = "Cuarto", Status = 1 },
-                new Grade { Id = 6, Name = "Quinto", Status = 1 }
+                new Grade { Id = 1, Name = "Primero", Status = 1 },
+                new Grade { Id = 2, Name = "Segundo", Status = 1 },
+                new Grade { Id = 3, Name = "Tercero", Status = 1 },
+                new Grade { Id = 4, Name = "Cuarto", Status = 1 },
+                new Grade { Id = 5, Name = "Quinto", Status = 1 }
             );
 
 

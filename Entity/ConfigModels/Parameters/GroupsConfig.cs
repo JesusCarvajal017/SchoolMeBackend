@@ -79,6 +79,17 @@ namespace Entity.ConfigModels.Parameters
             //       .HasConstraintName("fk_group_director_group")
             //       .OnDelete(DeleteBehavior.Cascade);
 
+            builder.HasData
+            (
+                new Groups {Id=1, Status = 1, Name = "Primero A", GradeId = 1, AmountStudents = 20 },
+                new Groups {Id=3, Status = 1, Name = "Primero B", GradeId = 1 , AmountStudents = 20 },
+                new Groups {Id=4, Status = 1, Name = "Primero C", GradeId = 1 , AmountStudents = 20 },
+                 new Groups{Id=5, Status = 2, Name = "Segundo A", GradeId = 1, AmountStudents = 20 },
+                new Groups {Id=6, Status = 5, Name = "Quinto B", GradeId = 1, AmountStudents = 20 },
+                new Groups {Id=7, Status = 4, Name = "Cuarto C", GradeId = 1, AmountStudents = 20 }
+
+            );
+
 
 
         }

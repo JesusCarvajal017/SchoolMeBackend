@@ -46,6 +46,8 @@ namespace Entity.ConfigModels.Business
                    .HasConstraintName("fk_group_director_group")
                    .OnDelete(DeleteBehavior.Cascade); // si se borra el grupo, se borra su registro de director
 
+            
+
 
         }
     }

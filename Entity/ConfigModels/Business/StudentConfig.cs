@@ -30,8 +30,8 @@ namespace Entity.ConfigModels.Business
                    .IsRequired();
 
             builder.Property(s => s.GroupId)
-                   .HasColumnName("group_id")
-                   .IsRequired();
+                   .HasColumnName("group_id"); 
+                   //.IsRequired();
 
             // Id / Status (y auditoría) del ABaseEntity
             builder.MapBaseModel();
@@ -47,6 +47,11 @@ namespace Entity.ConfigModels.Business
                    .WithMany() // usa .WithMany(g => g.Student) o g.Students si existe la colección
                    .HasForeignKey(s => s.GroupId)
                    .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasData
+            (
+               new Student { Id= 1,Status = 1, PersonId= 3 }
+            );
         }
     }
 }

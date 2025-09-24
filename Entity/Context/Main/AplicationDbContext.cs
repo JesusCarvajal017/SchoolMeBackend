@@ -42,10 +42,12 @@ namespace Entity.Context.Main
 
         //Modulo de negocio
         public DbSet<DataBasic> DataBasic { get; set; }
+
         public DbSet<Student> Students { get; set; }
         public DbSet<Teacher> Teacher { get; set; }
         public DbSet<Attendants> Attendants { get; set; }
         public DbSet<GroupDirector> GroupDirector { get; set; }
+        public DbSet<Tutition> Tutition { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -63,10 +65,10 @@ namespace Entity.Context.Main
             modelBuilder.ApplyConfiguration(new MaterialStatusConfig());
 
             // academico parte del negocio
-            modelBuilder.ApplyConfiguration(new GroupsConfig());
             modelBuilder.ApplyConfiguration(new GradeConfig());
             modelBuilder.ApplyConfiguration(new SubjectConfig());
             modelBuilder.ApplyConfiguration(new TypeAnswareConfig());
+            modelBuilder.ApplyConfiguration(new GroupsConfig());
 
 
             modelBuilder.ApplyConfiguration(new ModuleConfig());

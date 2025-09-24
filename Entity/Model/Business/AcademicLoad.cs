@@ -9,9 +9,7 @@ namespace Entity.Model.Business
         public int TeacherId { get; set; }
         public int SubjectId { get; set; }
         public int GroupId { get; set; }
-
-        public Days Days { get; set; }   
-
+        public int? Days { get; set; }   
         public  Teacher Teacher { get; set; }
         public  Subject Subject { get; set; }
         public  Groups Group { get; set; }

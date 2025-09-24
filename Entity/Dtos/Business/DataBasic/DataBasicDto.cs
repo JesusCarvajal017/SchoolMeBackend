@@ -15,6 +15,7 @@ namespace Entity.Dtos.Business.DataBasic
         public int? MaterialStatusId { get; set; }
 
         public int? EpsId { get; set; }
+        public int? DepartamentId { get; set; }
         public int? MunisipalityId { get; set; }
     }
 }
