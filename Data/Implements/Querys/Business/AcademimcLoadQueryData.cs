@@ -46,8 +46,38 @@ namespace Data.Implements.Querys.Business
         }
 
 
-    
-  
+        public virtual async Task<IEnumerable<AcademicLoad>> QueryCargaAcademica(int idTeacher, int? status)
+        {
+            try
+            {
+                // El as queryable me permite ir construyendo la consulta
+                IQueryable<AcademicLoad> query = _dbSet.
+                                                AsQueryable()
+                                                .Include(p => p.Teacher)
+                                                    .ThenInclude(d => d.Person)
+                                                .Include(p => p.Group)
+                                                .Include(p => p.Subject)
+                                                .Where(a => a.TeacherId == idTeacher);
+
+                if (status.HasValue)
+                    query = query.Where(x => x.Status == status.Value);
+
+                var model = await query.ToListAsync();
+
+                _logger.LogInformation("Consulta de la enidad {Entity} se realizo exitosamente", typeof(Munisipality).Name);
+                return model;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogInformation(ex, "Error en la consulta la entidad {Entity}", typeof(Munisipality).Name);
+                throw;
+            }
+
+        }
+
+
+
+
 
 
     }

@@ -5,6 +5,6 @@ namespace Data.Interfaces.Group.Querys
 
     public interface IQuerysAcademicLoad : IQuerys<AcademicLoad>
     {
-        //Task<IEnumerable<UserRol>> QueryUserRol(int UserId);
+        Task<IEnumerable<AcademicLoad>> QueryCargaAcademica(int idTeacher, int? status);
     }
 }

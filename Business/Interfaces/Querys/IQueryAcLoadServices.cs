@@ -3,8 +3,8 @@ using Entity.Model.Business;
 
 namespace Business.Interfaces.Querys
 {
-    public interface IQueryAcLoadServices : IQueryServices<AcademicLoad, AcademicLoadDto>
+    public interface IQueryAcLoadServices : IQueryServices<AcademicLoad, AcademicLoadReadDto>
     {
-        //Task<IEnumerable<UserRolDto>> GetRolsUserServices(int IdUser);
+        Task<IEnumerable<AcademicLoadReadDto>> GetTeacherLoad(int IdUser, int? status);
     }
 }
