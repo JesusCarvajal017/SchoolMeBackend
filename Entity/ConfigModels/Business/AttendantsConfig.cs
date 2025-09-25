@@ -20,33 +20,12 @@ namespace Entity.ConfigModels.Business
                    .HasColumnName("id")
                    .IsRequired();
 
-            builder.Property(a => a.StudentId)
-                   .HasColumnName("student_id")
-                   .IsRequired();
-
             builder.Property(a => a.PersonId)
                    .HasColumnName("person_id")
                    .IsRequired();
 
-            // Enum -> número (portátil para SQL Server / PostgreSQL / MySQL)
-            builder.Property(a => a.RelationShipTypeEnum)
-                   .HasColumnName("relationship_type")
-                   .IsRequired();
-
             // Auditoría / estado comunes
             builder.MapBaseModel();
-
-            // ÚNICO: un mismo Person no debe repetirse como acudiente del mismo Student
-            builder.HasIndex(a => new { a.StudentId, a.PersonId })
-                   .HasDatabaseName("uq_attendants_student_person")
-                   .IsUnique();
-
-            // Relaciones
-            builder.HasOne(a => a.Student)
-                   .WithMany(s => s.Attendants)         // agrega ICollection<Attendants> en Student si la quieres
-                   .HasForeignKey(a => a.StudentId)
-                   .HasConstraintName("fk_attendants_student")
-                   .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(a => a.Person)
                    .WithMany(p => p.Attendants)         // agrega ICollection<Attendants> en Person si la quieres

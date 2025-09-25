@@ -6,7 +6,6 @@
         Madre = 2,
         Hermano = 3,
         Hermana = 4,
-        Tutor = 5,
-        Otro = 6   
+        Tutor = 5 
     }
 }

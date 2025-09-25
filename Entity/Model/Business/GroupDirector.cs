@@ -11,7 +11,6 @@ namespace Entity.Model.Business
 
         public Teacher Teacher { get; set; }
         public Groups Groups { get; set; }
-        public ICollection<Groups> Group { get; set; }
 
 
     }

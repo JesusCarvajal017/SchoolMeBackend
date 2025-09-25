@@ -28,11 +28,6 @@ namespace Entity.ConfigModels.Business
             // Auditoría/estado de ABaseEntity (created_at, updated_at, status, etc.)
             builder.MapBaseModel();
 
-            // Queremos "un GroupDirector por Teacher" (evita duplicados del mismo docente)
-            builder.HasIndex(x => x.TeacherId)
-                   .HasDatabaseName("uq_group_director_teacher")
-                   .IsUnique();
-
             builder.HasOne(x => x.Teacher)
                    .WithMany(t => t.GroupDirector)          // colección ya la tienes en Teacher
                    .HasForeignKey(x => x.TeacherId)
@@ -44,7 +39,7 @@ namespace Entity.ConfigModels.Business
                    .WithOne(g => g.GroupDirector)
                    .HasForeignKey<GroupDirector>(x => x.GroupId)
                    .HasConstraintName("fk_group_director_group")
-                   .OnDelete(DeleteBehavior.Cascade); // si se borra el grupo, se borra su registro de director
+                   .OnDelete(DeleteBehavior.Restrict); // si se borra el grupo, se borra su registro de director
 
             
 

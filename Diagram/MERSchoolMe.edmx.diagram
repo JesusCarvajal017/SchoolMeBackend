@@ -71,7 +71,7 @@
         <EntityTypeShape EntityType="Model1.StudentAnswareOptions" Width="2.125" PointX="33.625" PointY="15.125" />
         <AssociationConnector Association="Model1.StudentAnswareOptionsStudentAnswer" />
         <AssociationConnector Association="Model1.StudentAnswareOptionsQuestionOption" />
-        <EntityTypeShape EntityType="Model1.attendants" Width="1.5" PointX="23.375" PointY="7.25" FillColor="255, 128, 128" />
+        <EntityTypeShape EntityType="Model1.attendants" Width="1.5" PointX="24.25" PointY="7.125" FillColor="255, 128, 128" />
         <AssociationConnector Association="Model1.attendantsPerson1" />
         <AssociationConnector Association="Model1.attendantsStudents" />
         <AssociationConnector Association="Model1.GroupAgenda" />

@@ -1,9 +1,7 @@
 ﻿using Entity.ConfigModels.global;
-using Entity.Enum;
 using Entity.Model.Business;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Entity.ConfigModels.Business
 {
@@ -36,7 +34,7 @@ namespace Entity.ConfigModels.Business
 
             builder.Property(a => a.Days)
                   .HasColumnName("days")
-                  .HasConversion<int>()        // enum -> int (bitmask)
+                  .HasConversion<int>()        
                   .HasColumnType("integer")    // pg: integer
                   .HasDefaultValue(0)
                   .IsRequired();
