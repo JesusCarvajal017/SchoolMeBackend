@@ -9,11 +9,11 @@ namespace Web.Controllers.Implements.Business
     public class StudentController
        : GenericController<
        Student,
-       StudentDto,
+       StudentQueryDto,
        StudentDto>
     {
         public StudentController(
-            IQueryServices<Student, StudentDto> q,
+            IQueryServices<Student, StudentQueryDto> q,
             ICommandService<Student, StudentDto> c)
           : base(q, c) { }
     }

@@ -6,23 +6,23 @@ using Microsoft.Extensions.Logging;
 
 namespace Data.Implements.Querys.Business
 {
-    public class TeacherQueryData : BaseGenericQuerysData<Teacher>
+    public class StudentQueryData : BaseGenericQuerysData<Student>
     {
-        protected readonly ILogger<TeacherQueryData> _logger;
+        protected readonly ILogger<StudentQueryData> _logger;
         protected readonly AplicationDbContext _context;
 
-        public TeacherQueryData(AplicationDbContext context, ILogger<TeacherQueryData> logger) : base(context, logger)
+        public StudentQueryData(AplicationDbContext context, ILogger<StudentQueryData> logger) : base(context, logger)
         {
             _context = context;
             _logger = logger;
         }
 
-        public override async Task<IEnumerable<Teacher>> QueryAllAsyn(int? status)
+        public override async Task<IEnumerable<Student>> QueryAllAsyn(int? status)
         {
             try
             {
                 // El as queryable me permite ir construyendo la consulta
-                IQueryable<Teacher> query = _dbSet.
+                IQueryable<Student> query = _dbSet.
                                                 AsQueryable()
                                                 .Include(p => p.Person)
                                                     .ThenInclude(P => P.DocumentType);
@@ -32,18 +32,17 @@ namespace Data.Implements.Querys.Business
 
                 var model = await query.ToListAsync();
 
-                _logger.LogInformation("Consulta de la enidad {Entity} se realizo exitosamente", typeof(Teacher).Name);
+                _logger.LogInformation("Consulta de la enidad {Entity} se realizo exitosamente", typeof(Student).Name);
                 return model;
             }
             catch (Exception ex)
             {
-                _logger.LogInformation(ex, "Error en la consulta la entidad {Entity}", typeof(Teacher).Name);
+                _logger.LogInformation(ex, "Error en la consulta la entidad {Entity}", typeof(Student).Name);
                 throw;
             }
         }
 
-
-        public override async Task<Teacher?> QueryById(int id)
+        public override async Task<Student?> QueryById(int id)
         {
 
             try
@@ -51,7 +50,7 @@ namespace Data.Implements.Querys.Business
                 var query = await _dbSet
                   .AsNoTracking()
                   .Include(p => p.Person)
-                      .ThenInclude(P => P.DocumentType)
+                    .ThenInclude(P => P.DocumentType)
                   .FirstOrDefaultAsync(e => e.Id == id); ;
 
                 return query;
@@ -59,11 +58,12 @@ namespace Data.Implements.Querys.Business
             }
             catch (Exception ex)
             {
-                _logger.LogInformation(ex, "Error en la consulta con id {id}", typeof(Teacher).Name);
+                _logger.LogInformation(ex, "Error en la consulta con id {id}", typeof(Student).Name);
                 return null;
             }
 
         }
+
 
 
 

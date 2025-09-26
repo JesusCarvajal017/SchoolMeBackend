@@ -94,6 +94,11 @@ namespace Web.Extendes
              typeof(TutitionQueryData)
             );
 
+            services.AddScoped(typeof(IQuerys<Student>), typeof(StudentQueryData));
+            services.AddScoped(typeof(IQuerys<Teacher>), typeof(TeacherQueryData));
+            services.AddScoped(typeof(IQuerys<Attendants>), typeof(AttendansQueryData));
+
+
             // muncipality
             services.AddScoped<IQuerysMunicipality, MunicipalityQueryData>();
             services.AddScoped<IQueryMunicipalityServices, MunicipalityQueryBusiness>();
@@ -106,15 +111,17 @@ namespace Web.Extendes
             services.AddScoped<IQuerysAcademicLoad, AcademimcLoadQueryData>();
             services.AddScoped<IQueryAcLoadServices, AcLoadQueryBusiness>();
 
+
+            // user - rol
+            services.AddScoped<IQuerysUserRol, UserRolQueryData>();
+            services.AddScoped<IQueryUserRolServices, UserRolQueryBusiness>();
+
             // ================ COMMANDS ================
             services.AddScoped(
                 typeof(ICommands<User>),
                 typeof(UserCommandData)
             );
 
-            // user - rol
-            services.AddScoped<IQuerysUserRol, UserRolQueryData>();
-            services.AddScoped<IQueryUserRolServices, UserRolQueryBusiness>();
 
             // user
             services.AddScoped<ICommandUser, UserCommandData>();

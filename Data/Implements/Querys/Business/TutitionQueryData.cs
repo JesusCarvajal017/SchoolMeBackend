@@ -26,6 +26,7 @@ namespace Data.Implements.Querys.Business
                                                 AsQueryable()
                                                 .Include(p => p.Student)
                                                     .ThenInclude(P => P.Person)
+
                                                 .Include(q => q.Grade);
 
 
@@ -34,12 +35,12 @@ namespace Data.Implements.Querys.Business
 
                 var model = await query.ToListAsync();
 
-                _logger.LogInformation("Consulta de la enidad {Entity} se realizo exitosamente", typeof(Munisipality).Name);
+                _logger.LogInformation("Consulta de la enidad {Entity} se realizo exitosamente", typeof(Tutition).Name);
                 return model;
             }
             catch (Exception ex)
             {
-                _logger.LogInformation(ex, "Error en la consulta la entidad {Entity}", typeof(Munisipality).Name);
+                _logger.LogInformation(ex, "Error en la consulta la entidad {Entity}", typeof(Tutition).Name);
                 throw;
             }
         }
