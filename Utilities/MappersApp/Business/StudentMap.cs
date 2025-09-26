@@ -16,6 +16,7 @@ namespace Utilities.MappersApp.Business
                             .ForMember(dest => dest.DocumentTypeId, opt => opt.MapFrom(t => t.Person.DocumentTypeId))
                             .ForMember(dest => dest.Identification, opt => opt.MapFrom(t => t.Person.Identification))
                             .ForMember(dest => dest.AcronymDocument, opt => opt.MapFrom(t => t.Person.DocumentType.Acronym))
+                            .ForMember(dest => dest.GroupName, opt => opt.MapFrom(t => t.Groups.Name))
                             .ReverseMap();
         }
     }

@@ -25,7 +25,8 @@ namespace Data.Implements.Querys.Business
                 IQueryable<Student> query = _dbSet.
                                                 AsQueryable()
                                                 .Include(p => p.Person)
-                                                    .ThenInclude(P => P.DocumentType);
+                                                    .ThenInclude(P => P.DocumentType)
+                                                 .Include(g => g.Groups);
 
                 if (status.HasValue)
                     query = query.Where(x => x.Status == status.Value);

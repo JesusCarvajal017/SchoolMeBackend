@@ -6,6 +6,7 @@ namespace Entity.Dtos.Business.Student
     {
         public int? PersonId { get; set; }
         public int? GroupId { get; set; }
+        public string? GroupName { get; set; }
 
         public string? FullName { get; set; }
         public int? DocumentTypeId { get; set; }
